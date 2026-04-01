@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-accent: var(--color-accent);
+  --color-bg: var(--color-background);
+  --color-surface: var(--color-surface);
+  --color-surface-alt: var(--color-surfaceAlt);
+  --color-text-main: var(--color-text);
+  --color-muted: var(--color-textMuted);
+  --color-border: var(--color-border);
+
+  --font-display: var(--font-display), serif;
+  --font-body: var(--font-body), sans-serif;
+}
+
+:root {
+  /* Default Theme: Light of Hope */
+  --color-primary: #006A4E;
+  --color-secondary: #C0392B;
+  --color-accent: #F59E0B;
+  --color-background: #F5F9F6;
+  --color-surface: #FFFFFF;
+  --color-surfaceAlt: #EBF5EF;
+  --color-text: #0C1A12;
+  --color-textMuted: #4A6355;
+  --color-border: #C8E0D4;
+  --hero-overlay: linear-gradient(135deg, rgba(0,106,78,0.88), rgba(0,50,30,0.82));
+  --cta-gradient: linear-gradient(135deg, #006A4E 0%, #004D38 50%, #C0392B 100%);
+  --font-display: "Playfair Display";
+  --font-body: "Hind Siliguri";
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-bg text-text-main font-body overflow-x-hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+/* Custom Swiper Styles */
+.swiper-button-next, .swiper-button-prev {
+  @apply text-primary!;
+}
+.swiper-pagination-bullet-active {
+  @apply bg-primary!;
+}
+
+/* Partner Slider Continuous Flow */
+.partner-slider .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+/* Glassmorphism */
+.glass {
+  @apply bg-white/10 backdrop-blur-md border border-white/20;
+}
+
+/* Shimmer Effect */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 25%, rgba(255,255,255,0.2) 50%, transparent 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
