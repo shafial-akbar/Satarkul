@@ -63,7 +63,7 @@ export default function AssistiveDevicesPage() {
             <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-[3rem] blur-2xl opacity-50 group-hover:opacity-100 transition-opacity duration-700" />
             <div className="relative rounded-[3rem] overflow-hidden aspect-square shadow-2xl border-8 border-white">
               <img 
-                src="https://picsum.photos/seed/assistive/1000/1000" 
+                src="https://picsum.photos/seed/wheelchair/1000/1000" 
                 alt="Assistive Devices Distribution" 
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 referrerPolicy="no-referrer"
@@ -149,10 +149,10 @@ export default function AssistiveDevicesPage() {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="rounded-[2rem] overflow-hidden shadow-lg">
-                <img src="https://picsum.photos/seed/assist-1/600/800" alt="Mobility" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                <img src="https://picsum.photos/seed/mobility/600/800" alt="Mobility" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
               </div>
               <div className="rounded-[2rem] overflow-hidden shadow-lg mt-8">
-                <img src="https://picsum.photos/seed/assist-2/600/800" alt="Vision" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                <img src="https://picsum.photos/seed/support/600/800" alt="Vision" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
               </div>
             </div>
           </div>

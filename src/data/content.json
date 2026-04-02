@@ -1,0 +1,40 @@
+{
+  "home": {
+    "hero": {
+      "title": {
+        "en": "Empowering Lives, Nurturing Potential",
+        "bn": "জীবন ক্ষমতায়ন, সম্ভাবনার লালন"
+      },
+      "subtitle": {
+        "en": "Join our mission to provide inclusive education and healthcare for children with disabilities.",
+        "bn": "প্রতিবন্ধী শিশুদের জন্য অন্তর্ভুক্তিমূলক শিক্ষা এবং স্বাস্থ্যসেবা প্রদানের আমাদের মিশনে যোগ দিন।"
+      }
+    }
+  },
+  "about": {
+    "title": {
+      "en": "Our Story",
+      "bn": "আমাদের গল্প"
+    },
+    "mission": {
+      "title": {
+        "en": "Our Mission",
+        "bn": "আমাদের লক্ষ্য"
+      },
+      "text": {
+        "en": "To create an inclusive society where every child with a disability has access to quality education, healthcare, and equal opportunities.",
+        "bn": "একটি অন্তর্ভুক্তিমূলক সমাজ গঠন করা যেখানে প্রতিটি প্রতিবন্ধী শিশুর মানসম্মত শিক্ষা, স্বাস্থ্যসেবা এবং সমান সুযোগের অধিকার থাকবে।"
+      }
+    },
+    "vision": {
+      "title": {
+        "en": "Our Vision",
+        "bn": "আমাদের স্বপ্ন"
+      },
+      "text": {
+        "en": "A world where disability is not a barrier to achieving one's dreams and potential.",
+        "bn": "এমন একটি পৃথিবী যেখানে প্রতিবন্ধকতা কারো স্বপ্ন এবং সম্ভাবনা অর্জনে বাধা হবে না।"
+      }
+    }
+  }
+}

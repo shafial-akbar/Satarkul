@@ -41,7 +41,7 @@ export default function CommitteeMeetingsPage() {
           <div className="relative">
             <div className="aspect-video rounded-[3rem] overflow-hidden shadow-2xl">
               <img 
-                src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070&auto=format&fit=crop" 
+                src="https://picsum.photos/seed/meeting/1200/800" 
                 alt="Committee Meeting" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"

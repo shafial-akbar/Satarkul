@@ -54,13 +54,13 @@ export default function SkillDevelopmentPage() {
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-4">
               <img 
-                src="https://picsum.photos/seed/handicraft-1/800/1000" 
+                src="https://picsum.photos/seed/handicraft/800/1000" 
                 alt="Handicrafts" 
                 className="rounded-3xl shadow-lg aspect-[4/5] object-cover w-full"
                 referrerPolicy="no-referrer"
               />
               <img 
-                src="https://picsum.photos/seed/sewing-1/800/800" 
+                src="https://picsum.photos/seed/sewing/1000/1000" 
                 alt="Sewing" 
                 className="rounded-3xl shadow-lg aspect-square object-cover w-full"
                 referrerPolicy="no-referrer"
@@ -68,13 +68,13 @@ export default function SkillDevelopmentPage() {
             </div>
             <div className="space-y-4 pt-8">
               <img 
-                src="https://picsum.photos/seed/art-1/800/800" 
+                src="https://picsum.photos/seed/art/1000/1000" 
                 alt="Art Training" 
                 className="rounded-3xl shadow-lg aspect-square object-cover w-full"
                 referrerPolicy="no-referrer"
               />
               <img 
-                src="https://picsum.photos/seed/jewelry-1/800/1000" 
+                src="https://picsum.photos/seed/jewelry/800/1000" 
                 alt="Jewelry Making" 
                 className="rounded-3xl shadow-lg aspect-[4/5] object-cover w-full"
                 referrerPolicy="no-referrer"
@@ -175,10 +175,10 @@ export default function SkillDevelopmentPage() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { seed: 'craft-2', label: lang === 'en' ? 'Handicrafts' : 'হস্তশিল্প' },
-              { seed: 'sewing-2', label: lang === 'en' ? 'Tailoring' : 'দর্জিবিজ্ঞান' },
-              { seed: 'art-2', label: lang === 'en' ? 'Art Work' : 'শিল্পকর্ম' },
-              { seed: 'jewelry-2', label: lang === 'en' ? 'Jewelry' : 'গয়না' }
+              { seed: 'handicraft', label: lang === 'en' ? 'Handicrafts' : 'হস্তশিল্প' },
+              { seed: 'sewing', label: lang === 'en' ? 'Tailoring' : 'দর্জিবিজ্ঞান' },
+              { seed: 'art', label: lang === 'en' ? 'Art Work' : 'শিল্পকর্ম' },
+              { seed: 'jewelry', label: lang === 'en' ? 'Jewelry' : 'গয়না' }
             ].map((item, i) => (
               <motion.div 
                 key={i}

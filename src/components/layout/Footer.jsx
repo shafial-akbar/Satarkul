@@ -4,53 +4,55 @@ import { motion } from 'motion/react';
 import { Phone, Mail, MapPin, Facebook, Youtube, Twitter, Instagram, ArrowRight, Heart } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../context/LanguageContext';
+import { useContent } from '../../context/ContentContext';
 import { SpusLogoFull } from '../ui/SpusLogo';
 
 export default function Footer() {
   const { t } = useTranslation();
   const { lang } = useLanguage();
+  const { content } = useContent();
 
   const footerLinks = [
     {
-      title: t('common.about'),
+      title: content?.nav?.about?.[lang] || (lang === 'en' ? 'About Us' : 'আমাদের সম্পর্কে'),
       links: [
-        { to: '/about', label: t('nav.background') },
-        { to: '/about/vision-mission', label: t('nav.visionMission') },
-        { to: '/about/governing-body', label: t('nav.governingBody') },
-        { to: '/about/work-area', label: t('nav.workArea') },
-        { to: '/about/legal-status', label: t('nav.legalStatus') },
-        { to: '/about/membership', label: t('nav.membership') },
+        { to: '/about', label: content?.nav?.background?.[lang] || (lang === 'en' ? 'Background' : 'পটভূমি') },
+        { to: '/about/vision-mission', label: content?.nav?.visionMission?.[lang] || (lang === 'en' ? 'Vision & Mission' : 'লক্ষ্য ও উদ্দেশ্য') },
+        { to: '/about/governing-body', label: content?.nav?.governingBody?.[lang] || (lang === 'en' ? 'Governing Body' : 'পরিচালনা পর্ষদ') },
+        { to: '/about/work-area', label: content?.nav?.workArea?.[lang] || (lang === 'en' ? 'Work Area' : 'কর্ম এলাকা') },
+        { to: '/about/legal-status', label: content?.nav?.legalStatus?.[lang] || (lang === 'en' ? 'Legal Status' : 'আইনি মর্যাদা') },
+        { to: '/about/membership', label: content?.nav?.membership?.[lang] || (lang === 'en' ? 'Membership' : 'সদস্যপদ') },
       ]
     },
     {
-      title: t('common.programs'),
+      title: content?.nav?.programs?.[lang] || (lang === 'en' ? 'Programs' : 'কার্যক্রম'),
       links: [
-        { to: '/programs', label: t('nav.allPrograms') },
-        { to: '/programs/education', label: t('nav.education') },
-        { to: '/programs/health', label: t('nav.health') },
-        { to: '/programs/skill-development', label: t('nav.skills') },
-        { to: '/programs/financial-support', label: t('nav.finance') },
-        { to: '/programs/assistive-devices', label: t('nav.devices') },
-        { to: '/programs/awareness', label: t('nav.awareness') },
+        { to: '/programs', label: content?.nav?.allPrograms?.[lang] || (lang === 'en' ? 'All Programs' : 'সব কার্যক্রম') },
+        { to: '/programs/education', label: content?.nav?.education?.[lang] || (lang === 'en' ? 'Education' : 'শিক্ষা') },
+        { to: '/programs/health', label: content?.nav?.health?.[lang] || (lang === 'en' ? 'Health' : 'স্বাস্থ্য') },
+        { to: '/programs/skill-development', label: content?.nav?.skills?.[lang] || (lang === 'en' ? 'Skills' : 'দক্ষতা') },
+        { to: '/programs/financial-support', label: content?.nav?.finance?.[lang] || (lang === 'en' ? 'Finance' : 'অর্থ') },
+        { to: '/programs/assistive-devices', label: content?.nav?.devices?.[lang] || (lang === 'en' ? 'Devices' : 'উপকরণ') },
+        { to: '/programs/awareness', label: content?.nav?.awareness?.[lang] || (lang === 'en' ? 'Awareness' : 'সচেতনতা') },
       ]
     },
     {
-      title: t('common.supportUs'),
+      title: content?.nav?.supportUs?.[lang] || (lang === 'en' ? 'Support Us' : 'আমাদের সমর্থন করুন'),
       links: [
-        { to: '/support/donate', label: t('common.donate') },
-        { to: '/support/volunteer', label: t('common.volunteer') },
-        { to: '/support/partner', label: t('common.partner') },
-        { to: '/support/donors', label: t('nav.donors') },
+        { to: '/support/donate', label: content?.common?.buttons?.donateNow?.[lang] || (lang === 'en' ? 'Donate Now' : 'এখনই দান করুন') },
+        { to: '/support/volunteer', label: content?.common?.buttons?.volunteer?.[lang] || (lang === 'en' ? 'Volunteer' : 'স্বেচ্ছাসেবী') },
+        { to: '/support/partner', label: content?.common?.buttons?.partner?.[lang] || (lang === 'en' ? 'Partner' : 'অংশীদার') },
+        { to: '/support/donors', label: content?.nav?.donors?.[lang] || (lang === 'en' ? 'Donors' : 'দাতা') },
       ]
     },
     {
-      title: t('common.media'),
+      title: content?.nav?.media?.[lang] || (lang === 'en' ? 'Media' : 'মিডিয়া'),
       links: [
-        { to: '/news', label: t('common.news') },
-        { to: '/blog', label: t('common.blog') },
-        { to: '/gallery', label: t('common.gallery') },
-        { to: '/videos', label: t('common.videos') },
-        { to: '/resources/downloads', label: t('common.downloads') },
+        { to: '/news', label: content?.nav?.news?.[lang] || (lang === 'en' ? 'News' : 'সংবাদ') },
+        { to: '/blog', label: content?.nav?.blog?.[lang] || (lang === 'en' ? 'Blog' : 'ব্লগ') },
+        { to: '/gallery', label: content?.nav?.gallery?.[lang] || (lang === 'en' ? 'Gallery' : 'গ্যালারি') },
+        { to: '/videos', label: content?.nav?.videos?.[lang] || (lang === 'en' ? 'Videos' : 'ভিডিও') },
+        { to: '/resources/downloads', label: content?.nav?.downloads?.[lang] || (lang === 'en' ? 'Downloads' : 'ডাউনলোড') },
       ]
     }
   ];
@@ -74,7 +76,7 @@ export default function Footer() {
           <div className="space-y-8 flex flex-col items-start">
             <SpusLogoFull size={48} className="items-start" />
             <p className="text-muted leading-relaxed text-sm italic font-medium">
-              "{t('common.motto')}"
+              "{content?.common?.motto?.[lang] || (lang === 'en' ? 'Empowering Lives, Ensuring Rights' : 'জীবনকে ক্ষমতায়ন, অধিকার নিশ্চিতকরণ')}"
             </p>
             <div className="flex items-center gap-4">
               {[Facebook, Youtube, Twitter, Instagram].map((Icon, idx) => (
@@ -137,7 +139,7 @@ export default function Footer() {
           {/* Contact Column */}
           <div className="space-y-6">
             <h4 className="text-lg font-display font-bold text-text-main relative pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-primary after:rounded-full">
-              {t('common.contact')}
+              {content?.nav?.contact?.[lang] || (lang === 'en' ? 'Contact Us' : 'যোগাযোগ করুন')}
             </h4>
             <div className="space-y-5">
               <div className="flex items-start gap-3 group">
@@ -188,7 +190,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-20 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-6 text-sm font-medium text-muted">
-          <p>© {new Date().getFullYear()} {t('common.orgName')}. All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()} {content?.common?.orgName?.[lang] || (lang === 'en' ? 'Satarkul Protibondhi Unnayan Songstha' : 'সাতারকুল প্রতিবন্ধী উন্নয়ন সংস্থা')}. All Rights Reserved.</p>
           <div className="flex items-center gap-8">
             <Link to="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
             <Link to="/terms" className="hover:text-primary transition-colors">Terms of Service</Link>

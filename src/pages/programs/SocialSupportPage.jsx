@@ -49,7 +49,7 @@ export default function SocialSupportPage() {
           <div className="relative">
             <div className="aspect-square rounded-[4rem] overflow-hidden shadow-2xl">
               <img 
-                src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                src="https://picsum.photos/seed/legal/1000/1000" 
                 alt="Legal Support" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"

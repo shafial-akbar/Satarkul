@@ -1,17 +1,18 @@
 import React from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
-import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../context/LanguageContext';
+import { skillTrainingData } from '../../data/infographicsData';
 
-export default function SkillTrainingChart() {
-  const { t } = useTranslation();
+export default function SkillTrainingChart({ chartData = skillTrainingData }) {
   const { lang } = useLanguage();
 
-  const data = [
-    { name: lang === 'en' ? 'Tailoring' : 'দর্জি বিজ্ঞান', value: 10, color: '#6D28D9' },
-    { name: lang === 'en' ? 'Beads' : 'হস্তশিল্প', value: 10, color: '#10B981' },
-    { name: lang === 'en' ? 'Painting' : 'পেইন্টিং', value: 10, color: '#F59E0B' },
-  ];
+  const data = chartData.map(item => ({
+    name: item.label[lang] || item.label['en'],
+    value: item.value,
+    color: item.color
+  }));
+
+  const totalTrained = data.reduce((sum, item) => sum + item.value, 0);
 
   return (
     <div className="bg-surface p-6 rounded-3xl shadow-xl border border-border h-[400px] flex flex-col">
@@ -42,7 +43,7 @@ export default function SkillTrainingChart() {
         </ResponsiveContainer>
       </div>
       <p className="text-xs text-muted text-center mt-4 italic">
-        {lang === 'en' ? 'Total: 30 Members Trained' : 'মোট: ৩০ জন সদস্য প্রশিক্ষিত'}
+        {lang === 'en' ? `Total: ${totalTrained} Members Trained` : `মোট: ${totalTrained} জন সদস্য প্রশিক্ষিত`}
       </p>
     </div>
   );

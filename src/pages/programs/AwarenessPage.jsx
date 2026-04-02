@@ -127,7 +127,7 @@ export default function AwarenessPage() {
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="relative rounded-[3rem] overflow-hidden aspect-square shadow-2xl">
             <img 
-              src="https://picsum.photos/seed/advocacy/1000/1000" 
+              src="https://picsum.photos/seed/awareness/1000/1000" 
               alt="Disability Rights Advocacy" 
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"

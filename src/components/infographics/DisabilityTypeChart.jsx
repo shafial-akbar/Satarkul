@@ -1,31 +1,16 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { useLanguage } from '../../context/LanguageContext';
-import { disabilityBreakdown, schoolStats } from '../../data/educationData';
+import { disabilityTypeData } from '../../data/infographicsData';
 
-export default function DisabilityTypeChart() {
+export default function DisabilityTypeChart({ chartData = disabilityTypeData }) {
   const { lang } = useLanguage();
 
-  const nonDisabledStat = schoolStats.find(s => s.label.en === 'Non-disabled');
-  
-  const data = [
-    ...disabilityBreakdown.map(item => ({
-      name: item.label[lang] || item.label['en'],
-      value: item.value,
-      color: item.color || '#006A4E' // Fallback color
-    })),
-    { 
-      name: lang === 'en' ? 'Non-disabled' : 'অ-প্রতিবন্ধী', 
-      value: nonDisabledStat ? nonDisabledStat.value : 0, 
-      color: '#27AE60' 
-    }
-  ];
-
-  // Assign colors based on index or specific mapping if not provided in data
-  const colors = ['#006A4E', '#C0392B', '#F59E0B', '#3498DB', '#9B59B6', '#16A085', '#E67E22', '#2C3E50', '#27AE60'];
-  data.forEach((item, index) => {
-    if (!item.color) item.color = colors[index % colors.length];
-  });
+  const data = chartData.map(item => ({
+    name: item.label[lang] || item.label['en'],
+    value: item.value,
+    color: item.color || '#006A4E'
+  }));
 
   return (
     <div className="bg-white p-6 rounded-3xl shadow-xl border border-border h-[400px] flex flex-col">

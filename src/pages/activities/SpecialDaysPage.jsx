@@ -121,18 +121,18 @@ export default function SpecialDaysPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4">
                   <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-xl">
-                    <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=2070&auto=format&fit=crop" alt="Celebration 1" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                    <img src="https://picsum.photos/seed/celebration/800/1000" alt="Celebration 1" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                   </div>
                   <div className="aspect-square rounded-3xl overflow-hidden shadow-xl">
-                    <img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?q=80&w=2006&auto=format&fit=crop" alt="Celebration 2" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                    <img src="https://picsum.photos/seed/community/1000/1000" alt="Celebration 2" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                   </div>
                 </div>
                 <div className="space-y-4 pt-8">
                   <div className="aspect-square rounded-3xl overflow-hidden shadow-xl">
-                    <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?q=80&w=2070&auto=format&fit=crop" alt="Celebration 3" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                    <img src="https://picsum.photos/seed/support/1000/1000" alt="Celebration 3" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                   </div>
                   <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-xl">
-                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=2132&auto=format&fit=crop" alt="Celebration 4" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                    <img src="https://picsum.photos/seed/education/800/1000" alt="Celebration 4" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                   </div>
                 </div>
               </div>

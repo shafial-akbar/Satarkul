@@ -16,10 +16,13 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+import { useContent } from '../../../context/ContentContext';
+
 export default function Variant4() {
   const { t } = useTranslation();
   const { lang } = useLanguage();
   const { setCurrentTheme, themes } = useTheme();
+  const { content } = useContent();
 
   useEffect(() => {
     const theme = themes.find(t => t.id === 'green-earth');
@@ -32,7 +35,7 @@ export default function Variant4() {
       <section className="relative min-h-screen flex items-center overflow-hidden pt-20">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2013&auto=format&fit=crop" 
+            src="https://picsum.photos/seed/nature-bg/1920/1080" 
             className="w-full h-full object-cover opacity-20"
             alt="Nature Background"
             referrerPolicy="no-referrer"
@@ -47,7 +50,7 @@ export default function Variant4() {
               animate={{ opacity: 1, x: 0 }}
               className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-lg font-bold text-sm uppercase tracking-widest"
             >
-              <Leaf size={18} /> {lang === 'en' ? 'Growing Hope Since 2013' : '২০১৩ থেকে আশা জাগিয়ে তুলছি'}
+              <Leaf size={18} /> {content?.about?.legacy?.tag?.[lang] || (lang === 'en' ? 'Growing Hope Since 2013' : '২০১৩ থেকে আশা জাগিয়ে তুলছি')}
             </motion.div>
 
             <motion.h1 
@@ -56,7 +59,7 @@ export default function Variant4() {
               transition={{ delay: 0.2 }}
               className="text-6xl lg:text-8xl font-display font-bold text-text-main leading-tight"
             >
-              {lang === 'en' ? 'Nurturing Potential, Rooted in Care' : 'যত্নে বেড়ে ওঠা, সম্ভাবনার লালন'}
+              {content?.home?.hero?.slides?.[0]?.title?.[lang] || (lang === 'en' ? 'Nurturing Potential, Rooted in Care' : 'যত্নে বেড়ে ওঠা, সম্ভাবনার লালন')}
             </motion.h1>
 
             <motion.p 
@@ -65,9 +68,9 @@ export default function Variant4() {
               transition={{ delay: 0.4 }}
               className="text-xl text-muted leading-relaxed max-w-xl"
             >
-              {lang === 'en' 
+              {content?.home?.hero?.slides?.[0]?.subtitle?.[lang] || (lang === 'en' 
                 ? 'We provide a sustainable ecosystem of support for individuals with disabilities to thrive in their communities.' 
-                : 'আমরা প্রতিবন্ধী ব্যক্তিদের তাদের সম্প্রদায়ে বিকাশের জন্য সহায়তার একটি টেকসই ইকোসিস্টেম প্রদান করি।'}
+                : 'আমরা প্রতিবন্ধী ব্যক্তিদের তাদের সম্প্রদায়ে বিকাশের জন্য সহায়তার একটি টেকসই ইকোসিস্টেম প্রদান করি।')}
             </motion.p>
 
             <motion.div 
@@ -77,10 +80,10 @@ export default function Variant4() {
               className="flex flex-wrap gap-4"
             >
               <Link to="/support/donate" className="px-10 py-5 bg-primary text-white rounded-xl font-bold text-lg hover:bg-primary-dark transition-all flex items-center gap-2 shadow-lg shadow-primary/20">
-                <Sprout size={24} /> {t('common.donateNow')}
+                <Sprout size={24} /> {content?.common?.buttons?.donateNow?.[lang] || (lang === 'en' ? 'Donate Now' : 'এখনই দান করুন')}
               </Link>
               <Link to="/about" className="px-10 py-5 bg-surface text-text-main rounded-xl font-bold text-lg hover:bg-surface-alt transition-all border border-border">
-                {t('common.learnMore')}
+                {content?.common?.buttons?.learnMore?.[lang] || (lang === 'en' ? 'Learn More' : 'আরও জানুন')}
               </Link>
             </motion.div>
           </div>
@@ -97,7 +100,7 @@ export default function Variant4() {
                   <img src="https://picsum.photos/seed/nature1/400/500" className="rounded-3xl shadow-2xl" alt="Impact" referrerPolicy="no-referrer" />
                   <div className="bg-secondary p-8 rounded-3xl text-white space-y-2">
                     <p className="text-4xl font-bold">690+</p>
-                    <p className="font-medium opacity-80 uppercase tracking-widest text-xs">{t('home.stats.members')}</p>
+                    <p className="font-medium opacity-80 uppercase tracking-widest text-xs">{content?.home?.stats?.members?.[lang] || (lang === 'en' ? 'Total Members' : 'মোট সদস্য')}</p>
                   </div>
                 </div>
                 <div className="space-y-6">
@@ -117,8 +120,8 @@ export default function Variant4() {
       <section className="py-24 lg:py-32 bg-surface">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-4 gap-12">
           <div className="lg:col-span-1 space-y-6">
-            <h2 className="text-4xl font-display font-bold text-text-main">{lang === 'en' ? 'Our Roots' : 'আমাদের মূল ভিত্তি'}</h2>
-            <p className="text-muted leading-relaxed">{lang === 'en' ? 'Built on a foundation of empathy, inclusion, and sustainable growth.' : 'সহানুভূতি, অন্তর্ভুক্তি এবং টেকসই প্রবৃদ্ধির ভিত্তির ওপর নির্মিত।'}</p>
+            <h2 className="text-4xl font-display font-bold text-text-main">{content?.home?.about?.tag?.[lang] || (lang === 'en' ? 'Our Roots' : 'আমাদের মূল ভিত্তি')}</h2>
+            <p className="text-muted leading-relaxed">{content?.home?.about?.description?.[lang] || (lang === 'en' ? 'Built on a foundation of empathy, inclusion, and sustainable growth.' : 'সহানুভূতি, অন্তর্ভুক্তি এবং টেকসই প্রবৃদ্ধির ভিত্তির ওপর নির্মিত।')}</p>
           </div>
           
           {[
@@ -139,29 +142,29 @@ export default function Variant4() {
       <section className="py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 space-y-16">
           <div className="text-center space-y-4">
-            <p className="text-primary font-bold uppercase tracking-widest text-sm">{lang === 'en' ? 'Our Branches' : 'আমাদের শাখাগুলি'}</p>
-            <h2 className="text-4xl lg:text-6xl font-display font-bold text-text-main">{lang === 'en' ? 'How We Branch Out' : 'আমরা যেভাবে ছড়িয়ে পড়ি'}</h2>
+            <p className="text-primary font-bold uppercase tracking-widest text-sm">{content?.home?.programs?.tag?.[lang] || (lang === 'en' ? 'Our Branches' : 'আমাদের শাখাগুলি')}</p>
+            <h2 className="text-4xl lg:text-6xl font-display font-bold text-text-main">{content?.home?.programs?.title?.[lang] || (lang === 'en' ? 'How We Branch Out' : 'আমরা যেভাবে ছড়িয়ে পড়ি')}</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               { 
-                title: t('nav.education'), 
+                title: content?.nav?.education?.[lang] || (lang === 'en' ? 'Education' : 'শিক্ষা'), 
                 icon: Sprout, 
                 color: 'bg-primary',
-                desc: lang === 'en' ? 'Inclusive education for children with diverse needs.' : 'বিভিন্ন চাহিদাসম্পন্ন শিশুদের জন্য অন্তর্ভুক্তিমূলক শিক্ষা।'
+                desc: content?.home?.programs?.list?.[0]?.desc?.[lang] || (lang === 'en' ? 'Inclusive education for children with diverse needs.' : 'বিভিন্ন চাহিদাসম্পন্ন শিশুদের জন্য অন্তর্ভুক্তিমূলক শিক্ষা।')
               },
               { 
-                title: t('nav.health'), 
+                title: content?.nav?.health?.[lang] || (lang === 'en' ? 'Health' : 'স্বাস্থ্য'), 
                 icon: Heart, 
                 color: 'bg-secondary',
-                desc: lang === 'en' ? 'Holistic healthcare and rehabilitation services.' : 'সামগ্রিক স্বাস্থ্যসেবা এবং পুনর্বাসন পরিষেবা।'
+                desc: content?.home?.programs?.list?.[1]?.desc?.[lang] || (lang === 'en' ? 'Holistic healthcare and rehabilitation services.' : 'সামগ্রিক স্বাস্থ্যসেবা এবং পুনর্বাসন পরিষেবা।')
               },
               { 
-                title: t('nav.skills'), 
+                title: content?.nav?.skills?.[lang] || (lang === 'en' ? 'Skills' : 'দক্ষতা'), 
                 icon: Trees, 
                 color: 'bg-accent',
-                desc: lang === 'en' ? 'Empowering adults through vocational training.' : 'বৃত্তিমূলক প্রশিক্ষণের মাধ্যমে প্রাপ্তবয়স্কদের ক্ষমতায়ন।'
+                desc: content?.home?.programs?.list?.[2]?.desc?.[lang] || (lang === 'en' ? 'Empowering adults through vocational training.' : 'বৃত্তিমূলক প্রশিক্ষণের মাধ্যমে প্রাপ্তবয়স্কদের ক্ষমতায়ন।')
               },
             ].map((program, idx) => (
               <motion.div
@@ -175,7 +178,7 @@ export default function Variant4() {
                 <h3 className="text-2xl font-display font-bold text-text-main mb-4">{program.title}</h3>
                 <p className="text-muted leading-relaxed mb-8">{program.desc}</p>
                 <Link to="/programs" className="inline-flex items-center gap-2 text-primary font-bold group-hover:gap-4 transition-all">
-                  {t('common.learnMore')} <ArrowRight size={20} />
+                  {content?.common?.buttons?.learnMore?.[lang] || (lang === 'en' ? 'Learn More' : 'আরও জানুন')} <ArrowRight size={20} />
                 </Link>
               </motion.div>
             ))}
@@ -187,7 +190,7 @@ export default function Variant4() {
       <section className="relative py-32 lg:py-48 overflow-hidden">
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop" 
+            src="https://picsum.photos/seed/impact-story/1920/1080" 
             className="w-full h-full object-cover"
             alt="Impact Story"
             referrerPolicy="no-referrer"
@@ -198,13 +201,13 @@ export default function Variant4() {
         <div className="max-w-4xl mx-auto px-6 relative z-10 text-center space-y-12">
           <Quote size={64} className="mx-auto text-primary opacity-50" />
           <h2 className="text-3xl lg:text-5xl font-display font-bold text-white leading-tight italic">
-            {lang === 'en' 
+            {content?.home?.testimonials?.list?.[0]?.quote?.[lang] || (lang === 'en' 
               ? '"SPUS is not just an organization; it\'s a family that nurtures dreams and turns them into reality."' 
-              : '"এসপিইউএস কেবল একটি সংস্থা নয়; এটি একটি পরিবার যা স্বপ্ন লালন করে এবং সেগুলোকে বাস্তবে রূপান্তর করে।"'}
+              : '"এসপিইউএস কেবল একটি সংস্থা নয়; এটি একটি পরিবার যা স্বপ্ন লালন করে এবং সেগুলোকে বাস্তবে রূপান্তর করে।"')}
           </h2>
           <div className="space-y-2">
-            <p className="text-2xl font-bold text-white">Md. Abdul Karim</p>
-            <p className="text-primary font-medium uppercase tracking-widest text-sm">{lang === 'en' ? 'Community Leader' : 'কমিউনিটি লিডার'}</p>
+            <p className="text-2xl font-bold text-white">{content?.home?.testimonials?.list?.[0]?.author?.[lang] || 'Md. Abdul Karim'}</p>
+            <p className="text-primary font-medium uppercase tracking-widest text-sm">{content?.home?.testimonials?.list?.[0]?.role?.[lang] || (lang === 'en' ? 'Community Leader' : 'কমিউনিটি লিডার')}</p>
           </div>
         </div>
       </section>
@@ -217,19 +220,19 @@ export default function Variant4() {
             
             <div className="space-y-6 relative z-10 lg:max-w-2xl">
               <h2 className="text-4xl lg:text-6xl font-display font-bold leading-tight">
-                {lang === 'en' ? 'Plant a Seed of Hope Today' : 'আজই আশার একটি বীজ বপন করুন'}
+                {content?.home?.cta?.title?.[lang] || (lang === 'en' ? 'Plant a Seed of Hope Today' : 'আজই আশার একটি বীজ বপন করুন')}
               </h2>
               <p className="text-white/80 text-xl">
-                {lang === 'en' ? 'Your contribution helps us grow a more inclusive and sustainable future for all.' : 'আপনার অবদান আমাদের সবার জন্য আরও অন্তর্ভুক্তিমূলক এবং টেকসই ভবিষ্যৎ গড়ে তুলতে সাহায্য করে।'}
+                {content?.home?.cta?.desc?.[lang] || (lang === 'en' ? 'Your contribution helps us grow a more inclusive and sustainable future for all.' : 'আপনার অবদান আমাদের সবার জন্য আরও অন্তর্ভুক্তিমূলক এবং টেকসই ভবিষ্যৎ গড়ে তুলতে সাহায্য করে।')}
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-6 relative z-10">
               <Link to="/support/donate" className="px-12 py-6 bg-white text-primary rounded-2xl font-bold text-xl hover:scale-105 transition-all shadow-2xl">
-                {t('common.donateNow')}
+                {content?.common?.buttons?.donateNow?.[lang] || (lang === 'en' ? 'Donate Now' : 'এখনই দান করুন')}
               </Link>
               <Link to="/support/volunteer" className="px-12 py-6 bg-transparent border-2 border-white text-white rounded-2xl font-bold text-xl hover:bg-white hover:text-primary transition-all">
-                {t('nav.volunteer')}
+                {content?.common?.buttons?.volunteer?.[lang] || (lang === 'en' ? 'Volunteer' : 'স্বেচ্ছাসেবী')}
               </Link>
             </div>
           </div>

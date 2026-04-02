@@ -44,7 +44,7 @@ export const specialPrograms = [
       { en: 'Medicine Support', bn: 'ওষুধ সহায়তা' },
       { en: 'Educational Services', bn: 'শিক্ষা সেবা' }
     ],
-    image: 'https://images.unsplash.com/photo-1491841573634-28140fc7ced7?q=80&w=2070&auto=format&fit=crop'
+    image: 'https://picsum.photos/seed/therapy/1200/800'
   },
   {
     id: 'special-care',
@@ -68,6 +68,6 @@ export const specialPrograms = [
       { en: 'Individualized Plans', bn: 'ব্যক্তিগত পরিকল্পনা' },
       { en: 'Parental Guidance', bn: 'অভিভাবকীয় নির্দেশনা' }
     ],
-    image: 'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=2031&auto=format&fit=crop'
+    image: 'https://picsum.photos/seed/special-care/1200/800'
   }
 ];

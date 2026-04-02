@@ -109,13 +109,13 @@ export default function CulturalActivitiesPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="aspect-square rounded-[3rem] overflow-hidden shadow-xl">
-              <img src="https://images.unsplash.com/photo-1514525253361-bee8718a340b?q=80&w=2074&auto=format&fit=crop" className="w-full h-full object-cover" alt="Cultural 1" referrerPolicy="no-referrer" />
+              <img src="https://picsum.photos/seed/culture/1200/1200" className="w-full h-full object-cover" alt="Cultural 1" referrerPolicy="no-referrer" />
             </div>
             <div className="aspect-square rounded-[3rem] overflow-hidden shadow-xl">
-              <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=2070&auto=format&fit=crop" className="w-full h-full object-cover" alt="Cultural 2" referrerPolicy="no-referrer" />
+              <img src="https://picsum.photos/seed/dance/1200/1200" className="w-full h-full object-cover" alt="Cultural 2" referrerPolicy="no-referrer" />
             </div>
             <div className="aspect-square rounded-[3rem] overflow-hidden shadow-xl">
-              <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2070&auto=format&fit=crop" className="w-full h-full object-cover" alt="Cultural 3" referrerPolicy="no-referrer" />
+              <img src="https://picsum.photos/seed/music/1200/1200" className="w-full h-full object-cover" alt="Cultural 3" referrerPolicy="no-referrer" />
             </div>
           </div>
         </section>

@@ -16,10 +16,13 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+import { useContent } from '../../../context/ContentContext';
+
 export default function Variant6() {
   const { t } = useTranslation();
   const { lang } = useLanguage();
   const { setCurrentTheme, themes } = useTheme();
+  const { content } = useContent();
 
   useEffect(() => {
     const theme = themes.find(t => t.id === 'purple-dream');
@@ -32,7 +35,7 @@ export default function Variant6() {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1516733725897-1aa73b87c8e8?q=80&w=2070&auto=format&fit=crop" 
+            src="https://picsum.photos/seed/prestige-bg/1920/1080" 
             className="w-full h-full object-cover opacity-20 grayscale"
             alt="Prestige Background"
             referrerPolicy="no-referrer"
@@ -46,7 +49,7 @@ export default function Variant6() {
             animate={{ opacity: 1, scale: 1 }}
             className="inline-flex items-center gap-3 px-8 py-3 bg-primary/5 border border-primary/20 rounded-full text-primary font-serif italic text-lg tracking-wide"
           >
-            <Crown size={20} /> {lang === 'en' ? 'A Legacy of Care and Excellence' : 'যত্ন এবং শ্রেষ্ঠত্বের একটি উত্তরাধিকার'}
+            <Crown size={20} /> {content?.home?.hero?.slides?.[0]?.tag?.[lang] || (lang === 'en' ? 'A Legacy of Care and Excellence' : 'যত্ন এবং শ্রেষ্ঠত্বের একটি উত্তরাধিকার')}
           </motion.div>
 
           <motion.h1 
@@ -55,7 +58,7 @@ export default function Variant6() {
             transition={{ delay: 0.2 }}
             className="text-7xl lg:text-[10rem] font-display font-light leading-[0.85] tracking-tighter"
           >
-            {lang === 'en' ? 'PRECIOUS\nLIVES' : 'অমূল্য\nজীবন'}
+            {content?.home?.hero?.slides?.[0]?.title?.[lang] || (lang === 'en' ? 'PRECIOUS\nLIVES' : 'অমূল্য\nজীবন')}
           </motion.h1>
 
           <motion.p 
@@ -64,9 +67,9 @@ export default function Variant6() {
             transition={{ delay: 0.4 }}
             className="text-2xl lg:text-3xl text-muted max-w-3xl mx-auto leading-relaxed font-serif italic"
           >
-            {lang === 'en' 
+            {content?.home?.hero?.slides?.[0]?.subtitle?.[lang] || (lang === 'en' 
               ? 'Providing the highest standard of inclusive support for our community since 2017.' 
-              : '২০১৭ সাল থেকে আমাদের সম্প্রদায়ের জন্য সর্বোচ্চ মানের অন্তর্ভুক্তিমূলক সহায়তা প্রদান করছি।'}
+              : '২০১৭ সাল থেকে আমাদের সম্প্রদায়ের জন্য সর্বোচ্চ মানের অন্তর্ভুক্তিমূলক সহায়তা প্রদান করছি।')}
           </motion.p>
 
           <motion.div 
@@ -76,10 +79,10 @@ export default function Variant6() {
             className="flex flex-wrap justify-center gap-8 pt-8"
           >
             <Link to="/support/donate" className="px-16 py-6 bg-primary text-white font-bold text-xl hover:bg-primary-dark transition-all shadow-2xl flex items-center gap-3 group">
-              {t('common.donateNow')} <ArrowRight size={24} className="group-hover:translate-x-2 transition-transform" />
+              {content?.common?.buttons?.donateNow?.[lang] || (lang === 'en' ? 'Donate Now' : 'এখনই দান করুন')} <ArrowRight size={24} className="group-hover:translate-x-2 transition-transform" />
             </Link>
             <Link to="/about" className="px-16 py-6 bg-transparent border border-border text-text-main font-bold text-xl hover:bg-surface transition-all">
-              {lang === 'en' ? 'OUR HERITAGE' : 'আমাদের ঐতিহ্য'}
+              {content?.nav?.about?.[lang] || (lang === 'en' ? 'OUR HERITAGE' : 'আমাদের ঐতিহ্য')}
             </Link>
           </motion.div>
         </div>
@@ -96,7 +99,7 @@ export default function Variant6() {
       <section className="py-24 border-y border-border bg-surface">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1">
           {[
-            { label: t('home.stats.members'), value: '690+', icon: Users },
+            { label: content?.home?.stats?.members?.[lang] || (lang === 'en' ? 'Total Members' : 'মোট সদস্য'), value: '690+', icon: Users },
             { label: lang === 'en' ? 'Years of Excellence' : 'শ্রেষ্ঠত্বের বছর', value: '7+', icon: Award },
             { label: lang === 'en' ? 'Certified Programs' : 'প্রত্যয়িত প্রোগ্রাম', value: '100%', icon: ShieldCheck },
             { label: lang === 'en' ? 'Impact Rating' : 'প্রভাব রেটিং', value: '5.0', icon: Star },
@@ -114,7 +117,7 @@ export default function Variant6() {
       <section className="grid grid-cols-1 lg:grid-cols-2 min-h-[80vh]">
         <div className="relative overflow-hidden group">
           <img 
-            src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop" 
+            src="https://picsum.photos/seed/mission-prestige/1200/1200" 
             className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-110 group-hover:scale-100"
             alt="Mission"
             referrerPolicy="no-referrer"
@@ -124,32 +127,32 @@ export default function Variant6() {
             <div className="space-y-8">
               <Gem size={64} className="mx-auto opacity-50" />
               <h3 className="text-5xl lg:text-7xl font-display font-bold leading-tight">
-                {lang === 'en' ? 'A Vision of Pure Inclusion' : 'বিশুদ্ধ অন্তর্ভুক্তির একটি দৃষ্টিভঙ্গি'}
+                {content?.home?.about?.title?.[lang] || (lang === 'en' ? 'A Vision of Pure Inclusion' : 'বিশুদ্ধ অন্তর্ভুক্তির একটি দৃষ্টিভঙ্গি')}
               </h3>
               <p className="text-xl font-serif italic opacity-80">
-                {lang === 'en' ? 'We believe every life is a masterpiece waiting to be discovered.' : 'আমরা বিশ্বাস করি প্রতিটি জীবন একটি মাস্টারপিস যা আবিষ্কারের অপেক্ষায় রয়েছে।'}
+                {content?.home?.about?.description?.[lang] || (lang === 'en' ? 'We believe every life is a masterpiece waiting to be discovered.' : 'আমরা বিশ্বাস করি প্রতিটি জীবন একটি মাস্টারপিস যা আবিষ্কারের অপেক্ষায় রয়েছে।')}
               </p>
             </div>
           </div>
         </div>
         <div className="bg-surface p-12 lg:p-32 flex flex-col justify-center space-y-16">
           <div className="space-y-6">
-            <h2 className="text-primary font-serif italic text-2xl">{lang === 'en' ? 'Our Philosophy' : 'আমাদের দর্শন'}</h2>
+            <h2 className="text-primary font-serif italic text-2xl">{content?.home?.programs?.tag?.[lang] || (lang === 'en' ? 'Our Philosophy' : 'আমাদের দর্শন')}</h2>
             <h3 className="text-4xl lg:text-6xl font-display font-bold leading-tight">
-              {lang === 'en' ? 'Excellence in Every Interaction' : 'প্রতিটি মিথস্ক্রিয়ায় শ্রেষ্ঠত্ব'}
+              {content?.home?.programs?.title?.[lang] || (lang === 'en' ? 'Excellence in Every Interaction' : 'প্রতিটি মিথস্ক্রিয়ায় শ্রেষ্ঠত্ব')}
             </h3>
             <p className="text-xl text-muted leading-relaxed font-serif">
-              {lang === 'en' 
+              {content?.home?.programs?.desc?.[lang] || (lang === 'en' 
                 ? 'Our approach combines traditional values with modern methodologies to ensure the highest quality of care for our members.' 
-                : 'আমাদের পদ্ধতি ঐতিহ্যগত মূল্যবোধের সাথে আধুনিক পদ্ধতির সমন্বয় করে আমাদের সদস্যদের জন্য সর্বোচ্চ মানের যত্ন নিশ্চিত করে।'}
+                : 'আমাদের পদ্ধতি ঐতিহ্যগত মূল্যবোধের সাথে আধুনিক পদ্ধতির সমন্বয় করে আমাদের সদস্যদের জন্য সর্বোচ্চ মানের যত্ন নিশ্চিত করে।')}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {[
-              { title: t('nav.education'), desc: lang === 'en' ? 'Bespoke learning paths.' : 'বেসপোক লার্নিং পাথ।' },
-              { title: t('nav.health'), desc: lang === 'en' ? 'Elite therapeutic care.' : 'এলিট থেরাপিউটিক যত্ন।' },
-              { title: t('nav.skills'), desc: lang === 'en' ? 'Professional empowerment.' : 'পেশাদার ক্ষমতায়ন।' },
-              { title: t('nav.devices'), desc: lang === 'en' ? 'Premium assistive tools.' : 'প্রিমিয়াম সহায়ক সরঞ্জাম।' },
+              { title: content?.nav?.education?.[lang] || (lang === 'en' ? 'Education' : 'শিক্ষা'), desc: content?.home?.programs?.list?.[0]?.desc?.[lang] || (lang === 'en' ? 'Bespoke learning paths.' : 'বেসপোক লার্নিং পাথ।') },
+              { title: content?.nav?.health?.[lang] || (lang === 'en' ? 'Health' : 'স্বাস্থ্য'), desc: content?.home?.programs?.list?.[1]?.desc?.[lang] || (lang === 'en' ? 'Elite therapeutic care.' : 'এলিট থেরাপিউটিক যত্ন।') },
+              { title: content?.nav?.skills?.[lang] || (lang === 'en' ? 'Skills' : 'দক্ষতা'), desc: content?.home?.programs?.list?.[2]?.desc?.[lang] || (lang === 'en' ? 'Professional empowerment.' : 'পেশাদার ক্ষমতায়ন।') },
+              { title: content?.nav?.devices?.[lang] || (lang === 'en' ? 'Devices' : 'সরঞ্জাম'), desc: lang === 'en' ? 'Premium assistive tools.' : 'প্রিমিয়াম সহায়ক সরঞ্জাম।' },
             ].map((item, idx) => (
               <div key={idx} className="space-y-4">
                 <h4 className="text-2xl font-display font-bold border-b border-border pb-4">{item.title}</h4>
@@ -165,13 +168,13 @@ export default function Variant6() {
         <div className="max-w-5xl mx-auto px-6 text-center space-y-16 relative z-10">
           <Sparkles size={48} className="mx-auto text-primary opacity-30" />
           <blockquote className="text-4xl lg:text-7xl font-display font-light leading-tight tracking-tight italic">
-            "{lang === 'en' 
+            "{content?.home?.testimonials?.list?.[0]?.quote?.[lang] || (lang === 'en' 
               ? 'The support we received from SPUS has been nothing short of transformative. It is a sanctuary of hope and excellence.' 
-              : 'SPUS থেকে আমরা যে সমর্থন পেয়েছি তা রূপান্তরমূলক ছিল। এটি আশা এবং শ্রেষ্ঠত্বের একটি অভয়ারণ্য।'}"
+              : 'SPUS থেকে আমরা যে সমর্থন পেয়েছি তা রূপান্তরমূলক ছিল। এটি আশা এবং শ্রেষ্ঠত্বের একটি অভয়ারণ্য।')}"
           </blockquote>
           <div className="space-y-2">
-            <p className="text-2xl font-bold uppercase tracking-widest">{lang === 'en' ? 'A Grateful Family' : 'একজন কৃতজ্ঞ পরিবার'}</p>
-            <p className="text-primary font-serif italic text-lg">{lang === 'en' ? 'Member since 2019' : '২০১৯ সাল থেকে সদস্য'}</p>
+            <p className="text-2xl font-bold uppercase tracking-widest">{content?.home?.testimonials?.list?.[0]?.author?.[lang] || (lang === 'en' ? 'A Grateful Family' : 'একজন কৃতজ্ঞ পরিবার')}</p>
+            <p className="text-primary font-serif italic text-lg">{content?.home?.testimonials?.list?.[0]?.role?.[lang] || (lang === 'en' ? 'Member since 2019' : '২০১৯ সাল থেকে সদস্য')}</p>
           </div>
         </div>
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(var(--color-primary-rgb),0.05),transparent_70%)]" />
@@ -180,18 +183,18 @@ export default function Variant6() {
       {/* CTA - Final Prestige Touch */}
       <section className="py-32 bg-surface text-center px-6">
         <div className="max-w-4xl mx-auto space-y-16">
-          <h2 className="text-5xl lg:text-8xl font-display font-bold leading-none tracking-tighter">
-            {lang === 'en' ? 'INVEST IN A BRIGHTER FUTURE' : 'একটি উজ্জ্বল ভবিষ্যতে বিনিয়োগ করুন'}
+          <h2 className="text-5xl lg:text-[10rem] font-display font-bold leading-none tracking-tighter">
+            {content?.home?.cta?.title?.[lang] || (lang === 'en' ? 'INVEST IN A BRIGHTER FUTURE' : 'একটি উজ্জ্বল ভবিষ্যতে বিনিয়োগ করুন')}
           </h2>
           <p className="text-2xl text-muted font-serif italic">
-            {lang === 'en' ? 'Your contribution ensures that our legacy of care continues to flourish for generations to come.' : 'আপনার অবদান নিশ্চিত করে যে আমাদের যত্নের উত্তরাধিকার আগামী প্রজন্মের জন্য বিকশিত হতে থাকবে।'}
+            {content?.home?.cta?.desc?.[lang] || (lang === 'en' ? 'Your contribution ensures that our legacy of care continues to flourish for generations to come.' : 'আপনার অবদান নিশ্চিত করে যে আমাদের যত্নের উত্তরাধিকার আগামী প্রজন্মের জন্য বিকশিত হতে থাকবে।')}
           </p>
           <div className="flex flex-wrap justify-center gap-8 pt-8">
             <Link to="/support/donate" className="px-16 py-6 bg-primary text-white font-bold text-xl hover:shadow-[0_20px_50px_rgba(var(--color-primary-rgb),0.3)] transition-all">
-              {t('common.donateNow')}
+              {content?.common?.buttons?.donateNow?.[lang] || (lang === 'en' ? 'Donate Now' : 'এখনই দান করুন')}
             </Link>
             <Link to="/contact" className="px-16 py-6 bg-transparent border border-border text-text-main font-bold text-xl hover:bg-bg transition-all">
-              {t('nav.contact')}
+              {content?.nav?.contact?.[lang] || (lang === 'en' ? 'Contact' : 'যোগাযোগ')}
             </Link>
           </div>
         </div>

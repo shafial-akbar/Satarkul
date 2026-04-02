@@ -1,43 +1,26 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Shirt, ShoppingBag, Gift, Scissors } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../context/LanguageContext';
+import { reliefImpactData } from '../../data/infographicsData';
 
-export default function ReliefActivitiesStats() {
-  const { t } = useTranslation();
+const iconMap = {
+  Shirt,
+  ShoppingBag,
+  Gift,
+  Scissors
+};
+
+export default function ReliefActivitiesStats({ chartData = reliefImpactData }) {
   const { lang } = useLanguage();
 
-  const stats = [
-    { 
-      label: lang === 'en' ? 'Winter Clothes' : 'শীতবস্ত্র', 
-      value: '200', 
-      sub: lang === 'en' ? 'People (2024)' : 'ব্যক্তি (২০২৪)', 
-      icon: Shirt, 
-      color: 'bg-[#1B4F8A]' 
-    },
-    { 
-      label: lang === 'en' ? 'Ramadan Relief' : 'রমজান ত্রাণ', 
-      value: '100', 
-      sub: lang === 'en' ? 'Families (2024)' : 'পরিবার (২০২৪)', 
-      icon: ShoppingBag, 
-      color: 'bg-[#006A4E]' 
-    },
-    { 
-      label: lang === 'en' ? 'Annual Gifts' : 'বার্ষিক উপহার', 
-      value: '100', 
-      sub: lang === 'en' ? 'Children (2024)' : 'শিশু (২০২৪)', 
-      icon: Gift, 
-      color: 'bg-[#C0392B]' 
-    },
-    { 
-      label: lang === 'en' ? 'Sewing Machines' : 'সেলাই মেশিন', 
-      value: '2', 
-      sub: lang === 'en' ? 'Distributed (2024)' : 'বিতরণ (২০২৪)', 
-      icon: Scissors, 
-      color: 'bg-[#F59E0B]' 
-    },
-  ];
+  const stats = chartData.map(item => ({
+    label: item.label[lang] || item.label['en'],
+    value: item.value,
+    sub: item.sub[lang] || item.sub['en'],
+    icon: iconMap[item.icon] || Gift,
+    color: item.color
+  }));
 
   return (
     <div className="bg-surface p-6 rounded-3xl shadow-xl border border-border h-[400px] flex flex-col">

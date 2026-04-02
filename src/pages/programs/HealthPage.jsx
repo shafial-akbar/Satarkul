@@ -168,13 +168,13 @@ export default function HealthPage() {
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { seed: 'medical-1', label: lang === 'en' ? 'Eye Camp' : 'আই ক্যাম্প' },
-              { seed: 'medical-2', label: lang === 'en' ? 'Health Checkup' : 'স্বাস্থ্য পরীক্ষা' },
-              { seed: 'medical-3', label: lang === 'en' ? 'Therapy Session' : 'থেরাপি সেশন' },
+              { seed: 'eye', label: lang === 'en' ? 'Eye Camp' : 'আই ক্যাম্প' },
+              { seed: 'health', label: lang === 'en' ? 'Health Checkup' : 'স্বাস্থ্য পরীক্ষা' },
+              { seed: 'therapy', label: lang === 'en' ? 'Therapy Session' : 'থেরাপি সেশন' },
             ].map((img, i) => (
               <div key={i} className="relative group rounded-[2rem] overflow-hidden aspect-video shadow-lg">
                 <img 
-                  src={`https://picsum.photos/seed/${img.seed}/800/600`} 
+                  src={`https://picsum.photos/seed/${img.seed}/800/450`} 
                   alt={img.label}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   referrerPolicy="no-referrer"

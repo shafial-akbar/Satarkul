@@ -1,13 +1,16 @@
+import { useContent } from '../../../context/ContentContext';
+
 export default function Variant2() {
   const { t } = useTranslation();
   const { lang } = useLanguage();
   const { currentTheme } = useTheme();
+  const { content } = useContent();
 
   const stats = [
-    { label: t('home.stats.members'), value: 690, icon: Users, color: 'text-primary' },
-    { label: lang === 'en' ? 'Winter Clothes' : 'শীতবস্ত্র', value: 200, icon: Heart, color: 'text-secondary' },
-    { label: t('home.stats.students'), value: 100, icon: GraduationCap, color: 'text-accent' },
-    { label: t('home.stats.relief'), value: 845, icon: CheckCircle2, color: 'text-primary' },
+    { label: content?.home?.stats?.members, value: 690, icon: Users, color: 'text-primary' },
+    { label: content?.home?.stats?.winterClothes, value: 200, icon: Heart, color: 'text-secondary' },
+    { label: content?.home?.stats?.students, value: 100, icon: GraduationCap, color: 'text-accent' },
+    { label: content?.home?.stats?.relief, value: 845, icon: CheckCircle2, color: 'text-primary' },
   ];
 
   return (
@@ -22,7 +25,7 @@ export default function Variant2() {
               className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-bold uppercase tracking-widest"
             >
               <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-              {lang === 'en' ? 'Empowering Lives Since 2013' : '২০১৩ সাল থেকে জীবন ক্ষমতায়ন'}
+              {content?.about?.legacy?.tag?.[lang] || (lang === 'en' ? 'Empowering Lives Since 2013' : '২০১৩ সাল থেকে জীবন ক্ষমতায়ন')}
             </motion.div>
             
             <motion.h1 
@@ -31,7 +34,7 @@ export default function Variant2() {
               transition={{ delay: 0.2 }}
               className="text-5xl lg:text-7xl font-display font-bold text-text-main leading-[1.1]"
             >
-              {lang === 'en' ? 'Building a World of Equal Opportunity' : 'সমান সুযোগের এক বিশ্ব নির্মাণ'}
+              {content?.home?.hero?.slides?.[0]?.title?.[lang] || (lang === 'en' ? 'Building a World of Equal Opportunity' : 'সমান সুযোগের এক বিশ্ব নির্মাণ')}
             </motion.h1>
 
             <motion.p 
@@ -40,7 +43,7 @@ export default function Variant2() {
               transition={{ delay: 0.4 }}
               className="text-xl text-muted leading-relaxed"
             >
-              {t('common.motto')}
+              {content?.common?.motto?.[lang] || (lang === 'en' ? 'Empowering Lives, Ensuring Rights' : 'জীবনকে ক্ষমতায়ন, অধিকার নিশ্চিতকরণ')}
             </motion.p>
 
             <motion.div 
@@ -50,10 +53,10 @@ export default function Variant2() {
               className="flex flex-wrap gap-6 pt-4"
             >
               <Link to="/support/donate" className="group px-10 py-5 bg-primary text-white rounded-2xl font-bold text-lg hover:bg-primary/90 transition-all shadow-2xl flex items-center gap-3">
-                {t('common.donateNow')} <Heart size={20} className="group-hover:scale-125 transition-transform" />
+                {content?.common?.buttons?.donateNow?.[lang] || (lang === 'en' ? 'Donate Now' : 'এখনই দান করুন')} <Heart size={20} className="group-hover:scale-125 transition-transform" />
               </Link>
               <Link to="/about" className="px-10 py-5 bg-surface-alt text-text-main border border-border rounded-2xl font-bold text-lg hover:bg-border transition-all shadow-xl">
-                {t('common.learnMore')}
+                {content?.common?.buttons?.learnMore?.[lang] || (lang === 'en' ? 'Learn More' : 'আরও জানুন')}
               </Link>
             </motion.div>
           </div>
@@ -64,7 +67,7 @@ export default function Variant2() {
 
         <div className="lg:w-1/2 relative min-h-[400px]">
           <img 
-            src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop" 
+            src="https://picsum.photos/seed/equal-opportunity/1200/800" 
             className="absolute inset-0 w-full h-full object-cover"
             alt="Hero"
             referrerPolicy="no-referrer"
@@ -84,12 +87,12 @@ export default function Variant2() {
               </div>
               <div>
                 <p className="text-3xl font-display font-bold text-text-main">690+</p>
-                <p className="text-sm font-bold text-muted uppercase tracking-widest">{t('home.stats.members')}</p>
+                <p className="text-sm font-bold text-muted uppercase tracking-widest">{content?.home?.stats?.members?.[lang] || (lang === 'en' ? 'Total Members' : 'মোট সদস্য')}</p>
               </div>
             </div>
             <div className="mt-6 pt-6 border-t border-border/50">
               <p className="text-sm text-muted italic">
-                {lang === 'en' ? '"SPUS has given us a new identity and hope for a better future."' : '"এসপিইউএস আমাদের একটি নতুন পরিচয় এবং উজ্জ্বল ভবিষ্যতের আশা দিয়েছে।"'}
+                {content?.home?.testimonials?.list?.[0]?.quote?.[lang] || (lang === 'en' ? '"SPUS has given us a new identity and hope for a better future."' : '"এসপিইউএস আমাদের একটি নতুন পরিচয় এবং উজ্জ্বল ভবিষ্যতের আশা দিয়েছে।"')}
               </p>
             </div>
           </motion.div>
@@ -103,7 +106,7 @@ export default function Variant2() {
             <div className="relative group">
               <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl transform group-hover:scale-[1.02] transition-transform duration-700">
                 <img 
-                  src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=2070&auto=format&fit=crop" 
+                  src="https://picsum.photos/seed/about-main/1200/900" 
                   className="w-full h-full object-cover" 
                   alt="About Main" 
                   referrerPolicy="no-referrer" 
@@ -132,16 +135,16 @@ export default function Variant2() {
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-[2px] bg-primary" />
                   <span className="text-primary font-bold tracking-[0.2em] uppercase text-sm">
-                    {lang === 'en' ? 'About Our Organization' : 'আমাদের সংস্থা সম্পর্কে'}
+                    {content?.home?.about?.tag?.[lang] || (lang === 'en' ? 'About Our Organization' : 'আমাদের সংস্থা সম্পর্কে')}
                   </span>
                 </div>
                 <h2 className="text-4xl lg:text-6xl font-display font-bold text-text-main leading-tight">
-                  {lang === 'en' ? 'We are Dedicated to Empowering the Disabled' : 'আমরা প্রতিবন্ধীদের ক্ষমতায়নে নিবেদিত'}
+                  {content?.home?.about?.title?.[lang] || (lang === 'en' ? 'We are Dedicated to Empowering the Disabled' : 'আমরা প্রতিবন্ধীদের ক্ষমতায়নে নিবেদিত')}
                 </h2>
                 <p className="text-muted text-lg leading-relaxed">
-                  {lang === 'en' 
+                  {content?.home?.about?.description?.[lang] || (lang === 'en' 
                     ? 'Swadhin Protibondhi Unnayan Sangstha (SPUS) works tirelessly to create a society where every individual, regardless of their physical or mental abilities, can live with dignity and equal rights.' 
-                    : 'স্বাধীন প্রতিবন্ধী উন্নয়ন সংস্থা (এসপিইউএস) এমন একটি সমাজ গঠনের জন্য নিরলসভাবে কাজ করে যেখানে প্রতিটি ব্যক্তি, তাদের শারীরিক বা মানসিক ক্ষমতা নির্বিশেষে, মর্যাদা এবং সমান অধিকারের সাথে বাঁচতে পারে।'}
+                    : 'স্বাধীন প্রতিবন্ধী উন্নয়ন সংস্থা (এসপিইউএস) এমন একটি সমাজ গঠনের জন্য নিরলসভাবে কাজ করে যেখানে প্রতিটি ব্যক্তি, তাদের শারীরিক বা মানসিক ক্ষমতা নির্বিশেষে, মর্যাদা এবং সমান অধিকারের সাথে বাঁচতে পারে।')}
                 </p>
               </div>
 
@@ -190,21 +193,21 @@ export default function Variant2() {
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
             <span className="text-secondary font-bold tracking-[0.2em] uppercase text-sm">
-              {lang === 'en' ? 'Our Impact Areas' : 'আমাদের প্রভাব ক্ষেত্র'}
+              {content?.home?.programs?.tag?.[lang] || (lang === 'en' ? 'Our Impact Areas' : 'আমাদের প্রভাব ক্ষেত্র')}
             </span>
             <h2 className="text-4xl lg:text-6xl font-display font-bold text-text-main">
-              {lang === 'en' ? 'Programs That Change Lives' : 'জীবন বদলে দেওয়া কর্মসূচি'}
+              {content?.home?.programs?.title?.[lang] || (lang === 'en' ? 'Programs That Change Lives' : 'জীবন বদলে দেওয়া কর্মসূচি')}
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {[
-              { id: 'education', title: t('nav.education'), icon: GraduationCap, color: 'bg-primary' },
-              { id: 'health', title: t('nav.health'), icon: HeartPulse, color: 'bg-secondary' },
-              { id: 'skills', title: t('nav.skills'), icon: Wrench, color: 'bg-accent' },
-              { id: 'finance', title: t('nav.finance'), icon: Banknote, color: 'bg-primary' },
-              { id: 'devices', title: t('nav.devices'), icon: Accessibility, color: 'bg-secondary' },
-              { id: 'awareness', title: t('nav.awareness'), icon: Megaphone, color: 'bg-accent' },
+              { id: 'education', title: content?.nav?.education?.[lang] || (lang === 'en' ? 'Education' : 'শিক্ষা'), icon: GraduationCap, color: 'bg-primary' },
+              { id: 'health', title: content?.nav?.health?.[lang] || (lang === 'en' ? 'Health' : 'স্বাস্থ্য'), icon: HeartPulse, color: 'bg-secondary' },
+              { id: 'skills', title: content?.nav?.skills?.[lang] || (lang === 'en' ? 'Skills' : 'দক্ষতা'), icon: Wrench, color: 'bg-accent' },
+              { id: 'finance', title: content?.nav?.finance?.[lang] || (lang === 'en' ? 'Finance' : 'অর্থ'), icon: Banknote, color: 'bg-primary' },
+              { id: 'devices', title: content?.nav?.devices?.[lang] || (lang === 'en' ? 'Devices' : 'উপকরণ'), icon: Accessibility, color: 'bg-secondary' },
+              { id: 'awareness', title: content?.nav?.awareness?.[lang] || (lang === 'en' ? 'Awareness' : 'সচেতনতা'), icon: Megaphone, color: 'bg-accent' },
             ].map((program, idx) => (
               <motion.div
                 key={idx}
@@ -221,7 +224,7 @@ export default function Variant2() {
                   {lang === 'en' ? 'Providing specialized support and resources to ensure equal access and opportunity for all.' : 'সবার জন্য সমান সুযোগ এবং অধিকার নিশ্চিত করতে বিশেষায়িত সহায়তা এবং সম্পদ প্রদান।'}
                 </p>
                 <Link to={`/programs/${program.id}`} className="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all">
-                  {t('common.readMore')} <ArrowRight size={20} />
+                  {content?.common?.buttons?.readMore?.[lang] || (lang === 'en' ? 'Read More' : 'আরও পড়ুন')} <ArrowRight size={20} />
                 </Link>
               </motion.div>
             ))}
@@ -327,7 +330,7 @@ export default function Variant2() {
       <section className="relative py-32 lg:py-48 overflow-hidden">
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=2070&auto=format&fit=crop" 
+            src="https://picsum.photos/seed/cta-support/1920/1080" 
             className="w-full h-full object-cover"
             alt="CTA"
             referrerPolicy="no-referrer"
@@ -344,19 +347,19 @@ export default function Variant2() {
             <Heart size={48} className="fill-primary" />
           </motion.div>
           <h2 className="text-4xl lg:text-7xl font-display font-bold text-white leading-tight">
-            {lang === 'en' ? 'Your Support Can Change a Life Today' : 'আপনার সমর্থন আজ একটি জীবন বদলে দিতে পারে'}
+            {content?.home?.cta?.title?.[lang] || (lang === 'en' ? 'Your Support Can Change a Life Today' : 'আপনার সমর্থন আজ একটি জীবন বদলে দিতে পারে')}
           </h2>
           <p className="text-xl lg:text-2xl text-white/80 max-w-2xl mx-auto font-medium">
-            {lang === 'en' 
+            {content?.home?.cta?.desc?.[lang] || (lang === 'en' 
               ? 'Join our mission and help us build a more inclusive and equitable society for everyone.' 
-              : 'আমাদের মিশনে যোগ দিন এবং সবার জন্য একটি অন্তর্ভুক্তিমূলক এবং ন্যায়সঙ্গত সমাজ গঠনে সহায়তা করুন।'}
+              : 'আমাদের মিশনে যোগ দিন এবং সবার জন্য একটি অন্তর্ভুক্তিমূলক এবং ন্যায়সঙ্গত সমাজ গঠনে সহায়তা করুন।')}
           </p>
           <div className="flex flex-wrap justify-center gap-6 pt-6">
             <Link to="/support/donate" className="px-12 py-6 bg-primary text-white rounded-2xl font-bold text-xl hover:bg-primary/90 transition-all shadow-2xl">
-              {t('common.donateNow')}
+              {content?.common?.buttons?.donateNow?.[lang] || (lang === 'en' ? 'Donate Now' : 'এখনই দান করুন')}
             </Link>
             <Link to="/contact" className="px-12 py-6 bg-white text-text-main rounded-2xl font-bold text-xl hover:bg-surface-alt transition-all shadow-2xl">
-              {t('nav.contact')}
+              {content?.nav?.contact?.[lang] || (lang === 'en' ? 'Contact' : 'যোগাযোগ')}
             </Link>
           </div>
         </div>

@@ -16,7 +16,7 @@ export const specialDaysData = [
     },
     icon: 'Languages',
     color: 'bg-red-500',
-    image: 'https://images.unsplash.com/photo-1589923188900-85dae523342b?q=80&w=2070&auto=format&fit=crop'
+    image: 'https://picsum.photos/seed/language/1200/800'
   },
   {
     id: 'childrens-day',
@@ -35,7 +35,7 @@ export const specialDaysData = [
     },
     icon: 'Baby',
     color: 'bg-blue-400',
-    image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop'
+    image: 'https://picsum.photos/seed/children/1200/800'
   },
   {
     id: 'womens-day',
@@ -54,7 +54,7 @@ export const specialDaysData = [
     },
     icon: 'Venus',
     color: 'bg-pink-500',
-    image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=2070&auto=format&fit=crop'
+    image: 'https://picsum.photos/seed/women/1200/800'
   },
   {
     id: 'independence-day',
@@ -73,7 +73,7 @@ export const specialDaysData = [
     },
     icon: 'Flag',
     color: 'bg-green-600',
-    image: 'https://images.unsplash.com/photo-1532375810709-75b1da00537c?q=80&w=2070&auto=format&fit=crop'
+    image: 'https://picsum.photos/seed/independence/1200/800'
   },
   {
     id: 'mothers-day',
@@ -92,7 +92,7 @@ export const specialDaysData = [
     },
     icon: 'Heart',
     color: 'bg-rose-400',
-    image: 'https://images.unsplash.com/photo-1544027993-37dbfe43562a?q=80&w=2070&auto=format&fit=crop'
+    image: 'https://picsum.photos/seed/mother/1200/800'
   },
   {
     id: 'mourning-day',
@@ -111,7 +111,7 @@ export const specialDaysData = [
     },
     icon: 'CloudRain',
     color: 'bg-gray-800',
-    image: 'https://images.unsplash.com/photo-1464692805480-a69dfaafdb0d?q=80&w=2070&auto=format&fit=crop'
+    image: 'https://picsum.photos/seed/mourning/1200/800'
   },
   {
     id: 'white-cane-day',
@@ -130,7 +130,7 @@ export const specialDaysData = [
     },
     icon: 'Accessibility',
     color: 'bg-amber-500',
-    image: 'https://images.unsplash.com/photo-1516733725897-1aa73b87c8e8?q=80&w=2070&auto=format&fit=crop'
+    image: 'https://picsum.photos/seed/white-cane/1200/800'
   },
   {
     id: 'disability-day',
@@ -149,7 +149,7 @@ export const specialDaysData = [
     },
     icon: 'Users',
     color: 'bg-indigo-600',
-    image: 'https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80&w=2070&auto=format&fit=crop'
+    image: 'https://picsum.photos/seed/disability/1200/800'
   },
   {
     id: 'victory-day',
@@ -168,6 +168,6 @@ export const specialDaysData = [
     },
     icon: 'Trophy',
     color: 'bg-emerald-600',
-    image: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=2070&auto=format&fit=crop'
+    image: 'https://picsum.photos/seed/victory/1200/800'
   }
 ];

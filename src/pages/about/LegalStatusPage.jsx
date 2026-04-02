@@ -1,46 +1,48 @@
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import { useContent } from '../../context/ContentContext';
 import PageWrapper from '../../components/layout/PageWrapper';
 import { motion } from 'motion/react';
 import { FileText, ShieldCheck, Landmark, Scale, CheckCircle2, Download } from 'lucide-react';
 
 export default function LegalStatusPage() {
   const { lang } = useLanguage();
+  const { content } = useContent();
 
-  const registrations = [
-    {
-      title: lang === 'en' ? 'Social Welfare Registration' : 'সমাজসেবা নিবন্ধন',
-      number: '(Dha)-09437',
-      date: lang === 'en' ? '14th June 2017' : '১৪ই জুন ২০১৭',
-      authority: lang === 'en' ? 'Department of Social Welfare, Dhaka' : 'সমাজসেবা অধিদপ্তর, ঢাকা',
-      icon: ShieldCheck,
-      color: 'text-primary',
-      bg: 'bg-primary/10'
-    },
-    {
-      title: lang === 'en' ? 'NGO Affairs Bureau' : 'এনজিও বিষয়ক ব্যুরো',
-      number: '৩১৬৭',
-      date: '04/07/2018',
-      authority: lang === 'en' ? 'NGO Affairs Bureau, Prime Minister\'s Office' : 'এনজিও বিষয়ক ব্যুরো, প্রধানমন্ত্রীর কার্যালয়',
-      icon: Landmark,
-      color: 'text-secondary',
-      bg: 'bg-secondary/10'
-    },
-    {
-      title: lang === 'en' ? 'Joint Stock Registration' : 'যৌথ মূলধন নিবন্ধন',
-      number: 'S-12242/2015',
-      date: '14/07/2015',
-      authority: lang === 'en' ? 'Registrar of Joint Stock Companies & Firms' : 'যৌথ মূলধন কোম্পানি ও ফার্মসমূহের পরিদপ্তর',
-      icon: Scale,
-      color: 'text-accent',
-      bg: 'bg-accent/10'
-    }
-  ];
+  const legalStatus = content?.about?.legalStatus;
+
+  const iconMap = {
+    social: ShieldCheck,
+    ngo: Landmark,
+    joint: Scale
+  };
+
+  const colorMap = {
+    social: 'text-primary',
+    ngo: 'text-secondary',
+    joint: 'text-accent'
+  };
+
+  const bgMap = {
+    social: 'bg-primary/10',
+    ngo: 'bg-secondary/10',
+    joint: 'bg-accent/10'
+  };
+
+  const registrations = (legalStatus?.registrations || []).map(reg => ({
+    ...reg,
+    title: reg.title?.[lang] || reg.title?.en || '',
+    date: reg.date?.[lang] || reg.date?.en || '',
+    authority: reg.authority?.[lang] || reg.authority?.en || '',
+    icon: iconMap[reg.type] || ShieldCheck,
+    color: colorMap[reg.type] || 'text-primary',
+    bg: bgMap[reg.type] || 'bg-primary/10'
+  }));
 
   return (
     <PageWrapper 
-      title={lang === 'en' ? 'Legal Status & Compliance' : 'আইনি মর্যাদা এবং সম্মতি'}
-      subtitle={lang === 'en' ? 'Transparency and accountability are the foundations of our organization.' : 'স্বচ্ছতা এবং জবাবদিহিতা আমাদের সংগঠনের ভিত্তি।'}
+      title={legalStatus?.page?.title?.[lang] || (lang === 'en' ? 'Legal Status & Compliance' : 'আইনি মর্যাদা এবং সম্মতি')}
+      subtitle={legalStatus?.page?.subtitle?.[lang] || (lang === 'en' ? 'Transparency and accountability are the foundations of our organization.' : 'স্বচ্ছতা এবং জবাবদিহিতা আমাদের সংগঠনের ভিত্তি।')}
     >
       <div className="max-w-6xl mx-auto space-y-24">
         {/* Intro Section */}
@@ -55,22 +57,18 @@ export default function LegalStatusPage() {
               <FileText size={40} />
             </div>
             <h2 className="text-4xl lg:text-5xl font-display font-bold text-text-main leading-tight">
-              {lang === 'en' ? 'Fully Registered & Governed' : 'সম্পূর্ণ নিবন্ধিত এবং পরিচালিত'}
+              {legalStatus?.intro?.title?.[lang] || (lang === 'en' ? 'Fully Registered & Governed' : 'সম্পূর্ণ নিবন্ধিত এবং পরিচালিত')}
             </h2>
             <p className="text-muted text-xl leading-relaxed">
-              {lang === 'en' 
+              {legalStatus?.intro?.description?.[lang] || (lang === 'en' 
                 ? 'BPKS Satarkul is a non-profit, non-political, and non-governmental organization registered under the laws of Bangladesh. We maintain strict compliance with all regulatory bodies.' 
-                : 'বিপিকেএস সাতারকুল একটি অলাভজনক, অরাজনৈতিক এবং বেসরকারি সংস্থা যা বাংলাদেশের আইনের অধীনে নিবন্ধিত। আমরা সকল নিয়ন্ত্রক সংস্থার সাথে কঠোর সম্মতি বজায় রাখি।'}
+                : 'বিপিকেএস সাতারকুল একটি অলাভজনক, অরাজনৈতিক এবং বেসরকারি সংস্থা যা বাংলাদেশের আইনের অধীনে নিবন্ধিত। আমরা সকল নিয়ন্ত্রক সংস্থার সাথে কঠোর সম্মতি বজায় রাখি।')}
             </p>
             <ul className="space-y-4">
-              {[
-                { en: 'Regular Audit Compliance', bn: 'নিয়মিত অডিট সম্মতি' },
-                { en: 'Transparent Financial Reporting', bn: 'স্বচ্ছ আর্থিক প্রতিবেদন' },
-                { en: 'Ethical Governance Standards', bn: 'নৈতিক শাসন মান' }
-              ].map((item, idx) => (
+              {(legalStatus?.intro?.features || []).map((item, idx) => (
                 <li key={idx} className="flex items-center gap-3 text-text-main font-bold">
                   <CheckCircle2 className="text-primary" size={20} />
-                  {lang === 'en' ? item.en : item.bn}
+                  {item[lang] || item.en}
                 </li>
               ))}
             </ul>
@@ -84,8 +82,8 @@ export default function LegalStatusPage() {
             <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full" />
             <div className="relative bg-white p-12 rounded-[4rem] shadow-2xl border border-border space-y-8">
               <div className="space-y-2">
-                <h3 className="text-2xl font-display font-bold text-text-main">{lang === 'en' ? 'Official Documents' : 'অফিসিয়াল নথি'}</h3>
-                <p className="text-muted">{lang === 'en' ? 'Download our registration certificates and legal papers.' : 'আমাদের নিবন্ধন সনদ এবং আইনি কাগজপত্র ডাউনলোড করুন।'}</p>
+                <h3 className="text-2xl font-display font-bold text-text-main">{legalStatus?.documents?.title?.[lang] || (lang === 'en' ? 'Official Documents' : 'অফিসিয়াল নথি')}</h3>
+                <p className="text-muted">{legalStatus?.documents?.subtitle?.[lang] || (lang === 'en' ? 'Download our registration certificates and legal papers.' : 'আমাদের নিবন্ধন সনদ এবং আইনি কাগজপত্র ডাউনলোড করুন।')}</p>
               </div>
               <div className="space-y-4">
                 {registrations.map((reg, idx) => (

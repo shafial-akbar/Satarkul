@@ -1,22 +1,18 @@
 import React from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
-import { motion } from 'motion/react';
-import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../context/LanguageContext';
-import { schoolStats } from '../../data/educationData';
+import { schoolEnrollmentData } from '../../data/infographicsData';
 
-export default function SchoolEnrollmentChart() {
-  const { t } = useTranslation();
+export default function SchoolEnrollmentChart({ chartData = schoolEnrollmentData }) {
   const { lang } = useLanguage();
 
-  const boysStat = schoolStats.find(s => s.label.en === 'Boys');
-  const girlsStat = schoolStats.find(s => s.label.en === 'Girls');
-  const totalStat = schoolStats.find(s => s.label.en === 'Total Students');
+  const data = chartData.map(item => ({
+    name: item.label[lang] || item.label['en'],
+    value: item.value,
+    color: item.color
+  }));
 
-  const data = [
-    { name: lang === 'en' ? 'Boys' : 'বালক', value: boysStat ? boysStat.value : 0, color: '#1B4F8A' },
-    { name: lang === 'en' ? 'Girls' : 'বালিকা', value: girlsStat ? girlsStat.value : 0, color: '#C0392B' },
-  ];
+  const totalStudents = data.reduce((sum, item) => sum + item.value, 0);
 
   return (
     <div className="bg-surface p-6 rounded-3xl shadow-xl border border-border h-[400px] flex flex-col">
@@ -48,8 +44,8 @@ export default function SchoolEnrollmentChart() {
       </div>
       <p className="text-xs text-muted text-center mt-4 italic">
         {lang === 'en' 
-          ? `Total: ${totalStat ? totalStat.value : 0} Students` 
-          : `মোট: ${totalStat ? totalStat.value : 0} জন শিক্ষার্থী`}
+          ? `Total: ${totalStudents} Students` 
+          : `মোট: ${totalStudents} জন শিক্ষার্থী`}
       </p>
     </div>
   );

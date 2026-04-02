@@ -1,17 +1,18 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
-import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../context/LanguageContext';
+import { memberCompositionData } from '../../data/infographicsData';
 
-export default function MemberCompositionChart() {
-  const { t } = useTranslation();
+export default function MemberCompositionChart({ chartData = memberCompositionData }) {
   const { lang } = useLanguage();
 
-  const data = [
-    { name: lang === 'en' ? 'Men' : 'পুরুষ', value: 291, color: '#006A4E' },
-    { name: lang === 'en' ? 'Women' : 'নারী', value: 294, color: '#C0392B' },
-    { name: lang === 'en' ? 'Children' : 'শিশু', value: 120, color: '#F59E0B' },
-  ];
+  const data = chartData.map(item => ({
+    name: item.label[lang] || item.label['en'],
+    value: item.value,
+    color: item.color
+  }));
+
+  const totalMembers = data.reduce((sum, item) => sum + item.value, 0);
 
   return (
     <div className="bg-surface p-6 rounded-3xl shadow-xl border border-border h-[400px] flex flex-col">
@@ -43,7 +44,7 @@ export default function MemberCompositionChart() {
         </ResponsiveContainer>
       </div>
       <p className="text-xs text-muted text-center mt-4 italic">
-        {lang === 'en' ? 'Total: 705 Members' : 'মোট: ৭০৫ জন সদস্য'}
+        {lang === 'en' ? `Total: ${totalMembers} Members` : `মোট: ${totalMembers} জন সদস্য`}
       </p>
     </div>
   );

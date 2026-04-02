@@ -57,7 +57,7 @@ export default function EducationPage() {
           </div>
           <div className="relative">
             <img 
-              src="https://plus.unsplash.com/premium_photo-1681248156475-f95f078846d5?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+              src="https://picsum.photos/seed/classroom/1200/900" 
               alt="School Classroom" 
               className="rounded-[3rem] shadow-2xl w-full"
               referrerPolicy="no-referrer"
@@ -161,7 +161,7 @@ export default function EducationPage() {
             </div>
             <div className="relative">
               <div className="aspect-video rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white/20">
-                <img src="https://picsum.photos/seed/adult-education/1200/800" className="w-full h-full object-cover" referrerPolicy="no-referrer" alt="Adult Education" />
+                <img src="https://picsum.photos/seed/adult-education/1200/675" className="w-full h-full object-cover" referrerPolicy="no-referrer" alt="Adult Education" />
               </div>
               <div className="absolute -top-6 -left-6 w-24 h-24 bg-accent rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-xl">25+</div>
             </div>

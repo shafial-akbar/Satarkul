@@ -1,18 +1,18 @@
 import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, Legend } from 'recharts';
-import { useTranslation } from 'react-i18next';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { useLanguage } from '../../context/LanguageContext';
+import { financialImpactData } from '../../data/infographicsData';
 
-export default function FinancialImpactChart() {
-  const { t } = useTranslation();
+export default function FinancialImpactChart({ chartData = financialImpactData }) {
   const { lang } = useLanguage();
 
-  const data = [
-    { name: lang === 'en' ? 'Mastul Grants' : 'মাস্তুল অনুদান', value: 484000, color: '#006A4E' },
-    { name: lang === 'en' ? 'SME Loans' : 'এসএমই ঋণ', value: 600000, color: '#C0392B' },
-    { name: lang === 'en' ? 'Indiv. Grants' : 'ব্যক্তিগত অনুদান', value: 30000, color: '#F59E0B' },
-    { name: lang === 'en' ? 'Follow-up' : 'ফলো-আপ ঋণ', value: 60000, color: '#1B4F8A' },
-  ];
+  const data = chartData.map(item => ({
+    name: item.label[lang] || item.label['en'],
+    value: item.value,
+    color: item.color
+  }));
+
+  const totalValue = data.reduce((sum, item) => sum + item.value, 0);
 
   return (
     <div className="bg-surface p-6 rounded-3xl shadow-xl border border-border h-[400px] flex flex-col">
@@ -49,7 +49,9 @@ export default function FinancialImpactChart() {
         </ResponsiveContainer>
       </div>
       <p className="text-xs text-muted text-center mt-4 italic">
-        {lang === 'en' ? 'Total Impact: ৳1.17M+' : 'মোট প্রভাব: ১১.৭ লক্ষ+ টাকা'}
+        {lang === 'en' 
+          ? `Total Impact: ৳${(totalValue / 1000000).toFixed(2)}M+` 
+          : `মোট প্রভাব: ${(totalValue / 100000).toFixed(1)} লক্ষ+ টাকা`}
       </p>
     </div>
   );

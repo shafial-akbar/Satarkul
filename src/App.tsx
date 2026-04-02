@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from './context/LanguageContext';
 import { useTheme } from './context/ThemeContext';
+import { ContentProvider, useContent } from './context/ContentContext';
 
 // Layout
 import Navbar from './components/layout/Navbar';
@@ -47,8 +48,25 @@ import ContactPage from './pages/contact/ContactPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
+  return (
+    <ContentProvider>
+      <AppContent />
+    </ContentProvider>
+  );
+}
+
+function AppContent() {
   const { lang } = useLanguage();
   const { currentTheme } = useTheme();
+  const { loading } = useContent();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-bg">
+        <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
   return (
     <Router>

@@ -61,7 +61,7 @@ export default function SpecialProgramsPage() {
             </div>
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop" 
+                src="https://picsum.photos/seed/specialcare/1200/900" 
                 alt="Special Care" 
                 className="rounded-[3rem] shadow-2xl w-full aspect-[4/3] object-cover"
                 referrerPolicy="no-referrer"

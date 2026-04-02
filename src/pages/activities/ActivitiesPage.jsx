@@ -236,7 +236,7 @@ export default function ActivitiesPage() {
         {/* Call to Action - Immersive */}
         <section className="relative bg-slate-900 rounded-[5rem] p-12 lg:p-24 text-center text-white overflow-hidden">
           <div className="absolute inset-0 opacity-20">
-            <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=2070&auto=format&fit=crop" alt="Background" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+            <img src="https://picsum.photos/seed/community/1920/1080" alt="Background" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
           </div>
           <div className="relative z-10 max-w-4xl mx-auto space-y-6">
             <h2 className="text-4xl lg:text-6xl font-display font-bold leading-tight">

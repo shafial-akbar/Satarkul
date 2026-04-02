@@ -25,13 +25,6 @@ export default function GalleryPage() {
       <section className="relative py-24 bg-surface overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center space-y-6">
-            <motion.span 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-bold uppercase tracking-widest"
-            >
-              {lang === 'en' ? 'Visual Journey' : 'ভিজ্যুয়াল যাত্রা'}
-            </motion.span>
             <motion.h1 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}

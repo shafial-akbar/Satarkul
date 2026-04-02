@@ -51,7 +51,7 @@ export default function DonorsPage() {
           <div className="relative">
             <div className="aspect-video rounded-[3rem] overflow-hidden shadow-2xl">
               <img 
-                src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?q=80&w=2070&auto=format&fit=crop" 
+                src="https://picsum.photos/seed/partnership-impact/1200/800" 
                 alt="Support and Partnership" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"

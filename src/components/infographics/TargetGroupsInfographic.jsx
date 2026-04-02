@@ -1,32 +1,16 @@
 import React from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 import { useLanguage } from '../../context/LanguageContext';
+import { targetGroupsData } from '../../data/infographicsData';
 
-export default function TargetGroupsInfographic() {
+export default function TargetGroupsInfographic({ chartData = targetGroupsData }) {
   const { lang } = useLanguage();
 
-  const data = [
-    { 
-      name: lang === 'en' ? 'Ultra Poor Women & Men' : 'অতি দরিদ্র নারী ও পুরুষ', 
-      value: 40, 
-      color: '#006A4E' 
-    },
-    { 
-      name: lang === 'en' ? 'Disabled & Non-disabled Children' : 'প্রতিবন্ধী ও অপ্রতিবন্ধী শিশু', 
-      value: 30, 
-      color: '#C0392B' 
-    },
-    { 
-      name: lang === 'en' ? 'Disabled Adolescents' : 'প্রতিবন্ধী কিশোর-কিশোরী', 
-      value: 15, 
-      color: '#F59E0B' 
-    },
-    { 
-      name: lang === 'en' ? 'Disabled Elderly' : 'প্রতিবন্ধী প্রবীণ ব্যক্তি', 
-      value: 15, 
-      color: '#3498DB' 
-    },
-  ];
+  const data = chartData.map(item => ({
+    name: item.label[lang] || item.label['en'],
+    value: item.value,
+    color: item.color
+  }));
 
   return (
     <div className="bg-white p-8 rounded-[3rem] shadow-xl border border-border h-[500px] flex flex-col">

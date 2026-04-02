@@ -1,57 +1,27 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Eye, Droplet, Stethoscope, Hand, ShieldCheck } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../context/LanguageContext';
+import { healthImpactData } from '../../data/infographicsData';
 
-export default function HealthServicesStats() {
-  const { t } = useTranslation();
+const iconMap = {
+  Eye,
+  Droplet,
+  ShieldCheck,
+  Stethoscope,
+  Hand
+};
+
+export default function HealthServicesStats({ chartData = healthImpactData }) {
   const { lang } = useLanguage();
 
-  const stats = [
-    { 
-      label: lang === 'en' ? 'Eye Camp' : 'চক্ষু ক্যাম্প', 
-      value: '180', 
-      sub: lang === 'en' ? 'Examined' : 'পরীক্ষিত', 
-      icon: Eye, 
-      color: 'bg-primary' 
-    },
-    { 
-      label: lang === 'en' ? 'ORS' : 'ওআরএস', 
-      value: '500', 
-      sub: lang === 'en' ? 'Beneficiaries' : 'উপকারভোগী', 
-      icon: Droplet, 
-      color: 'bg-secondary' 
-    },
-    { 
-      label: lang === 'en' ? 'Red Card' : 'রেড কার্ড', 
-      value: '100', 
-      sub: lang === 'en' ? 'Medical Support' : 'চিকিৎসা সহায়তা', 
-      icon: ShieldCheck, 
-      color: 'bg-accent' 
-    },
-    { 
-      label: lang === 'en' ? 'Deworming' : 'কৃমিনাশক', 
-      value: '100', 
-      sub: lang === 'en' ? 'Medicine' : 'ঔষধ', 
-      icon: Droplet, 
-      color: 'bg-[#10B981]' 
-    },
-    { 
-      label: lang === 'en' ? 'ENT Camp' : 'ইএনটি ক্যাম্প', 
-      value: '67', 
-      sub: lang === 'en' ? 'Examined' : 'পরীক্ষিত', 
-      icon: Stethoscope, 
-      color: 'bg-primary' 
-    },
-    { 
-      label: lang === 'en' ? 'Hand Wash' : 'হাত ধোয়া', 
-      value: '50', 
-      sub: lang === 'en' ? 'Beneficiaries' : 'উপকারভোগী', 
-      icon: Hand, 
-      color: 'bg-secondary' 
-    },
-  ];
+  const stats = chartData.map(item => ({
+    label: item.label[lang] || item.label['en'],
+    value: item.value,
+    sub: item.sub[lang] || item.sub['en'],
+    icon: iconMap[item.icon] || Droplet,
+    color: item.color
+  }));
 
   return (
     <div className="bg-surface p-6 rounded-3xl shadow-xl border border-border h-[400px] flex flex-col overflow-y-auto">

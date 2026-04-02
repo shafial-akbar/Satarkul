@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, ChevronDown, Heart, Languages, Search, Phone, Mail, Facebook } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../context/LanguageContext';
+import { useContent } from '../../context/ContentContext';
 import { SpusLogoFull } from '../ui/SpusLogo';
 
 const NavItem = ({ to, label, children, active }) => {
@@ -55,6 +56,7 @@ const NavItem = ({ to, label, children, active }) => {
 export default function Navbar() {
   const { t } = useTranslation();
   const { lang, toggleLang } = useLanguage();
+  const { content } = useContent();
   const { pathname } = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -68,69 +70,69 @@ export default function Navbar() {
   }, []);
 
   const menuItems = [
-    { to: '/', label: t('common.home') },
+    { to: '/', label: content?.nav?.home?.[lang] || (lang === 'en' ? 'Home' : 'হোম') },
     { 
       to: '/about', 
-      label: t('common.about'),
+      label: content?.nav?.about?.[lang] || (lang === 'en' ? 'About Us' : 'আমাদের সম্পর্কে'),
       children: [
-        { to: '/about', label: t('nav.background') },
-        { to: '/about/vision-mission', label: t('nav.visionMission') },
-        { to: '/about/governing-body', label: t('nav.governingBody') },
-        { to: '/about/work-area', label: t('nav.workArea') },
-        { to: '/about/legal-status', label: t('nav.legalStatus') },
-        { to: '/about/membership', label: t('nav.membership') },
+        { to: '/about', label: content?.nav?.background?.[lang] || (lang === 'en' ? 'Background' : 'পটভূমি') },
+        { to: '/about/vision-mission', label: content?.nav?.visionMission?.[lang] || (lang === 'en' ? 'Vision & Mission' : 'লক্ষ্য ও উদ্দেশ্য') },
+        { to: '/about/governing-body', label: content?.nav?.governingBody?.[lang] || (lang === 'en' ? 'Governing Body' : 'পরিচালনা পর্ষদ') },
+        { to: '/about/work-area', label: content?.nav?.workArea?.[lang] || (lang === 'en' ? 'Work Area' : 'কর্ম এলাকা') },
+        { to: '/about/legal-status', label: content?.nav?.legalStatus?.[lang] || (lang === 'en' ? 'Legal Status' : 'আইনি মর্যাদা') },
+        { to: '/about/membership', label: content?.nav?.membership?.[lang] || (lang === 'en' ? 'Membership' : 'সদস্যপদ') },
       ]
     },
     { 
       to: '/programs', 
-      label: t('common.programs'),
+      label: content?.nav?.programs?.[lang] || (lang === 'en' ? 'Programs' : 'কার্যক্রম'),
       children: [
-        { to: '/programs', label: t('nav.allPrograms') },
-        { to: '/programs/education', label: t('nav.education') },
-        { to: '/programs/health', label: t('nav.health') },
-        { to: '/programs/skill-development', label: t('nav.skills') },
-        { to: '/programs/financial-support', label: t('nav.finance') },
-        { to: '/programs/assistive-devices', label: t('nav.devices') },
-        { to: '/programs/awareness', label: t('nav.awareness') },
-        { to: '/programs/social-support', label: t('nav.socialSupport') },
-        { to: '/programs/special-programs', label: t('nav.specialPrograms') },
+        { to: '/programs', label: content?.nav?.allPrograms?.[lang] || (lang === 'en' ? 'All Programs' : 'সব কার্যক্রম') },
+        { to: '/programs/education', label: content?.nav?.education?.[lang] || (lang === 'en' ? 'Education' : 'শিক্ষা') },
+        { to: '/programs/health', label: content?.nav?.health?.[lang] || (lang === 'en' ? 'Health' : 'স্বাস্থ্য') },
+        { to: '/programs/skill-development', label: content?.nav?.skills?.[lang] || (lang === 'en' ? 'Skills' : 'দক্ষতা') },
+        { to: '/programs/financial-support', label: content?.nav?.finance?.[lang] || (lang === 'en' ? 'Finance' : 'অর্থ') },
+        { to: '/programs/assistive-devices', label: content?.nav?.devices?.[lang] || (lang === 'en' ? 'Devices' : 'উপকরণ') },
+        { to: '/programs/awareness', label: content?.nav?.awareness?.[lang] || (lang === 'en' ? 'Awareness' : 'সচেতনতা') },
+        { to: '/programs/social-support', label: content?.nav?.socialSupport?.[lang] || (lang === 'en' ? 'Social Support' : 'সামাজিক সহায়তা') },
+        { to: '/programs/special-programs', label: content?.nav?.specialPrograms?.[lang] || (lang === 'en' ? 'Special Programs' : 'বিশেষ কার্যক্রম') },
       ]
     },
     { 
       to: '/activities', 
-      label: t('common.activities'),
+      label: content?.nav?.activities?.[lang] || (lang === 'en' ? 'Activities' : 'কর্মসূচি'),
       children: [
-        { to: '/activities', label: t('nav.overview') },
-        { to: '/activities/relief', label: t('nav.relief') },
-        { to: '/activities/cultural', label: t('nav.cultural') },
-        { to: '/activities/special-days', label: t('nav.specialDays') },
-        { to: '/activities/advocacy', label: t('nav.advocacy') },
-        { to: '/activities/committee-meetings', label: t('nav.meetings') },
-        { to: '/activities/special-programs', label: t('nav.specialPrograms') },
+        { to: '/activities', label: content?.nav?.overview?.[lang] || (lang === 'en' ? 'Overview' : 'সংক্ষিপ্ত বিবরণ') },
+        { to: '/activities/relief', label: content?.nav?.relief?.[lang] || (lang === 'en' ? 'Relief' : 'ত্রাণ') },
+        { to: '/activities/cultural', label: content?.nav?.cultural?.[lang] || (lang === 'en' ? 'Cultural' : 'সাংস্কৃতিক') },
+        { to: '/activities/special-days', label: content?.nav?.specialDays?.[lang] || (lang === 'en' ? 'Special Days' : 'বিশেষ দিন') },
+        { to: '/activities/advocacy', label: content?.nav?.advocacy?.[lang] || (lang === 'en' ? 'Advocacy' : 'অ্যাডভোকেসি') },
+        { to: '/activities/committee-meetings', label: content?.nav?.meetings?.[lang] || (lang === 'en' ? 'Meetings' : 'সভা') },
+        { to: '/activities/special-programs', label: content?.nav?.specialPrograms?.[lang] || (lang === 'en' ? 'Special Programs' : 'বিশেষ কার্যক্রম') },
       ]
     },
     { 
       to: '/news', 
-      label: t('common.media'),
+      label: content?.nav?.media?.[lang] || (lang === 'en' ? 'Media' : 'মিডিয়া'),
       children: [
-        { to: '/news', label: t('common.news') },
-        { to: '/blog', label: t('common.blog') },
-        { to: '/gallery', label: t('common.gallery') },
-        { to: '/videos', label: t('common.videos') },
-        { to: '/resources/downloads', label: t('common.downloads') },
+        { to: '/news', label: content?.nav?.news?.[lang] || (lang === 'en' ? 'News' : 'সংবাদ') },
+        { to: '/blog', label: content?.nav?.blog?.[lang] || (lang === 'en' ? 'Blog' : 'ব্লগ') },
+        { to: '/gallery', label: content?.nav?.gallery?.[lang] || (lang === 'en' ? 'Gallery' : 'গ্যালারি') },
+        { to: '/videos', label: content?.nav?.videos?.[lang] || (lang === 'en' ? 'Videos' : 'ভিডিও') },
+        { to: '/resources/downloads', label: content?.nav?.downloads?.[lang] || (lang === 'en' ? 'Downloads' : 'ডাউনলোড') },
       ]
     },
     { 
       to: '/support', 
-      label: t('common.supportUs'),
+      label: content?.nav?.supportUs?.[lang] || (lang === 'en' ? 'Support Us' : 'আমাদের সমর্থন করুন'),
       children: [
-        { to: '/support/donate', label: t('common.donate') },
-        { to: '/support/volunteer', label: t('common.volunteer') },
-        { to: '/support/partner', label: t('common.partner') },
-        { to: '/support/donors', label: t('nav.donors') },
+        { to: '/support/donate', label: content?.common?.buttons?.donateNow?.[lang] || (lang === 'en' ? 'Donate Now' : 'এখনই দান করুন') },
+        { to: '/support/volunteer', label: content?.common?.buttons?.volunteer?.[lang] || (lang === 'en' ? 'Volunteer' : 'স্বেচ্ছাসেবী') },
+        { to: '/support/partner', label: content?.common?.buttons?.partner?.[lang] || (lang === 'en' ? 'Partner' : 'অংশীদার') },
+        { to: '/support/donors', label: content?.nav?.donors?.[lang] || (lang === 'en' ? 'Donors' : 'দাতা') },
       ]
     },
-    { to: '/contact', label: t('common.contact') },
+    { to: '/contact', label: content?.nav?.contact?.[lang] || (lang === 'en' ? 'Contact' : 'যোগাযোগ') },
   ];
 
   return (
@@ -198,7 +200,7 @@ export default function Navbar() {
               className="hidden md:flex items-center gap-2 px-4 xl:px-6 py-2.5 bg-secondary text-white rounded-full font-bold text-xs xl:text-sm shadow-lg hover:bg-secondary/90 hover:scale-105 transition-all duration-300 group whitespace-nowrap"
             >
               <Heart size={16} className="group-hover:fill-white transition-all" />
-              {t('common.donate')}
+              {content?.common?.buttons?.donateNow?.[lang] || (lang === 'en' ? 'Donate Now' : 'এখনই দান করুন')}
             </Link>
 
             {/* Mobile Menu Toggle */}
@@ -284,7 +286,7 @@ export default function Navbar() {
                   className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold bg-secondary text-white shadow-lg"
                 >
                   <Heart size={20} />
-                  {t('common.donate')}
+                  {content?.common?.buttons?.donateNow?.[lang] || (lang === 'en' ? 'Donate Now' : 'এখনই দান করুন')}
                 </Link>
               </div>
             </motion.div>

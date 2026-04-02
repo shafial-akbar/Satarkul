@@ -1,24 +1,16 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Calendar, Star } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import { Star } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
+import { specialDaysTimelineData } from '../../data/infographicsData';
 
-export default function SpecialDaysTimeline() {
-  const { t } = useTranslation();
+export default function SpecialDaysTimeline({ chartData = specialDaysTimelineData }) {
   const { lang } = useLanguage();
 
-  const days = [
-    { date: '21 Feb', title: 'Mother Language Day', titleBn: 'মাতৃভাষা দিবস' },
-    { date: '8 Mar', title: 'Women\'s Day', titleBn: 'নারী দিবস' },
-    { date: '17 Mar', title: 'Children\'s Day', titleBn: 'শিশু দিবস' },
-    { date: '26 Mar', title: 'Independence Day', titleBn: 'স্বাধীনতা দিবস' },
-    { date: '12 May', title: 'Mother\'s Day', titleBn: 'মা দিবস' },
-    { date: '15 Aug', title: 'Mourning Day', titleBn: 'শোক দিবস' },
-    { date: '15 Oct', title: 'White Cane Day', titleBn: 'সাদাছড়ি দিবস' },
-    { date: '3 Dec', title: 'Disability Day', titleBn: 'প্রতিবন্ধী দিবস' },
-    { date: '16 Dec', title: 'Victory Day', titleBn: 'বিজয় দিবস' },
-  ];
+  const days = chartData.map(item => ({
+    date: item.date,
+    title: item.label[lang] || item.label['en']
+  }));
 
   return (
     <div className="bg-surface p-6 rounded-3xl shadow-xl border border-border h-[400px] flex flex-col overflow-hidden">
@@ -40,7 +32,7 @@ export default function SpecialDaysTimeline() {
               </div>
               <div className="p-3 bg-surface-alt rounded-xl border border-border shadow-sm">
                 <span className="text-xs font-bold text-secondary uppercase tracking-widest">{day.date}</span>
-                <h5 className="font-bold text-text-main text-sm">{lang === 'en' ? day.title : day.titleBn}</h5>
+                <h5 className="font-bold text-text-main text-sm">{day.title}</h5>
               </div>
             </motion.div>
           ))}
