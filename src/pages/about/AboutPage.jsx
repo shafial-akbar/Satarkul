@@ -91,7 +91,7 @@ export default function AboutPage() {
             <div className="absolute -top-10 -right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-pulse" />
             <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-secondary/5 rounded-full blur-3xl animate-pulse delay-1000" />
             <img 
-              src="https://picsum.photos/seed/about-spus-hero/1200/800" 
+              src="https://picsum.photos/seed/about-spus-hero/1200/900" 
               alt="Education Community photo"
               className="rounded-[4rem] shadow-2xl relative z-10 border-8 border-white"
               referrerPolicy="no-referrer"
