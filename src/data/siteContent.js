@@ -283,6 +283,122 @@ const siteContent = {
         desc: { en: 'Located in the heart of Satarkul, our office is open for consultations and community support.', bn: 'সাতারকুলের প্রাণকেন্দ্রে অবস্থিত আমাদের অফিস পরামর্শ এবং সম্প্রদায় সহায়তার জন্য উন্মুক্ত।' }
       }
     },
+    support: {
+      page: {
+        title: { en: 'Support Our Mission', bn: 'আমাদের মিশনকে সমর্থন করুন' },
+        subtitle: { en: 'There are many ways to contribute to our cause. Choose the one that fits you best.', bn: 'আমাদের উদ্দেশ্যে অবদান রাখার অনেক উপায় আছে। আপনার জন্য সবচেয়ে উপযুক্ত একটি বেছে নিন।' }
+      },
+      hero: {
+        title: { en: 'Your Support Changes Lives', bn: 'আপনার সমর্থন জীবন বদলে দেয়' },
+        description: { en: 'Every contribution, whether big or small, helps us provide essential services and advocate for the rights of persons with disabilities.', bn: 'প্রতিটি অবদান, ছোট বা বড় যাই হোক না কেন, আমাদের প্রয়োজনীয় সেবা প্রদান করতে এবং প্রতিবন্ধী ব্যক্তিদের অধিকারের জন্য অ্যাডভোকেসি করতে সাহায্য করে।' }
+      },
+      options: [
+        {
+          id: 'donate',
+          title: { en: 'Donate Now', bn: 'এখনই দান করুন' },
+          description: { en: 'Financial contributions go directly to our programs, providing education, health, and skill training.', bn: 'আর্থিক অবদান সরাসরি আমাদের কর্মসূচিতে যায়, যা শিক্ষা, স্বাস্থ্য এবং দক্ষতা প্রশিক্ষণ প্রদান করে।' },
+          icon: 'Heart',
+          link: '/support/donate',
+          color: 'text-primary',
+          bg: 'bg-primary/10'
+        },
+        {
+          id: 'volunteer',
+          title: { en: 'Volunteer', bn: 'স্বেচ্ছাসেবী' },
+          description: { en: 'Share your time and skills to help us manage events, mentor youth, or support our admin team.', bn: 'আমাদের ইভেন্ট পরিচালনা, যুবকদের মেন্টর করা বা আমাদের অ্যাডমিন টিমকে সহায়তা করতে আপনার সময় এবং দক্ষতা শেয়ার করুন।' },
+          icon: 'Users',
+          link: '/support/volunteer',
+          color: 'text-secondary',
+          bg: 'bg-secondary/10'
+        },
+        {
+          id: 'partner',
+          title: { en: 'Partner With Us', bn: 'আমাদের সাথে অংশীদার হন' },
+          description: { en: 'Organizations can collaborate with us through CSR initiatives, joint programs, or sponsorships.', bn: 'সংস্থাগুলো CSR উদ্যোগ, যৌথ কর্মসূচি বা স্পনসরশিপের মাধ্যমে আমাদের সাথে সহযোগিতা করতে পারে।' },
+          icon: 'Handshake',
+          link: '/support/partner',
+          color: 'text-accent',
+          bg: 'bg-accent/10'
+        },
+        {
+          id: 'donors',
+          title: { en: 'Our Donors', bn: 'আমাদের দাতাগণ' },
+          description: { en: 'See the organizations and individuals who make our work possible through their generous support.', bn: 'সেইসব সংস্থা এবং ব্যক্তিদের দেখুন যারা তাদের উদার সমর্থনের মাধ্যমে আমাদের কাজ সম্ভব করে তোলেন।' },
+          icon: 'Award',
+          link: '/support/donors',
+          color: 'text-primary',
+          bg: 'bg-primary/10'
+        }
+      ],
+      impact: {
+        title: { en: 'The Impact of Your Support', bn: 'আপনার সমর্থনের প্রভাব' },
+        subtitle: { en: 'See how your contributions are making a real difference in the community.', bn: 'আপনার অবদান কীভাবে সম্প্রদায়ে বাস্তব পরিবর্তন আনছে তা দেখুন।' },
+        stats: [
+          { label: { en: 'Lives Impacted', bn: 'প্রভাবিত জীবন' }, value: '5,000+', icon: 'UserCheck' },
+          { label: { en: 'Programs Funded', bn: 'অর্থায়িত কর্মসূচি' }, value: '15+', icon: 'Target' },
+          { label: { en: 'Volunteers Joined', bn: 'যোগ দেওয়া স্বেচ্ছাসেবী' }, value: '200+', icon: 'Users' }
+        ]
+      },
+      donate: {
+        page: {
+          title: { en: 'Support Our Cause', bn: 'আমাদের পাশে দাঁড়ান' },
+          subtitle: { en: 'Your contribution empowers people with disabilities and builds a more inclusive society.', bn: 'আপনার অবদান প্রতিবন্ধী ব্যক্তিদের ক্ষমতায়ন করে এবং একটি আরও অন্তর্ভুক্তিমূলক সমাজ গঠন করে।' }
+        },
+        form: {
+          title: { en: 'Make a Donation', bn: 'অনুদান দিন' },
+          description: { en: 'Choose an amount to contribute. Every bit helps us reach our goals.', bn: 'অবদানের জন্য একটি পরিমাণ চয়ন করুন। প্রতিটি ক্ষুদ্র অংশ আমাদের লক্ষ্য অর্জনে সহায়তা করে।' }
+        },
+        impactLevels: [
+          { amount: 500, label: { en: 'Basic Support', bn: 'মৌলিক সহায়তা' }, impact: { en: 'Provides educational materials for 1 child for a month.', bn: '১টি শিশুর এক মাসের শিক্ষা উপকরণ প্রদান করে।' } },
+          { amount: 1000, label: { en: 'Health & Nutrition', bn: 'স্বাস্থ্য ও পুষ্টি' }, impact: { en: 'Covers essential health check-ups and nutrition for 1 child.', bn: '১টি শিশুর প্রয়োজনীয় স্বাস্থ্য পরীক্ষা ও পুষ্টির খরচ বহন করে।' } },
+          { amount: 2500, label: { en: 'Skill Training', bn: 'দক্ষতা প্রশিক্ষণ' }, impact: { en: 'Supports skill training for 1 person with disability.', bn: '১জন প্রতিবন্ধী ব্যক্তির দক্ষতা প্রশিক্ষণে সহায়তা করে।' } },
+          { amount: 5000, label: { en: 'Community Impact', bn: 'সামাজিক প্রভাব' }, impact: { en: 'Funds a community awareness workshop for 20+ people.', bn: '২০+ মানুষের জন্য একটি সামাজিক সচেতনতা কর্মশালার অর্থায়ন করে।' } },
+        ],
+        paymentMethods: [
+          { name: 'bKash', number: '01743214468', type: { en: 'Personal', bn: 'ব্যক্তিগত' } },
+          { name: 'Nagad', number: '01743214468', type: { en: 'Personal', bn: 'ব্যক্তিগত' } },
+          { name: 'Rocket', number: '01743214468', type: { en: 'Personal', bn: 'ব্যক্তিগত' } },
+        ],
+        transparency: {
+          title: { en: 'Financial Transparency', bn: 'আর্থিক স্বচ্ছতা' },
+          description: { en: 'We believe in full accountability. Here is how we allocate our resources to create impact.', bn: 'আমরা পূর্ণ জবাবদিহিতায় বিশ্বাস করি। প্রভাব তৈরি করতে আমরা কীভাবে আমাদের সম্পদ বরাদ্দ করি তা এখানে দেওয়া হলো।' },
+          allocation: [
+            { label: { en: 'Education & Schooling', bn: 'শিক্ষা ও স্কুলিং' }, value: 45, color: 'bg-primary' },
+            { label: { en: 'Health & Medical Support', bn: 'স্বাস্থ্য ও চিকিৎসা সহায়তা' }, value: 25, color: 'bg-secondary' },
+            { label: { en: 'Skill Training & Loans', bn: 'দক্ষতা প্রশিক্ষণ ও ঋণ' }, value: 20, color: 'bg-accent' },
+            { label: { en: 'Administration & Operations', bn: 'প্রশাসন ও পরিচালনা' }, value: 10, color: 'bg-muted' },
+          ]
+        }
+      },
+      volunteer: {
+        page: {
+          title: { en: 'Join Our Volunteer Team', bn: 'আমাদের স্বেচ্ছাসেবী দলে যোগ দিন' },
+          subtitle: { en: 'Your time and skills can make a significant difference in the lives of persons with disabilities.', bn: 'আপনার সময় এবং দক্ষতা প্রতিবন্ধী ব্যক্তিদের জীবনে উল্লেখযোগ্য পরিবর্তন আনতে পারে।' }
+        },
+        roles: [
+          { title: { en: 'Event Support', bn: 'ইভেন্ট সহায়তা' }, desc: { en: 'Help us organize and manage our community events and awareness campaigns.', bn: 'আমাদের কমিউনিটি ইভেন্ট এবং সচেতনতামূলক প্রচারণা সংগঠিত ও পরিচালনা করতে সহায়তা করুন।' }, icon: 'Calendar' },
+          { title: { en: 'Skill Mentoring', bn: 'দক্ষতা মেন্টরিং' }, desc: { en: 'Share your professional skills to mentor persons with disabilities in vocational training.', bn: 'বৃত্তিমূলক প্রশিক্ষণে প্রতিবন্ধী ব্যক্তিদের মেন্টর করতে আপনার পেশাদার দক্ষতা শেয়ার করুন।' }, icon: 'BookOpen' },
+          { title: { en: 'Office Support', bn: 'অফিস সহায়তা' }, desc: { en: 'Assist our administrative team with data entry, documentation, and communication.', bn: 'ডেটা এন্ট্রি, ডকুমেন্টেশন এবং যোগাযোগের ক্ষেত্রে আমাদের প্রশাসনিক দলকে সহায়তা করুন।' }, icon: 'FileText' },
+        ]
+      },
+      partner: {
+        page: {
+          title: { en: 'Strategic Partnerships', bn: 'কৌশলগত অংশীদারিত্ব' },
+          subtitle: { en: 'We collaborate with organizations to drive sustainable social inclusion.', bn: 'সামাজিক অন্তর্ভুক্তি নিশ্চিত করতে আমরা বিভিন্ন সংস্থার সাথে সহযোগিতা করি।' }
+        },
+        types: [
+          { title: { en: 'Corporate CSR', bn: 'করপোরেট সিএসআর' }, desc: { en: 'Align your corporate social responsibility goals with our impactful programs.', bn: 'আপনার করপোরেট সামাজিক দায়বদ্ধতার লক্ষ্যগুলোকে আমাদের প্রভাবশালী কর্মসূচির সাথে সারিবদ্ধ করুন।' }, icon: 'Building2' },
+          { title: { en: 'Institutional Support', bn: 'প্রাতিষ্ঠানিক সহায়তা' }, desc: { en: 'Joint initiatives with NGOs, government bodies, and international agencies.', bn: 'এনজিও, সরকারি সংস্থা এবং আন্তর্জাতিক সংস্থাগুলোর সাথে যৌথ উদ্যোগ।' }, icon: 'Globe' },
+          { title: { en: 'Community Partners', bn: 'কমিউনিটি অংশীদার' }, desc: { en: 'Local businesses and groups supporting grassroots development.', bn: 'তৃণমূল পর্যায়ের উন্নয়নকে সমর্থনকারী স্থানীয় ব্যবসা এবং গ্রুপ।' }, icon: 'Users' },
+        ]
+      },
+      donors: {
+        page: {
+          title: { en: 'Our Recent Donors', bn: 'সাম্প্রতিক দাতা সংস্থা' },
+          subtitle: { en: 'We are deeply grateful to the organizations that support our mission to empower persons with disabilities.', bn: 'প্রতিবন্ধী ব্যক্তিদের ক্ষমতায়নের লক্ষ্যে আমাদের মিশনকে সমর্থনকারী সংস্থাগুলোর প্রতি আমরা গভীরভাবে কৃতজ্ঞ।' }
+        }
+      }
+    },
     visionMission: {
       page: {
         title: { en: 'Vision & Mission', bn: 'লক্ষ্য ও উদ্দেশ্য' },

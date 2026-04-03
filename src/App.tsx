@@ -44,6 +44,7 @@ import DonatePage from './pages/support/DonatePage';
 import DonorsPage from './pages/support/DonorsPage';
 import PartnerPage from './pages/support/PartnerPage';
 import VolunteerPage from './pages/support/VolunteerPage';
+import SupportPage from './pages/support/SupportPage';
 import ContactPage from './pages/contact/ContactPage';
 import NotFoundPage from './pages/NotFoundPage';
 
@@ -107,6 +108,7 @@ function AppContent() {
             <Route path="/support/donors" element={<DonorsPage />} />
             <Route path="/support/partner" element={<PartnerPage />} />
             <Route path="/support/volunteer" element={<VolunteerPage />} />
+            <Route path="/support" element={<SupportPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

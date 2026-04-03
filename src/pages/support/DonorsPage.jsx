@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../context/LanguageContext';
+import { useContent } from '../../context/ContentContext';
 import PageWrapper from '../../components/layout/PageWrapper';
 import { motion } from 'motion/react';
 import * as Icons from 'lucide-react';
@@ -9,6 +10,9 @@ import { donorsData } from '../../data/donorsData';
 export default function DonorsPage() {
   const { t } = useTranslation();
   const { lang } = useLanguage();
+  const { content } = useContent();
+
+  const donors = content?.support?.donors;
 
   const getLocalized = (obj) => {
     if (!obj) return '';
@@ -17,8 +21,8 @@ export default function DonorsPage() {
 
   return (
     <PageWrapper 
-      title={lang === 'en' ? 'Our Recent Donors' : 'সাম্প্রতিক দাতা সংস্থা'}
-      subtitle={lang === 'en' ? 'We are deeply grateful to the organizations that support our mission to empower persons with disabilities.' : 'প্রতিবন্ধী ব্যক্তিদের ক্ষমতায়নের লক্ষ্যে আমাদের মিশনকে সমর্থনকারী সংস্থাগুলোর প্রতি আমরা গভীরভাবে কৃতজ্ঞ।'}
+      title={donors?.page?.title?.[lang] || (lang === 'en' ? 'Our Recent Donors' : 'সাম্প্রতিক দাতা সংস্থা')}
+      subtitle={donors?.page?.subtitle?.[lang] || (lang === 'en' ? 'We are deeply grateful to the organizations that support our mission to empower persons with disabilities.' : 'প্রতিবন্ধী ব্যক্তিদের ক্ষমতায়নের লক্ষ্যে আমাদের মিশনকে সমর্থনকারী সংস্থাগুলোর প্রতি আমরা গভীরভাবে কৃতজ্ঞ।')}
     >
       <div className="space-y-24">
         {/* Intro Section */}

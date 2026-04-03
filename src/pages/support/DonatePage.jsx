@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../context/LanguageContext';
+import { useContent } from '../../context/ContentContext';
 import PageWrapper from '../../components/layout/PageWrapper';
 import { motion } from 'motion/react';
 import { Heart, DollarSign, Users, ShieldCheck, ArrowRight, CheckCircle2, Info, Calculator, PieChart } from 'lucide-react';
@@ -9,21 +10,27 @@ import FinancialImpactChart from '../../components/infographics/FinancialImpactC
 export default function DonatePage() {
   const { t } = useTranslation();
   const { lang } = useLanguage();
+  const { content } = useContent();
   const [amount, setAmount] = useState(1000);
   const [customAmount, setCustomAmount] = useState('');
 
-  const impactLevels = [
-    { amount: 500, label: lang === 'en' ? 'Basic Support' : 'মৌলিক সহায়তা', impact: lang === 'en' ? 'Provides educational materials for 1 child for a month.' : '১টি শিশুর এক মাসের শিক্ষা উপকরণ প্রদান করে।' },
-    { amount: 1000, label: lang === 'en' ? 'Health & Nutrition' : 'স্বাস্থ্য ও পুষ্টি', impact: lang === 'en' ? 'Covers essential health check-ups and nutrition for 1 child.' : '১টি শিশুর প্রয়োজনীয় স্বাস্থ্য পরীক্ষা ও পুষ্টির খরচ বহন করে।' },
-    { amount: 2500, label: lang === 'en' ? 'Skill Training' : 'দক্ষতা প্রশিক্ষণ', impact: lang === 'en' ? 'Supports skill training for 1 person with disability.' : '১জন প্রতিবন্ধী ব্যক্তির দক্ষতা প্রশিক্ষণে সহায়তা করে।' },
-    { amount: 5000, label: lang === 'en' ? 'Community Impact' : 'সামাজিক প্রভাব', impact: lang === 'en' ? 'Funds a community awareness workshop for 20+ people.' : '২০+ মানুষের জন্য একটি সামাজিক সচেতনতা কর্মশালার অর্থায়ন করে।' },
-  ];
+  const donate = content?.support?.donate;
 
-  const paymentMethods = [
-    { name: 'bKash', number: '01743214468', type: 'Personal' },
-    { name: 'Nagad', number: '01743214468', type: 'Personal' },
-    { name: 'Rocket', number: '01743214468', type: 'Personal' },
-  ];
+  const impactLevels = (donate?.impactLevels || []).map(level => ({
+    ...level,
+    label: level.label?.[lang] || level.label?.en || '',
+    impact: level.impact?.[lang] || level.impact?.en || ''
+  }));
+
+  const paymentMethods = (donate?.paymentMethods || []).map(method => ({
+    ...method,
+    type: method.type?.[lang] || method.type?.en || ''
+  }));
+
+  const allocation = (donate?.transparency?.allocation || []).map(item => ({
+    ...item,
+    label: item.label?.[lang] || item.label?.en || ''
+  }));
 
   const handleAmountClick = (val) => {
     setAmount(val);
@@ -37,8 +44,8 @@ export default function DonatePage() {
 
   return (
     <PageWrapper 
-      title={lang === 'en' ? 'Support Our Cause' : 'আমাদের পাশে দাঁড়ান'}
-      subtitle={lang === 'en' ? 'Your contribution empowers people with disabilities and builds a more inclusive society.' : 'আপনার অবদান প্রতিবন্ধী ব্যক্তিদের ক্ষমতায়ন করে এবং একটি আরও অন্তর্ভুক্তিমূলক সমাজ গঠন করে।'}
+      title={donate?.page?.title?.[lang] || (lang === 'en' ? 'Support Our Cause' : 'আমাদের পাশে দাঁড়ান')}
+      subtitle={donate?.page?.subtitle?.[lang] || (lang === 'en' ? 'Your contribution empowers people with disabilities and builds a more inclusive society.' : 'আপনার অবদান প্রতিবন্ধী ব্যক্তিদের ক্ষমতায়ন করে এবং একটি আরও অন্তর্ভুক্তিমূলক সমাজ গঠন করে।')}
     >
       <div className="space-y-24">
         {/* Donation Form & Impact Calculator */}
@@ -49,12 +56,14 @@ export default function DonatePage() {
                 <div className="w-12 h-12 bg-primary/10 text-primary rounded-2xl flex items-center justify-center">
                   <Heart size={24} />
                 </div>
-                <h2 className="text-3xl font-display font-bold text-text-main">{lang === 'en' ? 'Make a Donation' : 'অনুদান দিন'}</h2>
+                <h2 className="text-3xl font-display font-bold text-text-main">
+                  {donate?.form?.title?.[lang] || (lang === 'en' ? 'Make a Donation' : 'অনুদান দিন')}
+                </h2>
               </div>
               <p className="text-muted leading-relaxed">
-                {lang === 'en' 
+                {donate?.form?.description?.[lang] || (lang === 'en' 
                   ? 'Choose an amount to contribute. Every bit helps us reach our goals.' 
-                  : 'অবদানের জন্য একটি পরিমাণ চয়ন করুন। প্রতিটি ক্ষুদ্র অংশ আমাদের লক্ষ্য অর্জনে সহায়তা করে।'}
+                  : 'অবদানের জন্য একটি পরিমাণ চয়ন করুন। প্রতিটি ক্ষুদ্র অংশ আমাদের লক্ষ্য অর্জনে সহায়তা করে।')}
               </p>
             </div>
 
@@ -165,7 +174,9 @@ export default function DonatePage() {
                 ))}
               </div>
               <div className="p-4 bg-primary/5 rounded-2xl border border-primary/10 flex items-start gap-3">
-                <Info size={20} className="text-primary shrink-0 mt-1" />
+                <div className="shrink-0 mt-1">
+                  <Info size={20} className="text-primary" />
+                </div>
                 <p className="text-xs text-muted leading-relaxed">
                   {lang === 'en' 
                     ? 'Please mention "Donation" in the reference while sending money. For bank transfers, please contact us directly.' 
@@ -180,12 +191,12 @@ export default function DonatePage() {
         <section className="space-y-12">
           <div className="text-center max-w-3xl mx-auto space-y-4">
             <h2 className="text-3xl font-display font-bold text-text-main">
-              {lang === 'en' ? 'Financial Transparency' : 'আর্থিক স্বচ্ছতা'}
+              {donate?.transparency?.title?.[lang] || (lang === 'en' ? 'Financial Transparency' : 'আর্থিক স্বচ্ছতা')}
             </h2>
             <p className="text-muted leading-relaxed">
-              {lang === 'en' 
+              {donate?.transparency?.description?.[lang] || (lang === 'en' 
                 ? 'We believe in full accountability. Here is how we allocate our resources to create impact.' 
-                : 'আমরা পূর্ণ জবাবদিহিতায় বিশ্বাস করি। প্রভাব তৈরি করতে আমরা কীভাবে আমাদের সম্পদ বরাদ্দ করি তা এখানে দেওয়া হলো।'}
+                : 'আমরা পূর্ণ জবাবদিহিতায় বিশ্বাস করি। প্রভাব তৈরি করতে আমরা কীভাবে আমাদের সম্পদ বরাদ্দ করি তা এখানে দেওয়া হলো।')}
             </p>
           </div>
           <div className="bg-white p-8 lg:p-12 rounded-[4rem] shadow-xl border border-border">
@@ -201,12 +212,7 @@ export default function DonatePage() {
                   </h3>
                 </div>
                 <div className="space-y-6">
-                  {[
-                    { label: lang === 'en' ? 'Education & Schooling' : 'শিক্ষা ও স্কুলিং', value: 45, color: 'bg-primary' },
-                    { label: lang === 'en' ? 'Health & Medical Support' : 'স্বাস্থ্য ও চিকিৎসা সহায়তা', value: 25, color: 'bg-secondary' },
-                    { label: lang === 'en' ? 'Skill Training & Loans' : 'দক্ষতা প্রশিক্ষণ ও ঋণ', value: 20, color: 'bg-accent' },
-                    { label: lang === 'en' ? 'Administration & Operations' : 'প্রশাসন ও পরিচালনা', value: 10, color: 'bg-muted' },
-                  ].map((item, idx) => (
+                  {allocation.map((item, idx) => (
                     <div key={idx} className="space-y-2">
                       <div className="flex justify-between items-center text-sm font-bold">
                         <span className="text-text-main">{item.label}</span>
