@@ -572,10 +572,10 @@ const siteContent = {
           title: { en: 'Satarkul Diversity Disabled School', bn: 'সাতারকুল বৈচিত্র্য প্রতিবন্ধী বিদ্যালয়' },
           description: { en: 'In 2014, based on field surveys and discussions with parents of disabled children, it was found that disabled children are in the most vulnerable position in Bangladesh in terms of receiving education. Although the primary education enrollment rate is 97 percent, only 11 percent of children with disabilities receive any form of education. Due to lack of birth registration, many children with disabilities experience deprivation from the beginning of their lives. Due to lack of awareness and finances in very poor families, backward disabled children focus on begging instead of education. After reviewing this situation, Satarkul Development Organization for Disability took the initiative to establish a school for very poor disabled children who are deprived of educational opportunities.', bn: '২০১৪ সালে মাঠ পর্যায়ের জরিপ এবং প্রতিবন্ধী শিশুদের অভিভাবকদের সাথে আলোচনার ভিত্তিতে দেখা যায় যে বাংলাদেশে প্রতিবন্ধী শিশুরা শিক্ষা গ্রহণের ক্ষেত্রে সবচেয়ে দুর্বল অবস্থানে রয়েছে। প্রাথমিক শিক্ষায় ভর্তির হার ৯৭ শতাংশ হলেও মাত্র ১১ শতাংশ প্রতিবন্ধী শিশু কোনো প্রকার শিক্ষা গ্রহণ করে। জন্ম নিবন্ধনের অভাবে অনেক প্রতিবন্ধী শিশু তাদের জীবনের শুরু থেকেই বঞ্চনার শিকার হয়। অত্যন্ত দরিদ্র পরিবারে সচেতনতার অভাব এবং অর্থের অভাবে পিছিয়ে পড়া প্রতিবন্ধী শিশুরা শিক্ষার পরিবর্তে ভিক্ষাবৃত্তির দিকে ঝুঁকে পড়ে। এই পরিস্থিতি পর্যালোচনা করে সাতারকুল প্রতিবন্ধী উন্নয়ন সংস্থা শিক্ষার সুযোগ থেকে বঞ্চিত অত্যন্ত দরিদ্র প্রতিবন্ধী শিশুদের জন্য একটি বিদ্যালয় প্রতিষ্ঠার উদ্যোগ গ্রহণ করে।' },
           classes: [
-            { title: { en: 'Play Group', bn: 'প্লে গ্রুপ' }, icon: 'Gamepad2' },
-            { title: { en: 'Nursery', bn: 'নার্সারি' }, icon: 'Baby' },
-            { title: { en: 'Class One', bn: 'প্রথম শ্রেণী' }, icon: 'BookOpen' },
-            { title: { en: 'Class Two', bn: 'দ্বিতীয় শ্রেণী' }, icon: 'Pencil' },
+            { title: { en: 'Mother and Child Class', bn: 'মা ও শিশু শ্রেণী' }, icon: 'Heart' },
+            { title: { en: 'Children Class', bn: 'শিশু শ্রেণী' }, icon: 'Baby' },
+            { title: { en: 'Special Education Class', bn: 'বিশেষ শিক্ষা শ্রেণী' }, icon: 'Accessibility' },
+            { title: { en: 'Vocational Class', bn: 'বৃত্তিমূলক শ্রেণী' }, icon: 'Wrench' },
           ]
         },
         curriculum: {
