@@ -1,14 +1,15 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../context/LanguageContext';
+import { useContent } from '../../context/ContentContext';
 import PageWrapper from '../../components/layout/PageWrapper';
 import { motion } from 'motion/react';
 import * as Icons from 'lucide-react';
-import { culturalActivities } from '../../data/culturalActivitiesData';
 
 export default function CulturalActivitiesPage() {
-  const { t } = useTranslation();
   const { lang } = useLanguage();
+  const { content } = useContent();
+
+  const cultural = content?.activities?.cultural;
 
   const getLocalized = (obj) => {
     if (!obj) return '';
@@ -17,28 +18,26 @@ export default function CulturalActivitiesPage() {
 
   return (
     <PageWrapper 
-      title={t('nav.cultural')}
-      subtitle={lang === 'en' ? 'Fostering creativity and expression through cultural programs and events.' : 'সাংস্কৃতিক কর্মসূচি এবং অনুষ্ঠানের মাধ্যমে সৃজনশীলতা এবং অভিব্যক্তি বৃদ্ধি করা।'}
+      title={getLocalized(cultural?.title)}
+      subtitle={getLocalized(cultural?.subtitle)}
     >
       <div className="space-y-20">
         {/* Intro Section */}
         <section className="max-w-4xl mx-auto text-center space-y-6">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/10 text-secondary rounded-full font-bold text-sm uppercase tracking-widest">
-            <Icons.Music size={18} /> {lang === 'en' ? 'Cultural Expression' : 'সাংস্কৃতিক অভিব্যক্তি'}
+            <Icons.Music size={18} /> {getLocalized(cultural?.intro?.tag)}
           </div>
           <h2 className="text-4xl font-display font-bold text-text-main leading-tight">
-            {lang === 'en' ? 'Celebrating Talent & Diversity' : 'প্রতিভা ও বৈচিত্র্য উদযাপন'}
+            {getLocalized(cultural?.intro?.title)}
           </h2>
           <p className="text-muted text-lg leading-relaxed">
-            {lang === 'en' 
-              ? 'Our cultural activities provide a platform for persons with disabilities to showcase their talents, build confidence, and engage with the wider community through music, dance, and performance.' 
-              : 'আমাদের সাংস্কৃতিক কার্যক্রমগুলো প্রতিবন্ধী ব্যক্তিদের তাদের প্রতিভা প্রদর্শনের জন্য একটি প্ল্যাটফর্ম প্রদান করে, যা আত্মবিশ্বাস তৈরি করে এবং সঙ্গীত, নৃত্য ও অভিনয়ের মাধ্যমে বৃহত্তর সম্প্রদায়ের সাথে সম্পৃক্ত হতে সাহায্য করে।'}
+            {getLocalized(cultural?.intro?.description)}
           </p>
         </section>
 
         {/* Cultural Items Grid */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {culturalActivities.map((activity, idx) => {
+          {(cultural?.activities || []).map((activity, idx) => {
             const IconComponent = Icons[activity.icon] || Icons.Palette;
             return (
               <motion.div
@@ -64,7 +63,7 @@ export default function CulturalActivitiesPage() {
                       {getLocalized(activity.title)}
                     </h3>
                     <p className="text-muted leading-relaxed">
-                      {getLocalized(activity.desc)}
+                      {getLocalized(activity.description)}
                     </p>
                   </div>
 
@@ -104,7 +103,7 @@ export default function CulturalActivitiesPage() {
         <section className="space-y-12">
           <div className="text-center max-w-3xl mx-auto space-y-4">
             <h2 className="text-3xl lg:text-4xl font-display font-bold text-text-main leading-tight">
-              {lang === 'en' ? 'Cultural Highlights' : 'সাংস্কৃতিক হাইলাইটস'}
+              {getLocalized(cultural?.galleryTitle)}
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -124,16 +123,14 @@ export default function CulturalActivitiesPage() {
         <section className="bg-secondary p-12 lg:p-20 rounded-[4rem] text-white text-center space-y-8 relative overflow-hidden">
           <div className="relative z-10 max-w-3xl mx-auto space-y-6">
             <h2 className="text-4xl font-display font-bold leading-tight">
-              {lang === 'en' ? 'Support Our Cultural Programs' : 'আমাদের সাংস্কৃতিক কর্মসূচিতে সহায়তা করুন'}
+              {getLocalized(cultural?.ctaTitle)}
             </h2>
             <p className="text-white/80 text-lg">
-              {lang === 'en' 
-                ? 'Help us continue these important traditions. Your support provides food, cultural materials, and a sense of belonging for our students.' 
-                : 'এই গুরুত্বপূর্ণ ঐতিহ্যগুলো অব্যাহত রাখতে আমাদের সাহায্য করুন। আপনার সমর্থন আমাদের শিক্ষার্থীদের জন্য খাবার, সাংস্কৃতিক উপকরণ এবং আপনত্বের অনুভূতি প্রদান করে।'}
+              {getLocalized(cultural?.ctaDescription)}
             </p>
             <div className="pt-4">
               <button className="px-12 py-6 bg-white text-secondary rounded-3xl font-bold text-xl hover:bg-surface-alt transition-all shadow-2xl">
-                {lang === 'en' ? 'Donate for Events' : 'অনুষ্ঠানের জন্য অনুদান দিন'}
+                {getLocalized(cultural?.ctaButton)}
               </button>
             </div>
           </div>

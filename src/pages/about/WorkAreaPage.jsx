@@ -1,44 +1,33 @@
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import { useContent } from '../../context/ContentContext';
 import PageWrapper from '../../components/layout/PageWrapper';
 import { motion } from 'motion/react';
-import { MapPin, Users, Globe, Navigation, CheckCircle2, ArrowRight } from 'lucide-react';
+import * as Icons from 'lucide-react';
 import WorkAreaGrid from '../../components/infographics/WorkAreaGrid';
 
 export default function WorkAreaPage() {
   const { lang } = useLanguage();
+  const { content } = useContent();
 
-  const stats = [
-    { 
-      label: lang === 'en' ? 'Wards Covered' : 'ওয়ার্ড সমূহ', 
-      value: '11', 
-      icon: MapPin,
-      color: 'text-primary',
-      bg: 'bg-primary/10',
-      details: '20, 21, 22, 23, 24, 37, 38, 39, 40, 41, 42'
-    },
-    { 
-      label: lang === 'en' ? 'Persons Served' : 'সেবাপ্রাপ্ত ব্যক্তি', 
-      value: '690+', 
-      icon: Users,
-      color: 'text-secondary',
-      bg: 'bg-secondary/10',
-      details: lang === 'en' ? 'Empowering 690+ persons with disabilities.' : '৬৯০+ প্রতিবন্ধী ব্যক্তিকে ক্ষমতায়ন করছি।'
-    },
-    { 
-      label: lang === 'en' ? 'Active Thanas' : 'সক্রিয় থানা', 
-      value: '07', 
-      icon: Globe,
-      color: 'text-accent',
-      bg: 'bg-accent/10',
-      details: lang === 'en' ? 'Badda, Bhatara, Rampura, Khilgaon, Tejgaon, Mirpur, Dokkhinkhan.' : 'বাড্ডা, ভাটারা, রামপুরা, খিলগাঁও, তেজগাঁও, মিরপুর, দক্ষিণখান।'
-    },
-  ];
+  const workArea = content?.about?.workArea;
+
+  const stats = (workArea?.stats || []).map(stat => ({
+    ...stat,
+    label: stat.label?.[lang] || stat.label?.en || '',
+    details: typeof stat.details === 'object' ? (stat.details?.[lang] || stat.details?.en || '') : stat.details,
+    icon: Icons[stat.icon] || Icons.MapPin
+  }));
+
+  const locationFocusList = (workArea?.locationFocus?.list || []).map(item => ({
+    en: item.en,
+    bn: item.bn
+  }));
 
   return (
     <PageWrapper 
-      title={lang === 'en' ? 'Our Work Area' : 'আমাদের কর্ম এলাকা'}
-      subtitle={lang === 'en' ? 'Expanding our reach to create an inclusive Dhaka.' : 'একটি অন্তর্ভুক্তিমূলক ঢাকা গড়ার জন্য আমাদের পরিধি বিস্তার করছি।'}
+      title={workArea?.page?.title?.[lang] || (lang === 'en' ? 'Our Work Area' : 'আমাদের কর্ম এলাকা')}
+      subtitle={workArea?.page?.subtitle?.[lang] || (lang === 'en' ? 'Expanding our reach to create an inclusive Dhaka.' : 'একটি অন্তর্ভুক্তিমূলক ঢাকা গড়ার জন্য আমাদের পরিধি বিস্তার করছি।')}
     >
       <div className="space-y-32">
         {/* Stats Grid - High Impact */}
@@ -74,26 +63,21 @@ export default function WorkAreaPage() {
             className="space-y-6"
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/10 text-secondary rounded-full font-bold text-sm uppercase tracking-widest">
-              <Navigation size={18} /> {lang === 'en' ? 'Location Focus' : 'অবস্থান ফোকাস'}
+              <Icons.Navigation size={18} /> {workArea?.locationFocus?.tag?.[lang] || (lang === 'en' ? 'Location Focus' : 'অবস্থান ফোকাস')}
             </div>
             <h2 className="text-5xl lg:text-6xl font-display font-bold text-text-main leading-tight">
-              {lang === 'en' ? 'Strategic Reach Across Dhaka' : 'ঢাকা জুড়ে কৌশলগত বিস্তার'}
+              {workArea?.locationFocus?.title?.[lang] || (lang === 'en' ? 'Strategic Reach Across Dhaka' : 'ঢাকা জুড়ে কৌশলগত বিস্তার')}
             </h2>
             <p className="text-muted text-xl leading-relaxed">
-              {lang === 'en' 
+              {workArea?.locationFocus?.description?.[lang] || (lang === 'en' 
                 ? 'We are actively working in several wards of Badda Thana and surrounding areas to support the local disabled community through grassroots initiatives.' 
-                : 'আমরা তৃণমূল পর্যায়ের উদ্যোগের মাধ্যমে স্থানীয় প্রতিবন্ধী সম্প্রদায়কে সহায়তা করার জন্য বাড্ডা থানা এবং পার্শ্ববর্তী এলাকার বেশ কয়েকটি ওয়ার্ডে সক্রিয়ভাবে কাজ করছি।'}
+                : 'আমরা তৃণমূল পর্যায়ের উদ্যোগের মাধ্যমে স্থানীয় প্রতিবন্ধী সম্প্রদায়কে সহায়তা করার জন্য বাড্ডা থানা এবং পার্শ্ববর্তী এলাকার বেশ কয়েকটি ওয়ার্ডে সক্রিয়ভাবে কাজ করছি।')}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {[
-                { en: 'Badda Thana', bn: 'বাড্ডা থানা' },
-                { en: 'Bhatara Thana', bn: 'ভাটারা থানা' },
-                { en: 'Rampura Thana', bn: 'রামপুরা থানা' },
-                { en: 'Khilgaon Thana', bn: 'খিলগাঁও থানা' },
-              ].map((item, idx) => (
+              {locationFocusList.map((item, idx) => (
                 <div key={idx} className="flex items-center gap-4 p-4 bg-surface-alt rounded-2xl border border-border group hover:border-primary transition-colors">
                   <div className="w-8 h-8 bg-primary/10 text-primary rounded-full flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
-                    <CheckCircle2 size={18} />
+                    <Icons.CheckCircle2 size={18} />
                   </div>
                   <span className="font-bold text-text-main">{lang === 'en' ? item.en : item.bn}</span>
                 </div>
@@ -125,7 +109,7 @@ export default function WorkAreaPage() {
           </p>
           <div className="flex justify-center relative z-10">
             <button className="flex items-center gap-3 px-10 py-5 bg-primary text-white rounded-full font-bold text-lg shadow-2xl hover:scale-105 transition-all">
-              {lang === 'en' ? 'Get Directions' : 'দিকনির্দেশ পান'} <ArrowRight size={24} />
+              {lang === 'en' ? 'Get Directions' : 'দিকনির্দেশ পান'} <Icons.ArrowRight size={24} />
             </button>
           </div>
         </section>

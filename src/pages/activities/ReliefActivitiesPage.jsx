@@ -1,14 +1,15 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../context/LanguageContext';
+import { useContent } from '../../context/ContentContext';
 import PageWrapper from '../../components/layout/PageWrapper';
 import { motion } from 'motion/react';
 import * as Icons from 'lucide-react';
-import { reliefActivities } from '../../data/reliefActivitiesData';
 
 export default function ReliefActivitiesPage() {
-  const { t } = useTranslation();
   const { lang } = useLanguage();
+  const { content } = useContent();
+
+  const relief = content?.activities?.relief;
 
   const getLocalized = (obj) => {
     if (!obj) return '';
@@ -17,28 +18,26 @@ export default function ReliefActivitiesPage() {
 
   return (
     <PageWrapper 
-      title={t('nav.relief')}
-      subtitle={lang === 'en' ? 'Providing essential support and relief items to those in need.' : 'প্রয়োজনে মানুষের মাঝে প্রয়োজনীয় সহায়তা এবং ত্রাণ সামগ্রী প্রদান।'}
+      title={getLocalized(relief?.title)}
+      subtitle={getLocalized(relief?.subtitle)}
     >
       <div className="space-y-20">
         {/* Intro Section */}
         <section className="max-w-4xl mx-auto text-center space-y-6">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full font-bold text-sm uppercase tracking-widest">
-            <Icons.HeartHandshake size={18} /> {lang === 'en' ? 'Community Support' : 'সম্প্রদায় সহায়তা'}
+            <Icons.HeartHandshake size={18} /> {getLocalized(relief?.intro?.tag)}
           </div>
           <h2 className="text-4xl font-display font-bold text-text-main leading-tight">
-            {lang === 'en' ? 'Reaching Out with Compassion' : 'সহমর্মিতার সাথে হাত বাড়িয়ে দেওয়া'}
+            {getLocalized(relief?.intro?.title)}
           </h2>
           <p className="text-muted text-lg leading-relaxed">
-            {lang === 'en' 
-              ? 'Our relief activities are focused on providing immediate assistance to persons with disabilities and their families during critical times, including winter and the holy month of Ramadan.' 
-              : 'আমাদের ত্রাণ কার্যক্রমগুলো শীতকাল এবং পবিত্র রমজান মাস সহ সংকটময় সময়ে প্রতিবন্ধী ব্যক্তি এবং তাদের পরিবারের সদস্যদের তাৎক্ষণিক সহায়তা প্রদানের দিকে মনোনিবেশ করে।'}
+            {getLocalized(relief?.intro?.description)}
           </p>
         </section>
 
         {/* Relief Items Grid */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {reliefActivities.map((activity, idx) => {
+          {(relief?.activities || []).map((activity, idx) => {
             const IconComponent = Icons[activity.icon] || Icons.Package;
             return (
               <motion.div
@@ -64,7 +63,7 @@ export default function ReliefActivitiesPage() {
                       {getLocalized(activity.title)}
                     </h3>
                     <p className="text-muted leading-relaxed">
-                      {getLocalized(activity.desc)}
+                      {getLocalized(activity.description)}
                     </p>
                   </div>
 
@@ -84,7 +83,7 @@ export default function ReliefActivitiesPage() {
                       )}
                       {activity.stats.target && (
                         <div className="p-4 bg-surface-alt rounded-2xl border border-border col-span-2">
-                          <p className="text-sm font-bold text-text-main">{activity.stats.target}</p>
+                          <p className="text-sm font-bold text-text-main">{getLocalized(activity.stats.target)}</p>
                           <p className="text-xs font-bold text-muted uppercase tracking-widest">{lang === 'en' ? 'Target Group' : 'লক্ষ্যভুক্ত গ্রুপ'}</p>
                         </div>
                       )}
@@ -111,27 +110,23 @@ export default function ReliefActivitiesPage() {
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <h2 className="text-4xl font-display font-bold leading-tight">
-                {lang === 'en' ? 'Your Support Makes a Difference' : 'আপনার সমর্থন পরিবর্তন আনে'}
+                {getLocalized(relief?.impact?.title)}
               </h2>
               <p className="text-white/80 text-lg leading-relaxed">
-                {lang === 'en' 
-                  ? 'Every donation helps us reach more families in need. Together, we can ensure that no one is left behind during difficult times.' 
-                  : 'প্রতিটি অনুদান আমাদের প্রয়োজনে আরও বেশি পরিবারের কাছে পৌঁছাতে সাহায্য করে। একসাথে, আমরা নিশ্চিত করতে পারি যে কঠিন সময়ে কেউ পিছিয়ে থাকবে না।'}
+                {getLocalized(relief?.impact?.description)}
               </p>
               <div className="flex flex-wrap gap-6">
-                <div className="space-y-1">
-                  <p className="text-4xl font-display font-bold">1,000+</p>
-                  <p className="text-sm font-bold text-white/60 uppercase tracking-widest">{lang === 'en' ? 'Lives Impacted' : 'প্রভাবিত জীবন'}</p>
-                </div>
-                <div className="space-y-1">
-                  <p className="text-4xl font-display font-bold">50+</p>
-                  <p className="text-sm font-bold text-white/60 uppercase tracking-widest">{lang === 'en' ? 'Partners' : 'অংশীদার'}</p>
-                </div>
+                {(relief?.impact?.stats || []).map((stat, sIdx) => (
+                  <div key={sIdx} className="space-y-1">
+                    <p className="text-4xl font-display font-bold">{stat.value}</p>
+                    <p className="text-sm font-bold text-white/60 uppercase tracking-widest">{getLocalized(stat.label)}</p>
+                  </div>
+                ))}
               </div>
             </div>
             <div className="flex justify-center lg:justify-end">
               <button className="px-12 py-6 bg-white text-primary rounded-3xl font-bold text-xl hover:bg-surface-alt transition-all shadow-2xl flex items-center gap-3">
-                {lang === 'en' ? 'Donate Now' : 'এখনই অনুদান দিন'} <Icons.ArrowRight size={24} />
+                {getLocalized(relief?.impact?.cta)} <Icons.ArrowRight size={24} />
               </button>
             </div>
           </div>

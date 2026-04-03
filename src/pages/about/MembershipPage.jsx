@@ -1,90 +1,41 @@
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import { useContent } from '../../context/ContentContext';
 import PageWrapper from '../../components/layout/PageWrapper';
 import { motion } from 'motion/react';
-import { UserPlus, CheckCircle2, Heart, Users, Star, ArrowRight, ClipboardCheck, UserCheck, User, Baby } from 'lucide-react';
+import * as Icons from 'lucide-react';
 import MemberCompositionChart from '../../components/infographics/MemberCompositionChart';
 
 export default function MembershipPage() {
   const { lang } = useLanguage();
+  const { content } = useContent();
 
-  const stats = [
-    { 
-      label: lang === 'en' ? 'Total Members' : 'মোট সদস্য', 
-      value: '705', 
-      icon: Users,
-      color: 'text-primary',
-      bg: 'bg-primary/10'
-    },
-    { 
-      label: lang === 'en' ? 'Men' : 'পুরুষ', 
-      value: '291', 
-      icon: User,
-      color: 'text-secondary',
-      bg: 'bg-secondary/10'
-    },
-    { 
-      label: lang === 'en' ? 'Women' : 'নারী', 
-      value: '294', 
-      icon: User,
-      color: 'text-accent',
-      bg: 'bg-accent/10'
-    },
-    { 
-      label: lang === 'en' ? 'Children' : 'শিশু', 
-      value: '120', 
-      icon: Baby,
-      color: 'text-primary',
-      bg: 'bg-primary/10'
-    },
-  ];
+  const membership = content?.about?.membership;
 
-  const benefits = [
-    {
-      title: lang === 'en' ? 'Voice & Representation' : 'কণ্ঠস্বর এবং প্রতিনিধিত্ব',
-      desc: lang === 'en' ? 'Participate in decision-making processes and represent the disabled community.' : 'সিদ্ধান্ত গ্রহণ প্রক্রিয়ায় অংশগ্রহণ করুন এবং প্রতিবন্ধী সম্প্রদায়ের প্রতিনিধিত্ব করুন।',
-      icon: Users,
-      color: 'text-primary',
-      bg: 'bg-primary/10'
-    },
-    {
-      title: lang === 'en' ? 'Skill Development' : 'দক্ষতা বৃদ্ধি',
-      desc: lang === 'en' ? 'Access to exclusive training programs, workshops, and vocational courses.' : 'একচেটিয়া প্রশিক্ষণ কর্মসূচি, কর্মশালা এবং বৃত্তিমূলক কোর্সে প্রবেশাধিকার।',
-      icon: Star,
-      color: 'text-secondary',
-      bg: 'bg-secondary/10'
-    },
-    {
-      title: lang === 'en' ? 'Community Support' : 'সম্প্রদায় সহায়তা',
-      desc: lang === 'en' ? 'Join a network of peers and professionals dedicated to mutual empowerment.' : 'পারস্পরিক ক্ষমতায়নের জন্য নিবেদিত সমবয়সী এবং পেশাদারদের একটি নেটওয়ার্কে যোগ দিন।',
-      icon: Heart,
-      color: 'text-accent',
-      bg: 'bg-accent/10'
-    }
-  ];
+  const stats = (membership?.stats || []).map(stat => ({
+    ...stat,
+    label: stat.label?.[lang] || stat.label?.en || '',
+    icon: Icons[stat.icon] || Icons.Users
+  }));
 
-  const steps = [
-    {
-      title: lang === 'en' ? 'Eligibility Check' : 'যোগ্যতা যাচাই',
-      desc: lang === 'en' ? 'Ensure you meet the criteria for membership as a person with disability.' : 'প্রতিবন্ধী ব্যক্তি হিসেবে সদস্যপদ পাওয়ার মানদণ্ড পূরণ করছেন কিনা তা নিশ্চিত করুন।',
-      icon: ClipboardCheck
-    },
-    {
-      title: lang === 'en' ? 'Form Submission' : 'ফর্ম জমা',
-      desc: lang === 'en' ? 'Fill out the membership application form available at our office.' : 'আমাদের অফিসে উপলব্ধ সদস্যপদ আবেদনপত্র পূরণ করুন।',
-      icon: UserPlus
-    },
-    {
-      title: lang === 'en' ? 'Verification' : 'যাচাইকরণ',
-      desc: lang === 'en' ? 'Our committee will review and verify your application details.' : 'আমাদের কমিটি আপনার আবেদনের বিবরণ পর্যালোচনা এবং যাচাই করবে।',
-      icon: UserCheck
-    }
-  ];
+  const benefits = (membership?.benefits?.list || []).map(benefit => ({
+    ...benefit,
+    title: benefit.title?.[lang] || benefit.title?.en || '',
+    desc: benefit.desc?.[lang] || benefit.desc?.en || '',
+    icon: Icons[benefit.icon] || Icons.Star
+  }));
+
+  const steps = (membership?.steps?.list || []).map(step => ({
+    ...step,
+    title: step.title?.[lang] || step.title?.en || '',
+    desc: step.desc?.[lang] || step.desc?.en || '',
+    icon: Icons[step.icon] || Icons.ClipboardCheck
+  }));
 
   return (
     <PageWrapper 
-      title={lang === 'en' ? 'Join Our Community' : 'আমাদের সম্প্রদায়ে যোগ দিন'}
-      subtitle={lang === 'en' ? 'Become a member and contribute to a more inclusive society.' : 'সদস্য হন এবং একটি আরও অন্তর্ভুক্তিমূলক সমাজে অবদান রাখুন।'}
+      title={membership?.page?.title?.[lang] || (lang === 'en' ? 'Join Our Community' : 'আমাদের সম্প্রদায়ে যোগ দিন')}
+      subtitle={membership?.page?.subtitle?.[lang] || (lang === 'en' ? 'Become a member and contribute to a more inclusive society.' : 'সদস্য হন এবং একটি আরও অন্তর্ভুক্তিমূলক সমাজে অবদান রাখুন।')}
     >
       <div className="space-y-32">
         {/* Stats Grid - High Impact */}
@@ -131,7 +82,7 @@ export default function MembershipPage() {
               <div className="grid grid-cols-2 gap-8">
                 <div className="flex items-center gap-6">
                   <div className="w-12 h-12 bg-primary/10 text-primary rounded-2xl flex items-center justify-center shadow-sm">
-                    <Heart size={24} />
+                    <Icons.Heart size={24} />
                   </div>
                   <div>
                     <p className="text-sm font-bold text-muted uppercase tracking-widest">{lang === 'en' ? 'Boys' : 'ছেলে'}</p>
@@ -140,7 +91,7 @@ export default function MembershipPage() {
                 </div>
                 <div className="flex items-center gap-6">
                   <div className="w-12 h-12 bg-secondary/10 text-secondary rounded-2xl flex items-center justify-center shadow-sm">
-                    <Heart size={24} />
+                    <Icons.Heart size={24} />
                   </div>
                   <div>
                     <p className="text-sm font-bold text-muted uppercase tracking-widest">{lang === 'en' ? 'Girls' : 'মেয়ে'}</p>
@@ -166,8 +117,12 @@ export default function MembershipPage() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-primary via-transparent to-transparent" />
           </div>
           <div className="text-center max-w-3xl mx-auto space-y-4 relative z-10">
-            <h2 className="text-4xl lg:text-5xl font-display font-bold">{lang === 'en' ? 'Why Join Us?' : 'কেন আমাদের সাথে যোগ দেবেন?'}</h2>
-            <p className="text-white/60 text-lg">{lang === 'en' ? 'Unlock exclusive benefits and be part of a meaningful movement.' : 'একচেটিয়া সুবিধাগুলো আনলক করুন এবং একটি অর্থপূর্ণ আন্দোলনের অংশ হন।'}</p>
+            <h2 className="text-4xl lg:text-5xl font-display font-bold">
+              {membership?.benefits?.title?.[lang] || (lang === 'en' ? 'Why Join Us?' : 'কেন আমাদের সাথে যোগ দেবেন?')}
+            </h2>
+            <p className="text-white/60 text-lg">
+              {membership?.benefits?.subtitle?.[lang] || (lang === 'en' ? 'Unlock exclusive benefits and be part of a meaningful movement.' : 'একচেটিয়া সুবিধাগুলো আনলক করুন এবং একটি অর্থপূর্ণ আন্দোলনের অংশ হন।')}
+            </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
             {benefits.map((benefit, idx) => (
@@ -186,12 +141,10 @@ export default function MembershipPage() {
         <section className="space-y-16">
           <div className="text-center max-w-3xl mx-auto space-y-4">
             <h2 className="text-4xl lg:text-5xl font-display font-bold text-text-main">
-              {lang === 'en' ? 'How to Become a Member' : 'কিভাবে সদস্য হবেন'}
+              {membership?.steps?.title?.[lang] || (lang === 'en' ? 'How to Become a Member' : 'কিভাবে সদস্য হবেন')}
             </h2>
             <p className="text-muted text-lg">
-              {lang === 'en' 
-                ? 'Follow these simple steps to join our growing family of change-makers.' 
-                : 'পরিবর্তন-প্রস্তুতকারীদের আমাদের ক্রমবর্ধমান পরিবারে যোগ দিতে এই সহজ পদক্ষেপগুলো অনুসরণ করুন।'}
+              {membership?.steps?.subtitle?.[lang] || (lang === 'en' ? 'Follow these simple steps to join our growing family of change-makers.' : 'পরিবর্তন-প্রস্তুতকারীদের আমাদের ক্রমবর্ধমান পরিবারে যোগ দিতে এই সহজ পদক্ষেপগুলো অনুসরণ করুন।')}
             </p>
           </div>
 
@@ -229,7 +182,7 @@ export default function MembershipPage() {
           </div>
           <div className="flex justify-center gap-4">
             <button className="flex items-center gap-3 px-10 py-5 bg-primary text-white rounded-full font-bold text-lg shadow-2xl hover:scale-105 transition-all">
-              {lang === 'en' ? 'Apply Now' : 'এখনই আবেদন করুন'} <ArrowRight size={24} />
+              {lang === 'en' ? 'Apply Now' : 'এখনই আবেদন করুন'} <Icons.ArrowRight size={24} />
             </button>
           </div>
         </section>

@@ -1,14 +1,15 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../context/LanguageContext';
+import { useContent } from '../../context/ContentContext';
 import PageWrapper from '../../components/layout/PageWrapper';
 import { motion } from 'motion/react';
 import * as Icons from 'lucide-react';
-import { committeeMeetings } from '../../data/committeeMeetingsData';
 
 export default function CommitteeMeetingsPage() {
-  const { t } = useTranslation();
   const { lang } = useLanguage();
+  const { content } = useContent();
+
+  const meetings = content?.activities?.meetings;
 
   const getLocalized = (obj) => {
     if (!obj) return '';
@@ -17,8 +18,8 @@ export default function CommitteeMeetingsPage() {
 
   return (
     <PageWrapper 
-      title={lang === 'en' ? 'Committee Meetings' : 'কমিটির সভা'}
-      subtitle={lang === 'en' ? 'Ensuring transparency, democratic leadership, and organizational growth through regular meetings.' : 'নিয়মিত সভার মাধ্যমে স্বচ্ছতা, গণতান্ত্রিক নেতৃত্ব এবং সাংগঠনিক বৃদ্ধি নিশ্চিত করা।'}
+      title={getLocalized(meetings?.title)}
+      subtitle={getLocalized(meetings?.subtitle)}
     >
       <div className="space-y-24">
         {/* Intro Section */}
@@ -26,16 +27,14 @@ export default function CommitteeMeetingsPage() {
           <div className="space-y-6">
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-surface-alt text-primary rounded-full font-bold text-sm uppercase tracking-widest">
-                <Icons.Gavel size={18} /> {lang === 'en' ? 'Governance' : 'সুশাসন'}
+                <Icons.Gavel size={18} /> {getLocalized(meetings?.intro?.tag)}
               </div>
               <h2 className="text-4xl lg:text-5xl font-display font-bold text-text-main leading-tight">
-                {lang === 'en' ? 'Democratic Decision Making' : 'গণতান্ত্রিক সিদ্ধান্ত গ্রহণ'}
+                {getLocalized(meetings?.intro?.title)}
               </h2>
             </div>
             <p className="text-muted leading-relaxed text-lg">
-              {lang === 'en' 
-                ? 'At SPUS, our governance is built on the principles of transparency and collective decision-making. Regular committee meetings and annual general assemblies ensure that every voice is heard and that our initiatives align with our core mission.' 
-                : 'এসপিইউএস-এ আমাদের সুশাসন স্বচ্ছতা এবং সম্মিলিত সিদ্ধান্ত গ্রহণের নীতির উপর ভিত্তি করে নির্মিত। নিয়মিত কমিটির সভা এবং বার্ষিক সাধারণ সভা নিশ্চিত করে যে প্রতিটি কণ্ঠস্বর শোনা হয় এবং আমাদের উদ্যোগগুলো আমাদের মূল লক্ষ্যের সাথে সামঞ্জস্যপূর্ণ থাকে।'}
+              {getLocalized(meetings?.intro?.description)}
             </p>
           </div>
           <div className="relative">
@@ -53,12 +52,12 @@ export default function CommitteeMeetingsPage() {
                   <Icons.CheckCircle size={24} />
                 </div>
                 <div>
-                  <p className="text-text-main font-bold">{lang === 'en' ? 'Transparency' : 'স্বচ্ছতা'}</p>
-                  <p className="text-xs text-muted">{lang === 'en' ? 'Full Accountability' : 'পূর্ণ জবাবদিহিতা'}</p>
+                  <p className="text-text-main font-bold">{getLocalized(meetings?.intro?.transparency)}</p>
+                  <p className="text-xs text-muted">{getLocalized(meetings?.intro?.accountability)}</p>
                 </div>
               </div>
               <p className="text-sm text-muted italic">
-                {lang === 'en' ? '"Decisions made collectively for the betterment of the community."' : '"সমাজের মঙ্গলের জন্য সম্মিলিতভাবে নেওয়া সিদ্ধান্ত।"'}
+                {getLocalized(meetings?.intro?.quote)}
               </p>
             </div>
           </div>
@@ -73,7 +72,7 @@ export default function CommitteeMeetingsPage() {
           </div>
           
           <div className="space-y-12">
-            {committeeMeetings.map((meeting, idx) => {
+            {(meetings?.list || []).map((meeting, idx) => {
               const MeetingIcon = Icons[meeting.icon] || Icons.HelpCircle;
               return (
                 <motion.div 
@@ -101,7 +100,7 @@ export default function CommitteeMeetingsPage() {
                           </h3>
                         </div>
                         <p className="text-muted text-lg leading-relaxed">
-                          {getLocalized(meeting.desc)}
+                          {getLocalized(meeting.description)}
                         </p>
                       </div>
 
@@ -159,15 +158,13 @@ export default function CommitteeMeetingsPage() {
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <h2 className="text-4xl font-display font-bold leading-tight">
-                {lang === 'en' ? 'Our Commitment to Transparency' : 'স্বচ্ছতার প্রতি আমাদের প্রতিশ্রুতি'}
+                {getLocalized(meetings?.cta?.title)}
               </h2>
               <p className="text-white/80 text-lg leading-relaxed">
-                {lang === 'en' 
-                  ? 'We maintain detailed records of all our meetings and decisions. If you are a member or a donor and wish to see our detailed reports, please feel free to contact us.' 
-                  : 'আমরা আমাদের সমস্ত সভা এবং সিদ্ধান্তের বিস্তারিত রেকর্ড বজায় রাখি। আপনি যদি একজন সদস্য বা দাতা হন এবং আমাদের বিস্তারিত প্রতিবেদন দেখতে চান, তবে অনুগ্রহ করে আমাদের সাথে যোগাযোগ করুন।'}
+                {getLocalized(meetings?.cta?.description)}
               </p>
               <button className="px-10 py-5 bg-white text-primary rounded-2xl font-bold text-lg shadow-xl hover:bg-surface-alt transition-all">
-                {lang === 'en' ? 'Contact for Reports' : 'প্রতিবেদনের জন্য যোগাযোগ'}
+                {getLocalized(meetings?.cta?.button)}
               </button>
             </div>
             <div className="relative hidden lg:block">

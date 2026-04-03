@@ -1,14 +1,15 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../context/LanguageContext';
+import { useContent } from '../../context/ContentContext';
 import PageWrapper from '../../components/layout/PageWrapper';
 import { motion } from 'motion/react';
 import * as Icons from 'lucide-react';
-import { specialDaysData } from '../../data/specialDaysData';
 
 export default function SpecialDaysPage() {
-  const { t } = useTranslation();
   const { lang } = useLanguage();
+  const { content } = useContent();
+
+  const specialDays = content?.activities?.specialDays;
 
   const getLocalized = (obj) => {
     if (!obj) return '';
@@ -17,28 +18,26 @@ export default function SpecialDaysPage() {
 
   return (
     <PageWrapper 
-      title={lang === 'en' ? 'Special Day Observances' : 'বিভিন্ন দিবস পালন'}
-      subtitle={lang === 'en' ? 'Commemorating significant national and international days with our community.' : 'আমাদের সম্প্রদায়ের সাথে গুরুত্বপূর্ণ জাতীয় ও আন্তর্জাতিক দিবসসমূহ উদযাপন।'}
+      title={getLocalized(specialDays?.title)}
+      subtitle={getLocalized(specialDays?.subtitle)}
     >
       <div className="space-y-20">
         {/* Intro Section */}
         <section className="max-w-4xl mx-auto text-center space-y-6">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full font-bold text-sm uppercase tracking-widest">
-            <Icons.CalendarCheck size={18} /> {lang === 'en' ? 'Annual Calendar' : 'বার্ষিক ক্যালেন্ডার'}
+            <Icons.CalendarCheck size={18} /> {getLocalized(specialDays?.intro?.tag)}
           </div>
           <h2 className="text-4xl font-display font-bold text-text-main leading-tight">
-            {lang === 'en' ? 'Celebrating Our Heritage & Rights' : 'আমাদের ঐতিহ্য ও অধিকার উদযাপন'}
+            {getLocalized(specialDays?.intro?.title)}
           </h2>
           <p className="text-muted text-lg leading-relaxed">
-            {lang === 'en' 
-              ? 'At SPUS, we believe in the power of collective remembrance and celebration. We observe various national and international days to raise awareness, foster community spirit, and educate our students about history and rights.' 
-              : 'এসপিইউএস-এ আমরা সম্মিলিত স্মরণ এবং উদযাপনের শক্তিতে বিশ্বাস করি। আমরা সচেতনতা বৃদ্ধি, সম্প্রদায়ের চেতনা বৃদ্ধি এবং আমাদের শিক্ষার্থীদের ইতিহাস ও অধিকার সম্পর্কে শিক্ষিত করার জন্য বিভিন্ন জাতীয় ও আন্তর্জাতিক দিবস পালন করি।'}
+            {getLocalized(specialDays?.intro?.description)}
           </p>
         </section>
 
         {/* Timeline/Grid Section */}
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {specialDaysData.map((day, idx) => {
+          {(specialDays?.days || []).map((day, idx) => {
             const IconComponent = Icons[day.icon] || Icons.Star;
             return (
               <motion.div
@@ -99,22 +98,18 @@ export default function SpecialDaysPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <h2 className="text-3xl lg:text-4xl font-display font-bold text-text-main leading-tight">
-                {lang === 'en' ? 'Impact of Our Observances' : 'আমাদের দিবস পালনের প্রভাব'}
+                {getLocalized(specialDays?.impact?.title)}
               </h2>
               <p className="text-muted leading-relaxed">
-                {lang === 'en' 
-                  ? 'Through these events, we have reached over 1,000 community members annually, providing a platform for expression, learning, and solidarity.' 
-                  : 'এই অনুষ্ঠানগুলোর মাধ্যমে আমরা বার্ষিক ১,০০০-এরও বেশি সম্প্রদায়ের মানুষের কাছে পৌঁছেছি, যা প্রকাশ, শিক্ষা এবং সংহতির জন্য একটি প্ল্যাটফর্ম প্রদান করে।'}
+                {getLocalized(specialDays?.impact?.description)}
               </p>
               <div className="grid grid-cols-2 gap-8">
-                <div className="space-y-2">
-                  <p className="text-4xl font-display font-bold text-primary">10+</p>
-                  <p className="text-sm font-bold text-text-main uppercase tracking-widest">{lang === 'en' ? 'Days Observed' : 'পালিত দিবস'}</p>
-                </div>
-                <div className="space-y-2">
-                  <p className="text-4xl font-display font-bold text-secondary">500+</p>
-                  <p className="text-sm font-bold text-text-main uppercase tracking-widest">{lang === 'en' ? 'Students Engaged' : 'অংশগ্রহণকারী শিক্ষার্থী'}</p>
-                </div>
+                {(specialDays?.impact?.stats || []).map((stat, sIdx) => (
+                  <div key={sIdx} className="space-y-2">
+                    <p className={`text-4xl font-display font-bold ${sIdx === 0 ? 'text-primary' : 'text-secondary'}`}>{stat.value}</p>
+                    <p className="text-sm font-bold text-text-main uppercase tracking-widest">{getLocalized(stat.label)}</p>
+                  </div>
+                ))}
               </div>
             </div>
             <div className="relative">
@@ -144,16 +139,14 @@ export default function SpecialDaysPage() {
         <section className="bg-secondary p-12 lg:p-20 rounded-[4rem] text-white text-center space-y-8 relative overflow-hidden">
           <div className="relative z-10 max-w-3xl mx-auto space-y-6">
             <h2 className="text-4xl font-display font-bold leading-tight">
-              {lang === 'en' ? 'Support Our Cultural Programs' : 'আমাদের সাংস্কৃতিক কর্মসূচিতে সহায়তা করুন'}
+              {getLocalized(specialDays?.cta?.title)}
             </h2>
             <p className="text-white/80 text-lg">
-              {lang === 'en' 
-                ? 'Help us continue these important traditions. Your support provides food, cultural materials, and a sense of belonging for our students.' 
-                : 'এই গুরুত্বপূর্ণ ঐতিহ্যগুলো অব্যাহত রাখতে আমাদের সাহায্য করুন। আপনার সমর্থন আমাদের শিক্ষার্থীদের জন্য খাবার, সাংস্কৃতিক উপকরণ এবং আপনত্বের অনুভূতি প্রদান করে।'}
+              {getLocalized(specialDays?.cta?.description)}
             </p>
             <div className="pt-4">
               <button className="px-12 py-6 bg-white text-secondary rounded-3xl font-bold text-xl hover:bg-surface-alt transition-all shadow-2xl">
-                {lang === 'en' ? 'Donate for Events' : 'অনুষ্ঠানের জন্য অনুদান দিন'}
+                {getLocalized(specialDays?.cta?.button)}
               </button>
             </div>
           </div>

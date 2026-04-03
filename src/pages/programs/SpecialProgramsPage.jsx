@@ -1,24 +1,29 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../context/LanguageContext';
+import { useContent } from '../../context/ContentContext';
 import PageWrapper from '../../components/layout/PageWrapper';
 import { motion } from 'motion/react';
 import * as Icons from 'lucide-react';
-import { specialPrograms } from '../../data/specialProgramsData';
 
 export default function SpecialProgramsPage() {
-  const { t } = useTranslation();
   const { lang } = useLanguage();
+  const { content } = useContent();
 
-  const getLocalized = (obj) => {
-    if (!obj) return '';
-    return obj[lang] || obj['en'] || '';
-  };
+  const specialProgramsData = content?.programs?.details?.['special-programs'];
+
+  const programs = (specialProgramsData?.programs || []).map(program => ({
+    ...program,
+    title: program.title?.[lang] || program.title?.en || '',
+    desc: program.desc?.[lang] || program.desc?.en || '',
+    timeline: program.timeline?.[lang] || program.timeline?.en || '',
+    icon: Icons[program.icon] || Icons.HelpCircle,
+    features: (program.features || []).map(f => f[lang] || f.en || '')
+  }));
 
   return (
     <PageWrapper 
-      title={lang === 'en' ? 'Special Programs' : 'বিশেষ কার্যক্রম'}
-      subtitle={lang === 'en' ? 'Innovative initiatives designed for specialized care and development.' : 'বিশেষায়িত যত্ন এবং উন্নয়নের জন্য ডিজাইন করা উদ্ভাবনী উদ্যোগ।'}
+      title={specialProgramsData?.title?.[lang]}
+      subtitle={specialProgramsData?.subtitle?.[lang]}
     >
       <div className="space-y-24">
         {/* Hero Section */}
@@ -27,16 +32,14 @@ export default function SpecialProgramsPage() {
             <div className="space-y-6">
               <div className="space-y-4">
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-white text-primary rounded-full font-bold text-sm uppercase tracking-widest shadow-sm">
-                  <Icons.Sparkles size={18} /> {lang === 'en' ? 'Specialized Care' : 'বিশেষায়িত যত্ন'}
+                  <Icons.Sparkles size={18} /> {specialProgramsData?.hero?.tag?.[lang]}
                 </div>
                 <h2 className="text-4xl lg:text-5xl font-display font-bold text-text-main leading-tight">
-                  {lang === 'en' ? 'Dedicated Support for Unique Needs' : 'অনন্য প্রয়োজনের জন্য নিবেদিত সহায়তা'}
+                  {specialProgramsData?.hero?.title?.[lang]}
                 </h2>
               </div>
               <p className="text-muted leading-relaxed text-lg">
-                {lang === 'en' 
-                  ? 'Our special programs focus on providing targeted interventions that go beyond standard care. We collaborate with international partners and experts to bring world-class therapy and educational support directly to our students.' 
-                  : 'আমাদের বিশেষ কার্যক্রমগুলো সাধারণ যত্নের বাইরে লক্ষ্যভিত্তিক হস্তক্ষেপ প্রদানের উপর দৃষ্টি নিবদ্ধ করে। আমরা আমাদের শিক্ষার্থীদের জন্য বিশ্বমানের থেরাপি এবং শিক্ষা সহায়তা সরাসরি পৌঁছে দিতে আন্তর্জাতিক অংশীদার এবং বিশেষজ্ঞদের সাথে কাজ করি।'}
+                {specialProgramsData?.hero?.description?.[lang]}
               </p>
               <div className="flex flex-wrap gap-6">
                 <div className="flex items-center gap-3">
@@ -44,8 +47,8 @@ export default function SpecialProgramsPage() {
                     <Icons.Users size={24} />
                   </div>
                   <div>
-                    <p className="font-bold text-text-main">2026</p>
-                    <p className="text-xs text-muted uppercase tracking-widest">{lang === 'en' ? 'Upcoming Training' : 'আসন্ন প্রশিক্ষণ'}</p>
+                    <p className="font-bold text-text-main">{specialProgramsData?.hero?.stats?.[0]?.value?.[lang] || '2026'}</p>
+                    <p className="text-xs text-muted uppercase tracking-widest">{specialProgramsData?.hero?.stats?.[0]?.label?.[lang]}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -53,8 +56,8 @@ export default function SpecialProgramsPage() {
                     <Icons.Activity size={24} />
                   </div>
                   <div>
-                    <p className="font-bold text-text-main">{lang === 'en' ? 'Ongoing' : 'চলমান'}</p>
-                    <p className="text-xs text-muted uppercase tracking-widest">{lang === 'en' ? 'Therapy Services' : 'থেরাপি সেবা'}</p>
+                    <p className="font-bold text-text-main">{specialProgramsData?.hero?.stats?.[1]?.value?.[lang]}</p>
+                    <p className="text-xs text-muted uppercase tracking-widest">{specialProgramsData?.hero?.stats?.[1]?.label?.[lang]}</p>
                   </div>
                 </div>
               </div>
@@ -67,7 +70,7 @@ export default function SpecialProgramsPage() {
                 referrerPolicy="no-referrer"
               />
               <div className="absolute -top-6 -right-6 w-32 h-32 bg-accent rounded-full flex items-center justify-center text-white font-bold text-center p-4 shadow-xl rotate-12">
-                {lang === 'en' ? 'Expert Support' : 'বিশেষজ্ঞ সহায়তা'}
+                {specialProgramsData?.hero?.badge?.[lang]}
               </div>
             </div>
           </div>
@@ -80,15 +83,15 @@ export default function SpecialProgramsPage() {
         <section className="space-y-12">
           <div className="text-center max-w-3xl mx-auto space-y-4">
             <h2 className="text-3xl lg:text-4xl font-display font-bold text-text-main">
-              {lang === 'en' ? 'Our Specialized Initiatives' : 'আমাদের বিশেষায়িত উদ্যোগসমূহ'}
+              {specialProgramsData?.listTitle?.[lang]}
             </h2>
             <p className="text-muted">
-              {lang === 'en' ? 'Discover the specific programs we run to ensure the best possible outcomes for our members.' : 'আমাদের সদস্যদের জন্য সর্বোত্তম ফলাফল নিশ্চিত করতে আমরা যে নির্দিষ্ট কার্যক্রমগুলো পরিচালনা করি তা আবিষ্কার করুন।'}
+              {specialProgramsData?.listSubtitle?.[lang]}
             </p>
           </div>
           <div className="grid grid-cols-1 gap-12">
-            {specialPrograms.map((program, idx) => {
-              const ProgramIcon = Icons[program.icon] || Icons.HelpCircle;
+            {programs.map((program, idx) => {
+              const ProgramIcon = program.icon;
               const isEven = idx % 2 === 0;
               return (
                 <motion.div 
@@ -106,21 +109,21 @@ export default function SpecialProgramsPage() {
                           <ProgramIcon size={28} />
                         </div>
                         <div className="flex items-center gap-2 text-xs font-bold text-secondary uppercase tracking-widest">
-                          <Icons.Calendar size={14} /> {getLocalized(program.timeline)}
+                          <Icons.Calendar size={14} /> {program.timeline}
                         </div>
                       </div>
                       <h3 className="text-3xl lg:text-4xl font-display font-bold text-text-main leading-tight">
-                        {getLocalized(program.title)}
+                        {program.title}
                       </h3>
                     </div>
                     <p className="text-muted text-lg leading-relaxed">
-                      {getLocalized(program.desc)}
+                      {program.desc}
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {program.features.map((feature, fIdx) => (
                         <div key={fIdx} className="flex items-center gap-3 p-3 bg-surface-alt rounded-xl border border-border/50">
                           <Icons.CheckCircle2 size={20} className="text-primary shrink-0" />
-                          <span className="font-bold text-text-main text-sm">{getLocalized(feature)}</span>
+                          <span className="font-bold text-text-main text-sm">{feature}</span>
                         </div>
                       ))}
                     </div>
@@ -129,7 +132,7 @@ export default function SpecialProgramsPage() {
                     <div className="relative group">
                       <img 
                         src={program.image || `https://picsum.photos/seed/${program.id}/800/600`} 
-                        alt={getLocalized(program.title)} 
+                        alt={program.title} 
                         className="rounded-[3rem] shadow-lg w-full aspect-[4/3] object-cover group-hover:scale-[1.02] transition-transform duration-700"
                         referrerPolicy="no-referrer"
                       />
@@ -147,13 +150,11 @@ export default function SpecialProgramsPage() {
           <Icons.Quote size={80} className="absolute top-10 left-10 text-primary/5 -rotate-12" />
           <div className="max-w-4xl mx-auto space-y-8 relative z-10">
             <h2 className="text-3xl lg:text-5xl font-display font-bold text-text-main italic leading-tight">
-              {lang === 'en' 
-                ? '"Every child has a different learning style and pace. Each child is unique, not only capable of learning but also capable of succeeding."' 
-                : '"প্রতিটি শিশুর শেখার ধরণ এবং গতি আলাদা। প্রতিটি শিশু অনন্য, তারা কেবল শিখতেই সক্ষম নয় বরং সফল হতেও সক্ষম।"'}
+              {specialProgramsData?.quote?.text?.[lang]}
             </h2>
             <div className="flex items-center justify-center gap-4">
               <div className="w-12 h-1 bg-primary rounded-full" />
-              <p className="font-bold text-muted uppercase tracking-widest">{lang === 'en' ? 'Our Philosophy' : 'আমাদের দর্শন'}</p>
+              <p className="font-bold text-muted uppercase tracking-widest">{specialProgramsData?.quote?.author?.[lang]}</p>
               <div className="w-12 h-1 bg-primary rounded-full" />
             </div>
           </div>

@@ -33,8 +33,6 @@ import { Link } from 'react-router-dom';
 
 // Data imports
 import { donorsData } from '../../../data/donorsData';
-import { reliefActivities } from '../../../data/reliefActivitiesData';
-import { specialDaysData } from '../../../data/specialDaysData';
 import { newsData } from '../../../data/newsData';
 
 // Infographics
@@ -428,7 +426,11 @@ export default function Variant1() {
             className="pb-16"
           >
             {/* Mix of News, Relief and Special Days */}
-            {[...newsData, ...reliefActivities.slice(0, 1), ...specialDaysData.slice(0, 1)].map((item, idx) => (
+            {[
+              ...newsData, 
+              ...(content?.activities?.relief?.activities?.slice(0, 1) || []), 
+              ...(content?.activities?.specialDays?.days?.slice(0, 1) || [])
+            ].map((item, idx) => (
               <SwiperSlide key={idx}>
                 <div className="group bg-surface-alt rounded-[2.5rem] overflow-hidden border border-border shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col">
                   <div className="relative h-64 overflow-hidden">
