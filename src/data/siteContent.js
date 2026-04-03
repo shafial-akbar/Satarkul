@@ -162,7 +162,7 @@ const siteContent = {
     },
     legacy: {
       tag: { en: "Our Legacy", bn: "আমাদের ঐতিহ্য" },
-      title: { en: "Empowering Lives Since 2013", bn: "২০১৩ থেকে জীবন ক্ষমতায়ন" },
+      title: { en: "Empowering Lives Since 2013", bn: "২০১৩ থেকে সক্ষমতার পথে" },
       description: { en: "Satarkul Protibondhi Unnayan Songstha (SPUS) emerged from a collective vision to ensure the rights of persons with disabilities in family, society, and state.", bn: "সাতারকুল প্রতিবন্ধী উন্নয়ন সংস্থা (এসপিইউএস) পরিবার, সমাজ এবং রাষ্ট্রে প্রতিবন্ধী ব্যক্তিদের অধিকার নিশ্চিত করার একটি সম্মিলিত দৃষ্টিভঙ্গি থেকে উদ্ভূত হয়েছে।" },
       type: { en: "Type", bn: "ধরন" },
       typeVal: { en: "Non-Profit NGO", bn: "অলাভজনক এনজিও" },
