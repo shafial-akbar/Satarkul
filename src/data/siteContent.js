@@ -23,7 +23,7 @@ const siteContent = {
     },
     buttons: {
       learnMore: { en: "Learn More", bn: "আরও জানুন" },
-      donateNow: { en: "সহযোগিতার হাত বাড়ান", bn: "সহযোগিতার হাত বাড়ান" },
+      donateNow: { en: "Donate Now", bn: "অনুদান দিন" },
       readMore: { en: "Read More", bn: "বিস্তারিত পড়ুন" },
       volunteer: { en: "Volunteer", bn: "স্বেচ্ছাসেবী" },
       partner: { en: "Partner", bn: "অংশীদার" },
