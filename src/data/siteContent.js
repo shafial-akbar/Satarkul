@@ -42,7 +42,7 @@ const siteContent = {
     gallery: { en: 'Gallery', bn: 'গ্যালারি' },
     videos: { en: 'Videos', bn: 'ভিডিও' },
     downloads: { en: 'Downloads', bn: 'ডাউনলোড' },
-    supportUs: { en: 'Support Us', bn: 'আমাদের পাশে দাঁড়ান' },
+    supportUs: { en: 'Support Us', bn: 'সহযোগিতা' },
     contact: { en: 'Contact', bn: 'যোগাযোগ' },
     background: { en: 'Background', bn: 'পটভূমি' },
     visionMission: { en: 'Vision & Mission', bn: 'লক্ষ্য ও উদ্দেশ্য' },
@@ -71,7 +71,7 @@ const siteContent = {
     hero: {
       slides: [
         {
-          title: { en: "Empowering Lives, Ensuring Rights.", bn: "উন্নত জীবন ও সমান অধিকার প্রতিষ্ঠায় আমরা প্রতিশ্রুতিবদ্ধ" },
+          title: { en: "Empowering Lives, Ensuring Rights.", bn: "সক্ষম জীবন, সুরক্ষিত অধিকার" },
           subtitle: { en: "Dedicated to the welfare and rights of persons with disabilities.", bn: "প্রতিবন্ধী ব্যক্তিদের সার্বিক কল্যাণ ও নাগরিক অধিকার নিশ্চিতে আমাদের নিরলস পথচলা।" },
           tag: { en: "Welcome to SPUS", bn: "SPUS-এ আপনাকে স্বাগত" }
         },
