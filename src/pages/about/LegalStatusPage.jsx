@@ -124,11 +124,11 @@ export default function LegalStatusPage() {
                 </div>
                 <div className="grid grid-cols-2 gap-4 pt-6 border-t border-border">
                   <div className="space-y-1">
-                    <p className="text-[10px] uppercase tracking-tighter text-muted font-bold">{lang === 'en' ? 'Reg Number' : 'নিবন্ধন নম্বর'}</p>
+                    <p className="text-[10px] uppercase tracking-tighter text-muted font-bold">{content?.common?.labels?.regNumber?.[lang] || (lang === 'en' ? 'Reg Number' : 'নিবন্ধন নম্বর')}</p>
                     <p className="font-mono font-bold text-text-main">{reg.number}</p>
                   </div>
                   <div className="space-y-1">
-                    <p className="text-[10px] uppercase tracking-tighter text-muted font-bold">{lang === 'en' ? 'Date' : 'তারিখ'}</p>
+                    <p className="text-[10px] uppercase tracking-tighter text-muted font-bold">{content?.common?.labels?.date?.[lang] || (lang === 'en' ? 'Date' : 'তারিখ')}</p>
                     <p className="font-mono font-bold text-text-main">{reg.date}</p>
                   </div>
                 </div>

@@ -78,15 +78,15 @@ export default function MembershipPage() {
                 : 'আমাদের সদস্যপদ আমাদের সেবাপ্রাপ্ত বৈচিত্র্যময় সম্প্রদায়ের প্রতিফলন। আমরা নিশ্চিত করি যে শিশু থেকে প্রবীণ পর্যন্ত প্রতিটি গোষ্ঠীর আমাদের সংস্থায় কথা বলার সুযোগ থাকে।'}
             </p>
             <div className="p-10 bg-surface-alt rounded-[3rem] border border-border space-y-8">
-              <h3 className="text-2xl font-display font-bold text-text-main">{lang === 'en' ? 'Children Breakdown' : 'শিশুদের বিস্তারিত'}</h3>
+              <h3 className="text-2xl font-display font-bold text-text-main">{membership?.childrenBreakdown?.title?.[lang] || (lang === 'en' ? 'Children Breakdown' : 'শিশুদের বিস্তারিত')}</h3>
               <div className="grid grid-cols-2 gap-8">
                 <div className="flex items-center gap-6">
                   <div className="w-12 h-12 bg-primary/10 text-primary rounded-2xl flex items-center justify-center shadow-sm">
                     <Icons.Heart size={24} />
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-muted uppercase tracking-widest">{lang === 'en' ? 'Boys' : 'ছেলে'}</p>
-                    <p className="text-3xl font-display font-bold text-text-main">74</p>
+                    <p className="text-sm font-bold text-muted uppercase tracking-widest">{content?.common?.labels?.boys?.[lang] || (lang === 'en' ? 'Boys' : 'ছেলে')}</p>
+                    <p className="text-3xl font-display font-bold text-text-main">{membership?.childrenBreakdown?.boysValue || '74'}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-6">
@@ -94,8 +94,8 @@ export default function MembershipPage() {
                     <Icons.Heart size={24} />
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-muted uppercase tracking-widest">{lang === 'en' ? 'Girls' : 'মেয়ে'}</p>
-                    <p className="text-3xl font-display font-bold text-text-main">46</p>
+                    <p className="text-sm font-bold text-muted uppercase tracking-widest">{content?.common?.labels?.girls?.[lang] || (lang === 'en' ? 'Girls' : 'মেয়ে')}</p>
+                    <p className="text-3xl font-display font-bold text-text-main">{membership?.childrenBreakdown?.girlsValue || '46'}</p>
                   </div>
                 </div>
               </div>
@@ -177,12 +177,12 @@ export default function MembershipPage() {
         {/* Call to Action */}
         <section className="text-center space-y-6">
           <div className="space-y-4">
-            <h2 className="text-4xl font-display font-bold text-text-main">{lang === 'en' ? 'Ready to Make an Impact?' : 'প্রভাব ফেলতে প্রস্তুত?'}</h2>
-            <p className="text-muted text-xl max-w-2xl mx-auto">{lang === 'en' ? 'Join us today and help us build a world where everyone has equal opportunities.' : 'আজই আমাদের সাথে যোগ দিন এবং এমন একটি বিশ্ব গড়তে সাহায্য করুন যেখানে সবার সমান সুযোগ রয়েছে।'}</p>
+            <h2 className="text-4xl font-display font-bold text-text-main">{membership?.cta?.title?.[lang] || (lang === 'en' ? 'Ready to Make an Impact?' : 'প্রভাব ফেলতে প্রস্তুত?')}</h2>
+            <p className="text-muted text-xl max-w-2xl mx-auto">{membership?.cta?.desc?.[lang] || (lang === 'en' ? 'Join us today and help us build a world where everyone has equal opportunities.' : 'আজই আমাদের সাথে যোগ দিন এবং এমন একটি বিশ্ব গড়তে সাহায্য করুন যেখানে সবার সমান সুযোগ রয়েছে।')}</p>
           </div>
           <div className="flex justify-center gap-4">
             <button className="flex items-center gap-3 px-10 py-5 bg-primary text-white rounded-full font-bold text-lg shadow-2xl hover:scale-105 transition-all">
-              {lang === 'en' ? 'Apply Now' : 'এখনই আবেদন করুন'} <Icons.ArrowRight size={24} />
+              {content?.common?.labels?.applyNow?.[lang] || (lang === 'en' ? 'Apply Now' : 'এখনই আবেদন করুন')} <Icons.ArrowRight size={24} />
             </button>
           </div>
         </section>

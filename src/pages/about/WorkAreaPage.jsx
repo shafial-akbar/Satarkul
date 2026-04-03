@@ -100,16 +100,16 @@ export default function WorkAreaPage() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary via-transparent to-transparent" />
           </div>
           <h2 className="text-4xl lg:text-5xl font-display font-bold relative z-10">
-            {lang === 'en' ? 'Visit Our Administrative Office' : 'আমাদের প্রশাসনিক অফিস পরিদর্শন করুন'}
+            {workArea?.cta?.title?.[lang] || (lang === 'en' ? 'Visit Our Administrative Office' : 'আমাদের প্রশাসনিক অফিস পরিদর্শন করুন')}
           </h2>
           <p className="text-white/60 text-xl max-w-2xl mx-auto relative z-10">
-            {lang === 'en' 
+            {workArea?.cta?.desc?.[lang] || (lang === 'en' 
               ? 'Located in the heart of Satarkul, our office is open for consultations and community support.' 
-              : 'সাতারকুলের প্রাণকেন্দ্রে অবস্থিত আমাদের অফিস পরামর্শ এবং সম্প্রদায় সহায়তার জন্য উন্মুক্ত।'}
+              : 'সাতারকুলের প্রাণকেন্দ্রে অবস্থিত আমাদের অফিস পরামর্শ এবং সম্প্রদায় সহায়তার জন্য উন্মুক্ত।')}
           </p>
           <div className="flex justify-center relative z-10">
             <button className="flex items-center gap-3 px-10 py-5 bg-primary text-white rounded-full font-bold text-lg shadow-2xl hover:scale-105 transition-all">
-              {lang === 'en' ? 'Get Directions' : 'দিকনির্দেশ পান'} <Icons.ArrowRight size={24} />
+              {content?.common?.labels?.getDirections?.[lang] || (lang === 'en' ? 'Get Directions' : 'দিকনির্দেশ পান')} <Icons.ArrowRight size={24} />
             </button>
           </div>
         </section>

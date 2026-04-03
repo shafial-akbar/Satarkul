@@ -8,6 +8,19 @@ const siteContent = {
   common: {
     orgName: { en: 'Satarkul Protibondhi Unnayan Songstha', bn: 'সাতারকুল প্রতিবন্ধী উন্নয়ন সংস্থা' },
     motto: { en: 'Empowering Lives, Ensuring Rights', bn: 'জীবনকে ক্ষমতায়ন, অধিকার নিশ্চিতকরণ' },
+    contact: {
+      email: 'info@spus.org',
+      phone: '+880123456789',
+      address: { en: 'Satarkul, Badda, Dhaka', bn: 'সাতারকুল, বাড্ডা, ঢাকা' }
+    },
+    labels: {
+      regNumber: { en: 'Reg Number', bn: 'নিবন্ধন নম্বর' },
+      date: { en: 'Date', bn: 'তারিখ' },
+      applyNow: { en: 'Apply Now', bn: 'এখনই আবেদন করুন' },
+      getDirections: { en: 'Get Directions', bn: 'দিকনির্দেশ পান' },
+      boys: { en: 'Boys', bn: 'ছেলে' },
+      girls: { en: 'Girls', bn: 'মেয়ে' }
+    },
     buttons: {
       learnMore: { en: "Learn More", bn: "আরও জানুন" },
       donateNow: { en: "Donate Now", bn: "এখনই দান করুন" },
@@ -154,7 +167,10 @@ const siteContent = {
       type: { en: "Type", bn: "ধরন" },
       typeVal: { en: "Non-Profit NGO", bn: "অলাভজনক এনজিও" },
       regNo: { en: "Reg No", bn: "নিবন্ধন নং" },
-      yearsService: { en: "Years of dedicated service to the community.", bn: "সম্প্রদায়ের জন্য নিবেদিত সেবার ১০ বছরেরও বেশি।" }
+      regNoVal: "Dha-09437",
+      yearsService: { en: "Years of dedicated service to the community.", bn: "সম্প্রদায়ের জন্য নিবেদিত সেবার ১০ বছরেরও বেশি।" },
+      yearsServiceVal: "10+",
+      heroAlt: { en: "Education Community photo", bn: "শিক্ষা সম্প্রদায় ছবি" }
     },
     mission: {
       title: { en: "Our Mission", bn: "আমাদের লক্ষ্য" },
@@ -196,6 +212,7 @@ const siteContent = {
       title: { en: 'Transparency & Resources', bn: 'স্বচ্ছতা ও সম্পদ' },
       subtitle: { en: 'Access our official documents and annual reports.', bn: 'আমাদের অফিসিয়াল নথি এবং বার্ষিক প্রতিবেদনগুলি অ্যাক্সেস করুন।' },
       viewAll: { en: 'View All Resources', bn: 'সব সম্পদ দেখুন' },
+      fileType: { en: 'PDF', bn: 'পিডিএফ' },
       resources: [
         { title: { en: 'Organization Profile', bn: 'সংস্থার প্রোফাইল' }, file: 'spus-organization-profile.pdf', size: '2.4 MB' },
         { title: { en: 'Annual Report 2023', bn: 'বার্ষিক প্রতিবেদন ২০২৩' }, file: 'spus-annual-report-2023.pdf', size: '3.1 MB' },
@@ -229,6 +246,15 @@ const siteContent = {
           { title: { en: 'Form Submission', bn: 'ফর্ম জমা' }, desc: { en: 'Fill out the membership application form available at our office.', bn: 'আমাদের অফিসে উপলব্ধ সদস্যপদ আবেদনপত্র পূরণ করুন।' }, icon: 'UserPlus' },
           { title: { en: 'Verification', bn: 'যাচাইকরণ' }, desc: { en: 'Our committee will review and verify your application details.', bn: 'আমাদের কমিটি আপনার আবেদনের বিবরণ পর্যালোচনা এবং যাচাই করবে।' }, icon: 'UserCheck' },
         ]
+      },
+      childrenBreakdown: {
+        title: { en: 'Children Breakdown', bn: 'শিশুদের বিস্তারিত' },
+        boysValue: '74',
+        girlsValue: '46'
+      },
+      cta: {
+        title: { en: 'Ready to Make an Impact?', bn: 'প্রভাব ফেলতে প্রস্তুত?' },
+        desc: { en: 'Join us today and help us build a world where everyone has equal opportunities.', bn: 'আজই আমাদের সাথে যোগ দিন এবং এমন একটি বিশ্ব গড়তে সাহায্য করুন যেখানে সবার সমান সুযোগ রয়েছে।' }
       }
     },
     workArea: {
@@ -251,6 +277,10 @@ const siteContent = {
           { en: 'Rampura Thana', bn: 'রামপুরা থানা' },
           { en: 'Khilgaon Thana', bn: 'খিলগাঁও থানা' },
         ]
+      },
+      cta: {
+        title: { en: 'Visit Our Administrative Office', bn: 'আমাদের প্রশাসনিক অফিস পরিদর্শন করুন' },
+        desc: { en: 'Located in the heart of Satarkul, our office is open for consultations and community support.', bn: 'সাতারকুলের প্রাণকেন্দ্রে অবস্থিত আমাদের অফিস পরামর্শ এবং সম্প্রদায় সহায়তার জন্য উন্মুক্ত।' }
       }
     },
     visionMission: {

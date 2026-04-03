@@ -57,8 +57,8 @@ export default function GoverningBodyPage() {
               <div className="space-y-2">
                 <p className="text-4xl font-display font-bold text-primary">{governingBody?.focal?.name?.[lang] || (lang === 'en' ? 'Ujjala Banik' : 'উজ্জলা বনিক')}</p>
                 <div className="flex gap-4 pt-2">
-                  <a href="mailto:info@spus.org" className="text-muted hover:text-primary transition-colors"><Mail size={20} /></a>
-                  <a href="tel:+880123456789" className="text-muted hover:text-secondary transition-colors"><Phone size={20} /></a>
+                  <a href={`mailto:${content?.common?.contact?.email || 'info@spus.org'}`} className="text-muted hover:text-primary transition-colors"><Mail size={20} /></a>
+                  <a href={`tel:${content?.common?.contact?.phone || '+880123456789'}`} className="text-muted hover:text-secondary transition-colors"><Phone size={20} /></a>
                 </div>
               </div>
             </div>

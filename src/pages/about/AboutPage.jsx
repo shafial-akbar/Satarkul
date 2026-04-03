@@ -77,7 +77,7 @@ export default function AboutPage() {
                 <Award className="text-secondary" />
                 <div>
                   <p className="text-xs font-bold text-muted uppercase">{content?.about?.legacy?.regNo?.[lang] || (lang === 'en' ? 'Reg No' : 'নিবন্ধন নং')}</p>
-                  <p className="font-bold text-text-main">Dha-09437</p>
+                  <p className="font-bold text-text-main">{content?.about?.legacy?.regNoVal || 'Dha-09437'}</p>
                 </div>
               </div>
             </div>
@@ -92,12 +92,12 @@ export default function AboutPage() {
             <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-secondary/5 rounded-full blur-3xl animate-pulse delay-1000" />
             <img 
               src="https://picsum.photos/seed/about-spus-hero/1200/900" 
-              alt="Education Community photo"
+              alt={content?.about?.legacy?.heroAlt?.[lang] || (lang === 'en' ? 'Education Community photo' : 'শিক্ষা সম্প্রদায় ছবি')}
               className="rounded-[4rem] shadow-2xl relative z-10 border-8 border-white"
               referrerPolicy="no-referrer"
             />
             <div className="absolute -bottom-12 right-12 bg-white p-8 rounded-3xl shadow-2xl border border-border z-20 max-w-xs">
-              <p className="text-primary font-display font-bold text-4xl mb-2">10+</p>
+              <p className="text-primary font-display font-bold text-4xl mb-2">{content?.about?.legacy?.yearsServiceVal || '10+'}</p>
               <p className="text-text-main font-bold leading-tight">
                 {content?.about?.legacy?.yearsService?.[lang] || (lang === 'en' ? 'Years of dedicated service to the community.' : 'সম্প্রদায়ের জন্য নিবেদিত সেবার ১০ বছরেরও বেশি।')}
               </p>
@@ -221,7 +221,7 @@ export default function AboutPage() {
                       {doc.title?.[lang] || doc.title?.en}
                     </h4>
                     <div className="flex items-center gap-4 mt-2">
-                      <span className="text-sm font-bold text-muted uppercase tracking-widest">PDF</span>
+                      <span className="text-sm font-bold text-muted uppercase tracking-widest">{content?.about?.transparency?.fileType?.[lang] || 'PDF'}</span>
                       <span className="w-1.5 h-1.5 bg-border rounded-full" />
                       <span className="text-sm font-bold text-muted uppercase tracking-widest">{doc.size}</span>
                     </div>
