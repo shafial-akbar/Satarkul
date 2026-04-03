@@ -5,11 +5,11 @@ const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
   const { i18n } = useTranslation();
-  const [lang, setLang] = useState(localStorage.getItem('spus-lang') || 'bn');
+  const [lang, setLang] = useState(localStorage.getItem('spus-lang-v1') || 'en');
 
   useEffect(() => {
     i18n.changeLanguage(lang);
-    localStorage.setItem('spus-lang', lang);
+    localStorage.setItem('spus-lang-v1', lang);
     document.documentElement.lang = lang;
   }, [lang, i18n]);
 
