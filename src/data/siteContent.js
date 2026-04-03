@@ -58,7 +58,7 @@ const siteContent = {
     hero: {
       slides: [
         {
-          title: { en: "Empowering Lives, Ensuring Rights", bn: "জীবনকে ক্ষমতায়ন, অধিকার নিশ্চিতকরণ" },
+          title: { en: "Empowering Lives, Ensuring Rights For Humanity", bn: "জীবনকে ক্ষমতায়ন, অধিকার নিশ্চিতকরণ" },
           subtitle: { en: "Dedicated to the welfare and rights of persons with disabilities.", bn: "প্রতিবন্ধী ব্যক্তিদের কল্যাণ ও অধিকারের জন্য নিবেদিত।" },
           tag: { en: "Welcome to SPUS", bn: "এসপিইউএস-এ আপনাকে স্বাগতম" }
         },
