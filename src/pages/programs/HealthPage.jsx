@@ -1,16 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-import { useContent } from '../../context/ContentContext';
 import PageWrapper from '../../components/layout/PageWrapper';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import * as Icons from 'lucide-react';
 import HealthServicesStats from '../../components/infographics/HealthServicesStats';
+import { getHealthData } from '../../api/apiClient';
 
 export default function HealthPage() {
   const { lang } = useLanguage();
-  const { content } = useContent();
+  const [health, setHealth] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const health = content?.programs?.details?.health;
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const data = await getHealthData();
+        setHealth(data);
+      } catch (error) {
+        console.error('Error fetching health data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-bg">
+        <Icons.Loader2 size={48} className="animate-spin text-primary mb-4" />
+        <p className="text-muted font-medium">
+          {lang === 'en' ? 'Loading health programs...' : 'স্বাস্থ্য কার্যক্রম লোড হচ্ছে...'}
+        </p>
+      </div>
+    );
+  }
 
   const services = (health?.services || []).map(service => ({
     ...service,

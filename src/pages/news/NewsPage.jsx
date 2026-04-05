@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../context/LanguageContext';
@@ -12,26 +12,44 @@ import {
   Newspaper,
   LayoutGrid,
   List as ListIcon,
-  Filter
+  Filter,
+  Loader2
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { newsData } from '../../data/newsData';
+import { getNews } from '../../api/apiClient';
 
 export default function NewsPage() {
   const { t } = useTranslation();
   const { lang } = useLanguage();
+  const [news, setNews] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'list'
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      setIsLoading(true);
+      try {
+        const data = await getNews();
+        setNews(data);
+      } catch (error) {
+        console.error('Error fetching news:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchNews();
+  }, []);
 
   const getLocalized = (obj) => {
     if (!obj) return '';
     return obj[lang] || obj['en'] || '';
   };
 
-  const categories = ['All', ...new Set(newsData.map(item => getLocalized(item.category)))];
+  const categories = ['All', ...new Set(news.map(item => getLocalized(item.category)))];
 
-  const filteredNews = newsData.filter(item => {
+  const filteredNews = news.filter(item => {
     const matchesSearch = 
       getLocalized(item.title).toLowerCase().includes(searchTerm.toLowerCase()) ||
       getLocalized(item.excerpt).toLowerCase().includes(searchTerm.toLowerCase());
@@ -139,7 +157,18 @@ export default function NewsPage() {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-6">
           <AnimatePresence mode="wait">
-            {filteredNews.length > 0 ? (
+            {isLoading ? (
+              <motion.div 
+                key="loading"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="flex flex-col items-center justify-center py-32 text-muted"
+              >
+                <Loader2 size={48} className="animate-spin mb-4 text-primary" />
+                <p className="font-medium text-lg">{lang === 'en' ? 'Loading news...' : 'সংবাদ লোড হচ্ছে...'}</p>
+              </motion.div>
+            ) : filteredNews.length > 0 ? (
               <motion.div 
                 key={viewMode + selectedCategory + searchTerm}
                 initial={{ opacity: 0, y: 20 }}

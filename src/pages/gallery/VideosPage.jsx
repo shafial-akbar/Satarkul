@@ -1,23 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../context/LanguageContext';
-import { Play, Youtube, Filter, Calendar, ExternalLink, ArrowUpRight } from 'lucide-react';
-import { videosData } from '../../data/galleryData';
+import { Play, Youtube, Filter, Calendar, ExternalLink, ArrowUpRight, Loader2 } from 'lucide-react';
+import { getVideos } from '../../api/apiClient';
 
 export default function VideosPage() {
   const { t } = useTranslation();
   const { lang } = useLanguage();
+  const [videos, setVideos] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [filter, setFilter] = useState('All');
   const [selectedVideo, setSelectedVideo] = useState(null);
 
+  useEffect(() => {
+    const fetchVideos = async () => {
+      setIsLoading(true);
+      try {
+        const data = await getVideos();
+        setVideos(data);
+      } catch (error) {
+        console.error('Error fetching videos:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchVideos();
+  }, []);
+
   const getLocalized = (obj) => obj[lang] || obj['en'];
 
-  const categories = ['All', ...new Set(videosData.map(item => getLocalized(item.category)))];
+  const categories = ['All', ...new Set(videos.map(item => getLocalized(item.category)))];
 
   const filteredData = filter === 'All' 
-    ? videosData 
-    : videosData.filter(item => getLocalized(item.category) === filter);
+    ? videos 
+    : videos.filter(item => getLocalized(item.category) === filter);
 
   return (
     <div className="min-h-screen bg-bg">
@@ -98,61 +115,76 @@ export default function VideosPage() {
       {/* Videos Grid */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div 
-            layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
-          >
-            <AnimatePresence mode="popLayout">
-              {filteredData.map((video) => (
-                <motion.div
-                  key={video.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.4 }}
-                  className="group bg-white rounded-[3rem] overflow-hidden border border-border shadow-lg hover:shadow-2xl hover:border-primary transition-all duration-500 flex flex-col h-full"
-                >
-                  <div 
-                    className="relative aspect-video overflow-hidden cursor-pointer"
-                    onClick={() => setSelectedVideo(video)}
-                  >
-                    <img 
-                      src={video.thumbnail} 
-                      alt={getLocalized(video.title)} 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      referrerPolicy="no-referrer"
-                    />
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center">
-                      <div className="w-16 h-16 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-primary shadow-2xl group-hover:scale-110 transition-all duration-500">
-                        <Play size={28} fill="currentColor" />
-                      </div>
-                    </div>
-                    <div className="absolute top-6 right-6 px-4 py-2 bg-white/90 backdrop-blur-md rounded-full text-primary text-[10px] font-bold uppercase tracking-widest shadow-lg">
-                      {getLocalized(video.category)}
-                    </div>
-                  </div>
-                  
-                  <div className="p-8 space-y-4 flex-grow">
-                    <h3 className="text-2xl font-display font-bold text-text-main group-hover:text-primary transition-colors leading-tight line-clamp-2">
-                      {getLocalized(video.title)}
-                    </h3>
-                    <div className="flex items-center justify-between pt-4 border-t border-border">
-                      <div className="flex items-center gap-2 text-muted text-xs font-bold uppercase tracking-widest">
-                        <Calendar size={14} /> {video.date}
-                      </div>
-                      <button 
+          <AnimatePresence mode="wait">
+            {isLoading ? (
+              <motion.div 
+                key="loading"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="flex flex-col items-center justify-center py-32 text-muted"
+              >
+                <Loader2 size={48} className="animate-spin mb-4 text-primary" />
+                <p className="font-medium text-lg">{lang === 'en' ? 'Loading videos...' : 'ভিডিও লোড হচ্ছে...'}</p>
+              </motion.div>
+            ) : (
+              <motion.div 
+                layout
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+              >
+                <AnimatePresence mode="popLayout">
+                  {filteredData.map((video) => (
+                    <motion.div
+                      key={video.id}
+                      layout
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.9 }}
+                      transition={{ duration: 0.4 }}
+                      className="group bg-white rounded-[3rem] overflow-hidden border border-border shadow-lg hover:shadow-2xl hover:border-primary transition-all duration-500 flex flex-col h-full"
+                    >
+                      <div 
+                        className="relative aspect-video overflow-hidden cursor-pointer"
                         onClick={() => setSelectedVideo(video)}
-                        className="text-primary font-bold text-sm flex items-center gap-2 hover:gap-4 transition-all"
                       >
-                        {lang === 'en' ? 'Watch Now' : 'এখন দেখুন'} <ExternalLink size={16} />
-                      </button>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </motion.div>
+                        <img 
+                          src={video.thumbnail} 
+                          alt={getLocalized(video.title)} 
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                          referrerPolicy="no-referrer"
+                        />
+                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center">
+                          <div className="w-16 h-16 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-primary shadow-2xl group-hover:scale-110 transition-all duration-500">
+                            <Play size={28} fill="currentColor" />
+                          </div>
+                        </div>
+                        <div className="absolute top-6 right-6 px-4 py-2 bg-white/90 backdrop-blur-md rounded-full text-primary text-[10px] font-bold uppercase tracking-widest shadow-lg">
+                          {getLocalized(video.category)}
+                        </div>
+                      </div>
+                      
+                      <div className="p-8 space-y-4 flex-grow">
+                        <h3 className="text-2xl font-display font-bold text-text-main group-hover:text-primary transition-colors leading-tight line-clamp-2">
+                          {getLocalized(video.title)}
+                        </h3>
+                        <div className="flex items-center justify-between pt-4 border-t border-border">
+                          <div className="flex items-center gap-2 text-muted text-xs font-bold uppercase tracking-widest">
+                            <Calendar size={14} /> {video.date}
+                          </div>
+                          <button 
+                            onClick={() => setSelectedVideo(video)}
+                            className="text-primary font-bold text-sm flex items-center gap-2 hover:gap-4 transition-all"
+                          >
+                            {lang === 'en' ? 'Watch Now' : 'এখন দেখুন'} <ExternalLink size={16} />
+                          </button>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
 

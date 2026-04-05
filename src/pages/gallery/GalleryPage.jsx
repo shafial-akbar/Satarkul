@@ -1,23 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../context/LanguageContext';
-import { Play, Image as ImageIcon, Filter, X, Maximize2, Calendar, Tag } from 'lucide-react';
-import { galleryData } from '../../data/galleryData';
+import { Play, Image as ImageIcon, Filter, X, Maximize2, Calendar, Tag, Loader2 } from 'lucide-react';
+import { getGallery } from '../../api/apiClient';
 
 export default function GalleryPage() {
   const { t } = useTranslation();
   const { lang } = useLanguage();
+  const [galleryItems, setGalleryItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [filter, setFilter] = useState('All');
   const [selectedItem, setSelectedItem] = useState(null);
 
+  useEffect(() => {
+    const fetchGallery = async () => {
+      setIsLoading(true);
+      try {
+        const data = await getGallery();
+        setGalleryItems(data);
+      } catch (error) {
+        console.error('Error fetching gallery:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchGallery();
+  }, []);
+
   const getLocalized = (obj) => obj[lang] || obj['en'];
 
-  const categories = ['All', ...new Set(galleryData.map(item => getLocalized(item.category)))];
+  const categories = ['All', ...new Set(galleryItems.map(item => getLocalized(item.category)))];
 
   const filteredData = filter === 'All' 
-    ? galleryData 
-    : galleryData.filter(item => getLocalized(item.category) === filter);
+    ? galleryItems 
+    : galleryItems.filter(item => getLocalized(item.category) === filter);
 
   return (
     <div className="min-h-screen bg-bg">
@@ -80,62 +97,77 @@ export default function GalleryPage() {
       {/* Gallery Grid */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div 
-            layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            <AnimatePresence mode="popLayout">
-              {filteredData.map((item) => (
-                <motion.div
-                  key={item.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.4 }}
-                  className="group relative aspect-[4/3] rounded-[2.5rem] overflow-hidden bg-surface-alt shadow-lg cursor-pointer"
-                  onClick={() => setSelectedItem(item)}
-                >
-                  <img 
-                    src={item.type === 'video' ? item.thumbnail : item.url} 
-                    alt={getLocalized(item.title)} 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    referrerPolicy="no-referrer"
-                  />
-                  
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
-                    <div className="absolute bottom-0 left-0 w-full p-8 space-y-3">
-                      <div className="flex items-center gap-2">
-                        <span className="px-3 py-1 bg-primary text-white rounded-full text-[10px] font-bold uppercase tracking-widest">
-                          {getLocalized(item.category)}
-                        </span>
-                        <span className="px-3 py-1 bg-white/20 backdrop-blur-md text-white rounded-full text-[10px] font-bold uppercase tracking-widest">
-                          {item.type}
-                        </span>
-                      </div>
-                      <h3 className="text-xl font-display font-bold text-white leading-tight">
-                        {getLocalized(item.title)}
-                      </h3>
-                      <div className="flex items-center justify-between pt-2">
-                        <div className="flex items-center gap-2 text-white/70 text-xs font-bold uppercase tracking-widest">
-                          <Calendar size={14} /> {item.date}
+          <AnimatePresence mode="wait">
+            {isLoading ? (
+              <motion.div 
+                key="loading"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="flex flex-col items-center justify-center py-32 text-muted"
+              >
+                <Loader2 size={48} className="animate-spin mb-4 text-primary" />
+                <p className="font-medium text-lg">{lang === 'en' ? 'Loading gallery...' : 'গ্যালারি লোড হচ্ছে...'}</p>
+              </motion.div>
+            ) : (
+              <motion.div 
+                layout
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              >
+                <AnimatePresence mode="popLayout">
+                  {filteredData.map((item) => (
+                    <motion.div
+                      key={item.id}
+                      layout
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.9 }}
+                      transition={{ duration: 0.4 }}
+                      className="group relative aspect-[4/3] rounded-[2.5rem] overflow-hidden bg-surface-alt shadow-lg cursor-pointer"
+                      onClick={() => setSelectedItem(item)}
+                    >
+                      <img 
+                        src={item.type === 'video' ? item.thumbnail : item.url} 
+                        alt={getLocalized(item.title)} 
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        referrerPolicy="no-referrer"
+                      />
+                      
+                      {/* Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
+                        <div className="absolute bottom-0 left-0 w-full p-8 space-y-3">
+                          <div className="flex items-center gap-2">
+                            <span className="px-3 py-1 bg-primary text-white rounded-full text-[10px] font-bold uppercase tracking-widest">
+                              {getLocalized(item.category)}
+                            </span>
+                            <span className="px-3 py-1 bg-white/20 backdrop-blur-md text-white rounded-full text-[10px] font-bold uppercase tracking-widest">
+                              {item.type}
+                            </span>
+                          </div>
+                          <h3 className="text-xl font-display font-bold text-white leading-tight">
+                            {getLocalized(item.title)}
+                          </h3>
+                          <div className="flex items-center justify-between pt-2">
+                            <div className="flex items-center gap-2 text-white/70 text-xs font-bold uppercase tracking-widest">
+                              <Calendar size={14} /> {item.date}
+                            </div>
+                            <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white">
+                              {item.type === 'video' ? <Play size={20} fill="currentColor" /> : <Maximize2 size={20} />}
+                            </div>
+                          </div>
                         </div>
-                        <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white">
-                          {item.type === 'video' ? <Play size={20} fill="currentColor" /> : <Maximize2 size={20} />}
-                        </div>
                       </div>
-                    </div>
-                  </div>
 
-                  {/* Type Icon (Always Visible) */}
-                  <div className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-primary shadow-lg group-hover:scale-0 transition-all duration-300">
-                    {item.type === 'video' ? <Play size={18} fill="currentColor" /> : <ImageIcon size={18} />}
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </motion.div>
+                      {/* Type Icon (Always Visible) */}
+                      <div className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-primary shadow-lg group-hover:scale-0 transition-all duration-300">
+                        {item.type === 'video' ? <Play size={18} fill="currentColor" /> : <ImageIcon size={18} />}
+                      </div>
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
 

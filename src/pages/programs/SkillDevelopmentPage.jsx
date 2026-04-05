@@ -1,15 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-import { useContent } from '../../context/ContentContext';
 import PageWrapper from '../../components/layout/PageWrapper';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import * as Icons from 'lucide-react';
+import { getSkillsData } from '../../api/apiClient';
 
 export default function SkillDevelopmentPage() {
   const { lang } = useLanguage();
-  const { content } = useContent();
+  const [skillDev, setSkillDev] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const skillDev = content?.programs?.details?.['skill-development'];
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const data = await getSkillsData();
+        setSkillDev(data);
+      } catch (error) {
+        console.error('Error fetching skill development data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-bg">
+        <Icons.Loader2 size={48} className="animate-spin text-primary mb-4" />
+        <p className="text-muted font-medium">
+          {lang === 'en' ? 'Loading skill development programs...' : 'দক্ষতা উন্নয়ন কার্যক্রম লোড হচ্ছে...'}
+        </p>
+      </div>
+    );
+  }
 
   const courses = (skillDev?.courses || []).map(course => ({
     ...course,

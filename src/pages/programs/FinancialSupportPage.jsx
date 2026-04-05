@@ -1,15 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-import { useContent } from '../../context/ContentContext';
 import PageWrapper from '../../components/layout/PageWrapper';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import * as Icons from 'lucide-react';
+import { getFinancialData } from '../../api/apiClient';
 
 export default function FinancialSupportPage() {
   const { lang } = useLanguage();
-  const { content } = useContent();
+  const [financial, setFinancial] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const financial = content?.programs?.details?.['financial-support'];
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const data = await getFinancialData();
+        setFinancial(data);
+      } catch (error) {
+        console.error('Error fetching financial data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-bg">
+        <Icons.Loader2 size={48} className="animate-spin text-primary mb-4" />
+        <p className="text-muted font-medium">
+          {lang === 'en' ? 'Loading financial programs...' : 'আর্থিক সহায়তা কার্যক্রম লোড হচ্ছে...'}
+        </p>
+      </div>
+    );
+  }
 
   const grants = (financial?.grants || []).map(grant => ({
     ...grant,

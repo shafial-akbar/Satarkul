@@ -1,15 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-import { useContent } from '../../context/ContentContext';
 import PageWrapper from '../../components/layout/PageWrapper';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import * as Icons from 'lucide-react';
+import { getSocialSupportData } from '../../api/apiClient';
 
 export default function SocialSupportPage() {
   const { lang } = useLanguage();
-  const { content } = useContent();
+  const [socialSupport, setSocialSupport] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const socialSupport = content?.programs?.details?.['social-support'];
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const data = await getSocialSupportData();
+        setSocialSupport(data);
+      } catch (error) {
+        console.error('Error fetching social support data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-bg">
+        <Icons.Loader2 size={48} className="animate-spin text-primary mb-4" />
+        <p className="text-muted font-medium">
+          {lang === 'en' ? 'Loading social support programs...' : 'সামাজিক সহায়তা কার্যক্রম লোড হচ্ছে...'}
+        </p>
+      </div>
+    );
+  }
 
   const services = (socialSupport?.services || []).map(service => ({
     ...service,

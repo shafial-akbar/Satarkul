@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../context/LanguageContext';
@@ -10,27 +10,44 @@ import {
   BookOpen,
   LayoutGrid,
   List as ListIcon,
-  Filter
+  Filter,
+  Loader2
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { newsData } from '../../data/newsData';
+import { getNews } from '../../api/apiClient';
 
 export default function BlogPage() {
   const { t } = useTranslation();
   const { lang } = useLanguage();
+  const [blogItems, setBlogItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [viewMode, setViewMode] = useState('grid');
+
+  useEffect(() => {
+    const fetchBlog = async () => {
+      setIsLoading(true);
+      try {
+        const data = await getNews();
+        // Filter only items with category 'Blog' or 'ব্লগ'
+        const filtered = data.filter(item => 
+          item.category.en === 'Blog' || item.category.bn === 'ব্লগ'
+        );
+        setBlogItems(filtered);
+      } catch (error) {
+        console.error('Error fetching blog:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchBlog();
+  }, []);
 
   const getLocalized = (obj) => {
     if (!obj) return '';
     return obj[lang] || obj['en'] || '';
   };
-
-  // Filter only items with category 'Blog' or 'ব্লগ'
-  const blogItems = newsData.filter(item => 
-    item.category.en === 'Blog' || item.category.bn === 'ব্লগ'
-  );
 
   const categories = ['All', ...new Set(blogItems.map(item => getLocalized(item.category)))];
 
@@ -142,7 +159,18 @@ export default function BlogPage() {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-6">
           <AnimatePresence mode="wait">
-            {filteredBlog.length > 0 ? (
+            {isLoading ? (
+              <motion.div 
+                key="loading"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="flex flex-col items-center justify-center py-32 text-muted"
+              >
+                <Loader2 size={48} className="animate-spin mb-4 text-secondary" />
+                <p className="font-medium text-lg">{lang === 'en' ? 'Loading articles...' : 'নিবন্ধ লোড হচ্ছে...'}</p>
+              </motion.div>
+            ) : filteredBlog.length > 0 ? (
               <motion.div 
                 key={viewMode + selectedCategory + searchTerm}
                 initial={{ opacity: 0, y: 20 }}

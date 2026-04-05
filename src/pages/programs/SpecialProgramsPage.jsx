@@ -1,15 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-import { useContent } from '../../context/ContentContext';
 import PageWrapper from '../../components/layout/PageWrapper';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import * as Icons from 'lucide-react';
+import { getSpecialProgramsData } from '../../api/apiClient';
 
 export default function SpecialProgramsPage() {
   const { lang } = useLanguage();
-  const { content } = useContent();
+  const [specialProgramsData, setSpecialProgramsData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const specialProgramsData = content?.programs?.details?.['special-programs'];
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const data = await getSpecialProgramsData();
+        setSpecialProgramsData(data);
+      } catch (error) {
+        console.error('Error fetching special programs data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-bg">
+        <Icons.Loader2 size={48} className="animate-spin text-primary mb-4" />
+        <p className="text-muted font-medium">
+          {lang === 'en' ? 'Loading special programs...' : 'বিশেষ কার্যক্রম লোড হচ্ছে...'}
+        </p>
+      </div>
+    );
+  }
 
   const programs = (specialProgramsData?.programs || []).map(program => ({
     ...program,

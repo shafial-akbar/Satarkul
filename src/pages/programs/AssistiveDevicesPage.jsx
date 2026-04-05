@@ -1,15 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-import { useContent } from '../../context/ContentContext';
 import PageWrapper from '../../components/layout/PageWrapper';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import * as Icons from 'lucide-react';
+import { getDevicesData } from '../../api/apiClient';
 
 export default function AssistiveDevicesPage() {
   const { lang } = useLanguage();
-  const { content } = useContent();
+  const [assistive, setAssistive] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const assistive = content?.programs?.details?.['assistive-devices'];
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const data = await getDevicesData();
+        setAssistive(data);
+      } catch (error) {
+        console.error('Error fetching assistive devices data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-bg">
+        <Icons.Loader2 size={48} className="animate-spin text-primary mb-4" />
+        <p className="text-muted font-medium">
+          {lang === 'en' ? 'Loading assistive devices...' : 'সহায়ক উপকরণ কার্যক্রম লোড হচ্ছে...'}
+        </p>
+      </div>
+    );
+  }
 
   const devices = (assistive?.devices || []).map(device => ({
     ...device,
