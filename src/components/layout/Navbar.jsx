@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../context/LanguageContext';
 import { useContent } from '../../context/ContentContext';
 import { SpusLogoFull } from '../ui/SpusLogo';
+import SearchModal from '../shared/SearchModal';
 
 const NavItem = ({ to, label, children, active }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -60,6 +61,7 @@ export default function Navbar() {
   const { pathname } = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -185,6 +187,15 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-2 xl:gap-3">
+            {/* Search Button */}
+            <button
+              onClick={() => setIsSearchOpen(true)}
+              className="flex items-center justify-center p-2.5 rounded-full bg-surface-alt text-primary hover:bg-primary hover:text-white transition-all duration-300 border border-border group"
+              title={lang === 'en' ? 'Search' : 'খুঁজুন'}
+            >
+              <Search size={18} className="group-hover:scale-110 transition-transform" />
+            </button>
+
             {/* Language Toggle */}
             <button 
               onClick={toggleLang}
@@ -203,6 +214,14 @@ export default function Navbar() {
               {content?.common?.buttons?.donateNow?.[lang] || (lang === 'en' ? 'Donate Now' : 'এখনই দান করুন')}
             </Link>
 
+            {/* Mobile Search Button */}
+            <button
+              onClick={() => setIsSearchOpen(true)}
+              className="xl:hidden p-2 text-text-main hover:bg-surface-alt rounded-xl transition-colors"
+            >
+              <Search size={24} />
+            </button>
+
             {/* Mobile Menu Toggle */}
             <button 
               onClick={() => setIsMobileMenuOpen(true)}
@@ -213,6 +232,11 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
+
+      <SearchModal 
+        isOpen={isSearchOpen} 
+        onClose={() => setIsSearchOpen(false)} 
+      />
 
       {/* Mobile Menu Drawer */}
       <AnimatePresence>
@@ -273,6 +297,16 @@ export default function Navbar() {
               </div>
 
               <div className="p-6 border-t border-border space-y-4">
+                <button 
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    setIsSearchOpen(true);
+                  }}
+                  className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold bg-surface-alt text-primary border border-border"
+                >
+                  <Search size={20} />
+                  {lang === 'en' ? 'Search Site' : 'সাইট অনুসন্ধান'}
+                </button>
                 <button 
                   onClick={toggleLang}
                   className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold bg-surface-alt text-primary border border-border"
