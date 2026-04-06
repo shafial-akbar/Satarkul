@@ -14,13 +14,15 @@ export const healthData = {
     { title: { en: 'Medicine Distribution', bn: 'ওষুধ বিতরণ' }, desc: { en: 'Providing essential medicines to ultra-poor disabled patients.', bn: 'দরিদ্র ও অসহায় রোগীদের জন্য বিনামূল্যে প্রয়োজনীয় ওষুধ সরবরাহ।' }, icon: 'Pill', color: 'bg-accent/10 text-accent', timeline: { en: 'As Needed', bn: 'প্রয়োজন অনুযায়ী' } },
   ],
   impact: {
+    tag: { en: 'Our Impact', bn: 'আমাদের প্রভাব' },
     title: { en: 'Data-Driven Healthcare', bn: 'পরিকল্পিত স্বাস্থ্যসেবা' },
-    description: { en: 'We track every medical intervention to ensure our community receives the best possible care and support.', bn: 'প্রতি প্রতিটি চিকিৎসা কার্যক্রম নিবিড়ভাবে পর্যবেক্ষণ করা হয় যাতে সবাই সঠিক সেবা পায়।' },
+    description: { en: 'We provide essential healthcare services, including regular checkups, specialized therapies, and emergency medical support to persons with disabilities in our community.', bn: 'আমরা স্থানীয় প্রতিবন্ধী ব্যক্তিদের নিয়মিত স্বাস্থ্য পরীক্ষা, বিশেষ থেরাপি এবং জরুরি চিকিৎসা সেবা প্রদান করে আসছি।' },
     stats: [
       { label: { en: 'Eye Checkups', bn: 'চক্ষু পরীক্ষা' }, value: '155+' },
       { label: { en: 'ORS Beneficiaries', bn: 'ওরস্যালাইন সুবিধাভোগী' }, value: '150+' },
     ]
   },
+  eventsTag: { en: 'Health Campaigns', bn: 'স্বাস্থ্য কর্মসূচি' },
   eventsTitle: { en: 'Health Events & Campaigns', bn: 'স্বাস্থ্য বিষয়ক কর্মসূচি' },
   eventsSubtitle: { en: 'Specialized camps and awareness sessions conducted throughout the year.', bn: 'সারা বছর জুড়ে পরিচালিত বিশেষ চিকিৎসা ক্যাম্প এবং সচেতনতামূলক সেশন।' },
   events: [

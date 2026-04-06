@@ -165,14 +165,14 @@ export default function SocialSupportPage() {
                   <Icons.Phone size={24} className="text-accent" />
                   <div>
                     <p className="text-xs text-white/60 uppercase tracking-widest font-bold">{socialSupport?.cta?.phoneLabel?.[lang]}</p>
-                    <p className="font-bold">{socialSupport?.cta?.phone?.[lang]}</p>
+                    <p className="font-bold">{socialSupport?.cta?.phone}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20">
                   <Icons.Mail size={24} className="text-accent" />
                   <div>
                     <p className="text-xs text-white/60 uppercase tracking-widest font-bold">{socialSupport?.cta?.emailLabel?.[lang]}</p>
-                    <p className="font-bold">{socialSupport?.cta?.email?.[lang]}</p>
+                    <p className="font-bold">{socialSupport?.cta?.email}</p>
                   </div>
                 </div>
               </div>

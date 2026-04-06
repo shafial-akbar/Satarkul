@@ -29,16 +29,16 @@ export default function WorkAreaGrid({ chartData = workAreaData }) {
             </div>
             <div className="space-y-1">
               <h4 className="text-xl lg:text-2xl font-display font-bold text-text-main">
-                {lang === 'en' ? area.ward : area.wardBn}
+                {area.ward}
               </h4>
               <div className="flex items-center gap-2 text-sm text-muted font-bold uppercase tracking-widest">
-                <Building2 size={14} /> {lang === 'en' ? area.thana : area.thanaBn}
+                <Building2 size={14} /> {area.thana}
               </div>
             </div>
             <div className="pt-4 border-t border-border flex items-start gap-2">
               <Users size={16} className="text-secondary shrink-0 mt-1" />
               <p className="text-sm text-muted leading-relaxed">
-                {lang === 'en' ? area.coverage : area.coverageBn}
+                {area.coverage}
               </p>
             </div>
           </div>

@@ -72,7 +72,7 @@ export default function SpecialProgramsPage() {
                     <Icons.Users size={24} />
                   </div>
                   <div>
-                    <p className="font-bold text-text-main">{specialProgramsData?.hero?.stats?.[0]?.value?.[lang] || '2026'}</p>
+                    <p className="font-bold text-text-main">{specialProgramsData?.hero?.stats?.[0]?.value?.[lang]}</p>
                     <p className="text-xs text-muted uppercase tracking-widest">{specialProgramsData?.hero?.stats?.[0]?.label?.[lang]}</p>
                   </div>
                 </div>
