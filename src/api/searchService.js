@@ -1,10 +1,10 @@
 import { newsData } from '../data/newsData';
 import siteContent from '../data/siteContent';
-import { schoolStats, disabilityBreakdown, schoolClasses, subPrograms } from '../data/educationData';
-import { healthServices, healthEvents } from '../data/healthData';
-import { mainSkills, trainingProjects } from '../data/skillDevelopmentData';
-import { financialGrants, smeLoans } from '../data/financialData';
-import { devices, impactPoints } from '../data/assistiveDevicesData';
+import { educationData } from '../data/educationData';
+import { healthData } from '../data/healthData';
+import { skillsData } from '../data/skillDevelopmentData';
+import { financialData } from '../data/financialData';
+import { assistiveData } from '../data/assistiveDevicesData';
 import { awarenessPrograms } from '../data/awarenessData';
 import { socialSupportServices } from '../data/socialSupportData';
 import { specialPrograms } from '../data/specialProgramsData';
@@ -156,17 +156,11 @@ export const globalSearch = async (query, lang = 'en') => {
 
   // Search in specific program data
   const collections = [
-    { data: schoolStats, path: '/programs/education', type: lang === 'en' ? 'Education' : 'শিক্ষা' },
-    { data: schoolClasses, path: '/programs/education', type: lang === 'en' ? 'Education' : 'শিক্ষা' },
-    { data: subPrograms, path: '/programs/education', type: lang === 'en' ? 'Education' : 'শিক্ষা' },
-    { data: healthServices, path: '/programs/health', type: lang === 'en' ? 'Health' : 'স্বাস্থ্য' },
-    { data: healthEvents, path: '/programs/health', type: lang === 'en' ? 'Health' : 'স্বাস্থ্য' },
-    { data: mainSkills, path: '/programs/skill-development', type: lang === 'en' ? 'Skills' : 'দক্ষতা' },
-    { data: trainingProjects, path: '/programs/skill-development', type: lang === 'en' ? 'Skills' : 'দক্ষতা' },
-    { data: financialGrants, path: '/programs/financial-support', type: lang === 'en' ? 'Finance' : 'অর্থ' },
-    { data: smeLoans, path: '/programs/financial-support', type: lang === 'en' ? 'Finance' : 'অর্থ' },
-    { data: devices, path: '/programs/assistive-devices', type: lang === 'en' ? 'Devices' : 'উপকরণ' },
-    { data: impactPoints, path: '/programs/assistive-devices', type: lang === 'en' ? 'Devices' : 'উপকরণ' },
+    { data: educationData, path: '/programs/education', type: lang === 'en' ? 'Education' : 'শিক্ষা' },
+    { data: healthData, path: '/programs/health', type: lang === 'en' ? 'Health' : 'স্বাস্থ্য' },
+    { data: skillsData, path: '/programs/skill-development', type: lang === 'en' ? 'Skills' : 'দক্ষতা' },
+    { data: financialData, path: '/programs/financial-support', type: lang === 'en' ? 'Finance' : 'অর্থ' },
+    { data: assistiveData, path: '/programs/assistive-devices', type: lang === 'en' ? 'Devices' : 'উপকরণ' },
     { data: awarenessPrograms, path: '/programs/awareness', type: lang === 'en' ? 'Awareness' : 'সচেতনতা' },
     { data: socialSupportServices, path: '/programs/social-support', type: lang === 'en' ? 'Social Support' : 'সামাজিক সহায়তা' },
     { data: specialPrograms, path: '/programs/special-programs', type: lang === 'en' ? 'Special' : 'বিশেষ' },

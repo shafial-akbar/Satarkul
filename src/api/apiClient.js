@@ -3,11 +3,11 @@ import { mockStats, mockPrograms, mockGoverningBody, mockDonors, mockActivities 
 import { newsData } from '../data/newsData';
 import { galleryData, videosData } from '../data/galleryData';
 import { downloadsData } from '../data/downloadsData';
-import { schoolStats, schoolClasses, subPrograms } from '../data/educationData';
-import { healthServices, healthEvents } from '../data/healthData';
-import { mainSkills, trainingProjects } from '../data/skillDevelopmentData';
-import { financialGrants, smeLoans } from '../data/financialData';
-import { devices, impactPoints } from '../data/assistiveDevicesData';
+import { educationData } from '../data/educationData';
+import { healthData } from '../data/healthData';
+import { skillsData } from '../data/skillDevelopmentData';
+import { financialData } from '../data/financialData';
+import { assistiveData } from '../data/assistiveDevicesData';
 import { awarenessPrograms } from '../data/awarenessData';
 import { socialSupportServices } from '../data/socialSupportData';
 import { specialPrograms } from '../data/specialProgramsData';
@@ -41,11 +41,11 @@ export const getDownloads = () => USE_MOCK ? mockCall(downloadsData) : apiClient
 export const getPrograms = () => USE_MOCK ? mockCall(mockPrograms) : apiClient.get('/programs').then(res => res.data);
 
 // Detailed Program Data
-export const getEducationData = () => USE_MOCK ? mockCall({ schoolStats, schoolClasses, subPrograms }) : apiClient.get('/programs/education').then(res => res.data);
-export const getHealthData = () => USE_MOCK ? mockCall({ healthServices, healthEvents }) : apiClient.get('/programs/health').then(res => res.data);
-export const getSkillsData = () => USE_MOCK ? mockCall({ mainSkills, trainingProjects }) : apiClient.get('/programs/skills').then(res => res.data);
-export const getFinancialData = () => USE_MOCK ? mockCall({ financialGrants, smeLoans }) : apiClient.get('/programs/financial').then(res => res.data);
-export const getDevicesData = () => USE_MOCK ? mockCall({ devices, impactPoints }) : apiClient.get('/programs/devices').then(res => res.data);
+export const getEducationData = () => USE_MOCK ? mockCall(educationData) : apiClient.get('/programs/education').then(res => res.data);
+export const getHealthData = () => USE_MOCK ? mockCall(healthData) : apiClient.get('/programs/health').then(res => res.data);
+export const getSkillsData = () => USE_MOCK ? mockCall(skillsData) : apiClient.get('/programs/skills').then(res => res.data);
+export const getFinancialData = () => USE_MOCK ? mockCall(financialData) : apiClient.get('/programs/financial').then(res => res.data);
+export const getDevicesData = () => USE_MOCK ? mockCall(assistiveData) : apiClient.get('/programs/devices').then(res => res.data);
 export const getAwarenessData = () => USE_MOCK ? mockCall(awarenessPrograms) : apiClient.get('/programs/awareness').then(res => res.data);
 export const getSocialSupportData = () => USE_MOCK ? mockCall(socialSupportServices) : apiClient.get('/programs/social-support').then(res => res.data);
 export const getSpecialProgramsData = () => USE_MOCK ? mockCall(specialPrograms) : apiClient.get('/programs/special').then(res => res.data);

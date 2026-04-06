@@ -1,49 +1,51 @@
-export const socialSupportServices = [
-  {
-    id: 'documentation',
-    icon: 'FileText',
-    title: {
-      en: 'Documentation Support',
-      bn: 'জরিপ, পরিচয় পত্র, ভাতা ও জন্ম নিবন্ধন'
-    },
-    desc: {
-      en: 'Support for disabled persons in obtaining surveys, disability identity cards, allowances and birth registration, voter ID cards and education scholarships, etc.',
-      bn: 'প্রতিবন্ধী ব্যক্তিদের জরিপ, প্রতিবন্ধী পরিচয় পত্র, ভাতা ও জন্ম নিবন্ধন, ভোটার আইডি কার্ড ও শিক্ষা উপবৃত্তি ইত্যাদি প্রাপ্তির ক্ষেত্রে সহযোগিতা করা।'
-    },
-    timeline: {
-      en: 'Ongoing',
-      bn: 'চলমান'
-    },
-    color: 'bg-blue-50 text-blue-600',
-    features: [
-      { en: 'Disability Identity Cards', bn: 'প্রতিবন্ধী পরিচয় পত্র' },
-      { en: 'Allowances & Grants', bn: 'ভাতা ও অনুদান' },
-      { en: 'Birth Registration', bn: 'জন্ম নিবন্ধন' },
-      { en: 'Voter ID Cards', bn: 'ভোটার আইডি কার্ড' },
-      { en: 'Education Scholarships', bn: 'শিক্ষা উপবৃত্তি' }
-    ]
+export const socialSupportServices = {
+  title: { en: 'Social & Legal Support', bn: 'সামাজিক ও আইনি সহায়তা' },
+  subtitle: { en: 'Providing essential social services and legal aid for persons with disabilities.', bn: 'প্রতিবন্ধী ব্যক্তিদের প্রয়োজনীয় সামাজিক সেবা ও আইনি সহায়তা নিশ্চিতকরণ।' },
+  intro: {
+    tag: { en: 'Social Services', bn: 'সামাজিক সেবা' },
+    title: { en: 'Holistic Social Support', bn: 'সামগ্রিক সামাজিক সুরক্ষা' },
+    description: { en: 'We provide a range of social and legal support services to ensure that persons with disabilities can live with dignity and security. From legal aid to social counseling, we are here to support our community.', bn: 'আমরা আইনি সহায়তা থেকে শুরু করে সামাজিক কাউন্সিলিং পর্যন্ত সব ধরণের সেবা দিয়ে থাকি, যাতে কেউ নিরাপত্তাহীনতায় না ভোগে।' },
+    cta1: { en: 'Request Support', bn: 'সহয়তা চান' },
+    cta2: { en: 'Learn More', bn: 'আরও জানুন' },
+    badgeTitle: { en: 'Legal Aid Partner', bn: 'আইনি সহায়তা অংশীদার' },
+    badgeSubtitle: { en: 'Certified Support', bn: 'স্বীকৃত সেবা' },
+    badgeQuote: { en: '"Justice and dignity for every individual."', bn: '"প্রত্যেক ব্যক্তির জন্য ন্যায়বিচার ও মর্যাদা।"' }
   },
-  {
-    id: 'legal',
-    icon: 'Scale',
-    title: {
-      en: 'Legal Support',
-      bn: 'আইনি সহায়তা'
+  servicesTitle: { en: 'Our Support Services', bn: 'আমাদের সেবাসমূহ' },
+  servicesSubtitle: { en: 'Comprehensive assistance for social and legal challenges.', bn: 'সামাজিক ও আইনি জটিলতা নিরসনে পূর্ণাঙ্গ সহায়তা।' },
+  services: [
+    { 
+      id: 'legal-aid',
+      title: { en: 'Legal Aid & Counseling', bn: 'আইনি সহায়তা ও পরামর্শ' }, 
+      desc: { en: 'Free legal advice and representation for disability-related cases.', bn: 'প্রতিবন্ধকতা সংশ্লিষ্ট যে কোনো আইনি সমস্যায় বিনামূল্যে আইনি পরামর্শ ও সহায়তা।' }, 
+      icon: 'Gavel',
+      color: 'bg-blue-50 text-blue-600',
+      timeline: { en: 'As Needed', bn: 'প্রয়োজন অনুযায়ী' },
+      features: [
+        { en: 'Rights Protection', bn: 'অধিকার সুরক্ষা' },
+        { en: 'Legal Documentation', bn: 'আইনি নথিপত্র' }
+      ]
     },
-    desc: {
-      en: 'Providing legal support to SPUS members to ensure their rights and protection under the law.',
-      bn: 'এসপিইউএস সদস্যদের আইনি সহায়তা প্রদান করা যাতে তাদের অধিকার এবং আইনি সুরক্ষা নিশ্চিত করা যায়।'
-    },
-    timeline: {
-      en: 'Ongoing',
-      bn: 'চলমান'
-    },
-    color: 'bg-purple-50 text-purple-600',
-    features: [
-      { en: 'Legal Counseling', bn: 'আইনি পরামর্শ' },
-      { en: 'Rights Advocacy', bn: 'অধিকার অ্যাডভোকেসি' },
-      { en: 'Mediation Services', bn: 'সালিশি সেবা' },
-      { en: 'Legal Representation', bn: 'আইনি প্রতিনিধিত্ব' }
-    ]
+    { 
+      id: 'social-counseling',
+      title: { en: 'Social Counseling', bn: 'সামাজিক কাউন্সিলিং' }, 
+      desc: { en: 'Psychosocial support for individuals and families to cope with social barriers.', bn: 'মানসিক ও সামাজিক প্রতিকূলতা মোকাবিলায় ব্যক্তি ও পরিবারের জন্য বিশেষ কাউন্সিলিং।' }, 
+      icon: 'Heart',
+      color: 'bg-rose-50 text-rose-600',
+      timeline: { en: 'Weekly', bn: 'সাপ্তাহিক' },
+      features: [
+        { en: 'Family Support', bn: 'পারিবারিক সহায়তা' },
+        { en: 'Mental Wellness', bn: 'মানসিক সুস্থতা' }
+      ]
+    }
+  ],
+  cta: {
+    title: { en: 'Need Social or Legal Help?', bn: 'সামাজিক বা আইনি সহায়তা প্রয়োজন?' },
+    description: { en: 'Our dedicated team is ready to assist you with any social or legal challenges you may be facing.', bn: 'আমাদের নিবেদিত দল আপনার যে কোনো সামাজিক বা আইনি সমস্যা সমাধানে পাশে আছে।' },
+    phoneLabel: { en: 'Call Us', bn: 'কল করুন' },
+    phone: '+880 1712-345678',
+    emailLabel: { en: 'Email Us', bn: 'ইমেইল করুন' },
+    email: 'support@spus.org',
+    buttonText: { en: 'Get Help Now', bn: 'এখনই সহায়তা নিন' }
   }
-];
+};

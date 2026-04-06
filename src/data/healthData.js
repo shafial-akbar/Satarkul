@@ -1,85 +1,40 @@
-export const healthServices = [
-  { 
-    id: '8.6.1', 
-    title: { en: 'Medical Support & Financial Assistance', bn: 'চিকিৎসা সহযোগিতা ও নগদ আর্থিক অনুদান' }, 
-    target: { en: 'Disabled persons and students', bn: 'প্রতিবন্ধী ব্যক্তি ও শিক্ষার্থীদের মাঝে' },
-    desc: { en: 'Medical assistance and cash financial grants are provided for the treatment of disabled persons and students.', bn: 'প্রতিবন্ধী ব্যক্তি ও শিক্ষার্থীদের চিকিৎসা সহযোগিতা ও চিকিৎসার জন্য নগদ আর্থিক অনুদান প্রদান করা হয়।' },
-    icon: 'Banknote',
-    color: 'bg-blue-50 text-blue-600'
+export const healthData = {
+  title: { en: "Health Services", bn: "স্বাস্থ্যসেবা" },
+  subtitle: { en: "Providing essential healthcare and medical support to our community.", bn: "অসহায় মানুষের জন্য প্রয়োজনীয় চিকিৎসা ও স্বাস্থ্যসেবা নিশ্চিতকরণ।" },
+  intro: {
+    tag: { en: 'Health Services', bn: 'স্বাস্থ্যসেবা' },
+    title: { en: 'Comprehensive Health Support', bn: 'সমন্বিত স্বাস্থ্য সহায়তা' },
+    description: { en: 'We provide essential healthcare services, including regular checkups, specialized therapies, and emergency medical support to persons with disabilities in our community.', bn: 'আমরা স্থানীয় প্রতিবন্ধী ব্যক্তিদের নিয়মিত স্বাস্থ্য পরীক্ষা, বিশেষ থেরাপি এবং জরুরি চিকিৎসা সেবা প্রদান করে আসছি।' },
+    targetGroup: { en: 'Disabled Persons & Members', bn: 'প্রতিবন্ধী ব্যক্তি ও সদস্যবৃন্দ' }
   },
-  { 
-    id: '8.6.6', 
-    title: { en: 'Regular Health Services', bn: 'নিয়মিত স্বাস্থ্য সেবা' }, 
-    timeline: { en: 'Ongoing', bn: 'চলমান' },
-    desc: { en: 'Every Tuesday, Ms. Shiuli Biswas (Senior Staff Nurse, FIDA International) provides medical checkups, weight/height measurement, and medicine distribution.', bn: 'প্রতি মঙ্গলবার ফিডা ইন্টারন্যাশনাল বাংলাদেশের সিনিয়র স্টাফ নার্স জনাব শিউলি বিশ্বাস শিক্ষার্থীদের ওজন, উচ্চতা এবং শারীরিক সমস্যা নির্ণয় করে ওষুধ ও চিকিৎসা সেবা প্রদান করেন।' },
-    icon: 'Stethoscope',
-    color: 'bg-emerald-50 text-emerald-600',
-    featured: true
-  },
-  { 
-    id: '8.6.10', 
-    title: { en: 'Therapy Services', bn: 'স্পেশাল কেয়ার থেরাপি সেন্টার' }, 
-    timeline: { en: 'Ongoing', bn: 'চলমান' },
-    desc: { en: 'Therapy services provided every Saturday and Sunday by a physiotherapist and assistant. Includes specialized care at Bara Serai center.', bn: 'প্রতি শনিবার ও রবিবার ১ জন ফিজিওথেরাপিস্ট এবং ১ জন সহকারীর মাধ্যমে থেরাপি সেবা প্রদান করা হয়। এছাড়াও বাড়া সেরাই সেন্টারে বিশেষ সেবা প্রদান করা হয়।' },
-    icon: 'Activity',
-    color: 'bg-purple-50 text-purple-600',
-    featured: true
-  },
-];
-
-export const healthEvents = [
-  { 
-    id: '8.6.3', 
-    title: { en: 'Eye Camp', bn: 'আই ক্যাম্প' }, 
-    date: '03/11/24', 
+  beneficiariesLabel: { en: 'Beneficiaries:', bn: 'উপকারভোগী:' },
+  services: [
+    { title: { en: 'Medical Checkups', bn: 'স্বাস্থ্য পরীক্ষা' }, desc: { en: 'Regular health screenings and general medical checkups for disabled individuals.', bn: 'প্রতিবন্ধী ব্যক্তিদের নিয়মিত সাধারণ স্বাস্থ্য পরীক্ষার ব্যবস্থা।' }, icon: 'Stethoscope', color: 'bg-primary/10 text-primary', timeline: { en: 'Monthly', bn: 'মাসিক' } },
+    { title: { en: 'Physiotherapy', bn: 'ফিজিওথেরাপি' }, desc: { en: 'Specialized physical therapy sessions to improve mobility and strength.', bn: 'শারীরিক সক্ষমতা ও চলাফেরার উন্নতিতে বিশেষ থেরাপি সেশন।' }, icon: 'Activity', color: 'bg-secondary/10 text-secondary', timeline: { en: 'Weekly', bn: 'সাপ্তাহিক' } },
+    { title: { en: 'Medicine Distribution', bn: 'ওষুধ বিতরণ' }, desc: { en: 'Providing essential medicines to ultra-poor disabled patients.', bn: 'দরিদ্র ও অসহায় রোগীদের জন্য বিনামূল্যে প্রয়োজনীয় ওষুধ সরবরাহ।' }, icon: 'Pill', color: 'bg-accent/10 text-accent', timeline: { en: 'As Needed', bn: 'প্রয়োজন অনুযায়ী' } },
+  ],
+  impact: {
+    title: { en: 'Data-Driven Healthcare', bn: 'পরিকল্পিত স্বাস্থ্যসেবা' },
+    description: { en: 'We track every medical intervention to ensure our community receives the best possible care and support.', bn: 'প্রতি প্রতিটি চিকিৎসা কার্যক্রম নিবিড়ভাবে পর্যবেক্ষণ করা হয় যাতে সবাই সঠিক সেবা পায়।' },
     stats: [
-      { label: { en: 'Examined', bn: 'পরীক্ষিত' }, value: '155' },
-      { label: { en: 'Surgery', bn: 'অস্ত্রোপচার' }, value: '20' },
-      { label: { en: 'Spectacles', bn: 'চশমা' }, value: '49' },
-    ],
-    icon: 'Eye' 
+      { label: { en: 'Eye Checkups', bn: 'চক্ষু পরীক্ষা' }, value: '155+' },
+      { label: { en: 'ORS Beneficiaries', bn: 'ওরস্যালাইন সুবিধাভোগী' }, value: '150+' },
+    ]
   },
-  { 
-    id: '8.6.7', 
-    title: { en: 'ENT Medical Camp', bn: 'নাক, কান, গলার ডাক্তার দেখানো ও ঔষুধ বিতরণ' }, 
-    date: '19/09/25', 
-    beneficiaries: { en: '47 students, 20 parents', bn: '৪৭ জন শিক্ষার্থী, ২০ জন অভিভাবক' },
-    desc: { en: 'Free ENT doctor consultation and medicine distribution.', bn: 'বিনা মূল্যে নাক, কান, গলার ডাক্তার দেখানো এবং ঔষুধ বিতরণ করা হয়।' },
-    icon: 'Ear' 
-  },
-  { 
-    id: '8.6.2', 
-    title: { en: 'Deworming & Vitamin A', bn: 'কৃমির ট্যাবলেট ও ভিটামিন A' }, 
-    date: '2025', 
-    desc: { en: 'Disabled students are given deworming tablets and Vitamin A capsules.', bn: 'প্রতিবন্ধী শিক্ষার্থীদের কৃমির ট্যাবলেট ও ভিটামিন A ক্যাপসুল খাওয়ানো হয়।' },
-    icon: 'Pill' 
-  },
-  { 
-    id: '8.6.4', 
-    title: { en: 'ORS Distribution', bn: 'আউটডোর অরস্যালাইন প্রোগ্রাম বিতরণ' }, 
-    date: '22/08/24', 
-    beneficiaries: { en: '150 persons', bn: '১৫০ জন' },
-    icon: 'Droplet' 
-  },
-  { 
-    id: '8.6.5', 
-    title: { en: 'Red Card Distribution', bn: 'লাল কার্ড বিতরণ' }, 
-    date: '22/08/25', 
-    beneficiaries: { en: '40 persons', bn: '৪০ জন' },
-    icon: 'CreditCard' 
-  },
-  { 
-    id: '8.6.8', 
-    title: { en: 'Hand Wash Program', bn: 'হ্যান্ড ওয়াশ প্রোগ্রাম ও বিতরণ' }, 
-    date: '17/10/25', 
-    beneficiaries: { en: '50 persons', bn: '৫০ জন' },
-    icon: 'Hand' 
-  },
-  { 
-    id: '8.6.9', 
-    title: { en: 'HPV Vaccination', bn: 'ক্যান্সারের (এইচপিভি) টিকা প্রদান' }, 
-    date: '13/11/24', 
-    beneficiaries: { en: '3 persons', bn: '৩ জন' },
-    icon: 'Syringe' 
-  },
-];
+  eventsTitle: { en: 'Health Events & Campaigns', bn: 'স্বাস্থ্য বিষয়ক কর্মসূচি' },
+  eventsSubtitle: { en: 'Specialized camps and awareness sessions conducted throughout the year.', bn: 'সারা বছর জুড়ে পরিচালিত বিশেষ চিকিৎসা ক্যাম্প এবং সচেতনতামূলক সেশন।' },
+  events: [
+    { title: { en: 'Eye Care Camp', bn: 'চক্ষু চিকিৎসা ক্যাম্প' }, date: '2023', icon: 'Eye', beneficiaries: { en: '155 Persons', bn: '১৫৫ জন' } },
+    { title: { en: 'Health Awareness', bn: 'স্বাস্থ্য সচেতনতা' }, date: '2023', icon: 'HeartPulse', beneficiaries: { en: '200+ Families', bn: '২০০+ পরিবার' } },
+  ],
+  galleryTitle: { en: 'Health Services Gallery', bn: 'স্বাস্থ্যসেবা গ্যালারি' },
+  galleryImages: [
+    { seed: 'health-1', label: { en: 'Medical Camp', bn: 'চিকিৎসা ক্যাম্প' } },
+    { seed: 'health-2', label: { en: 'Physiotherapy Session', bn: 'ফিজিওথেরাপি সেশন' } },
+    { seed: 'health-3', label: { en: 'Medicine Distribution', bn: 'ওষুধ বিতরণ' } },
+  ],
+  ctaTitle: { en: 'Support Our Health Mission', bn: 'আমাদের স্বাস্থ্যসেবায় সহায়তা করুন' },
+  ctaDescription: { en: 'Your donation helps us provide life-saving medicines and essential therapies to those who need them most.', bn: 'আপনার অনুদান আমাদের অসহায় মানুষের জন্য জীবন রক্ষাকারী ওষুধ এবং প্রয়োজনীয় থেরাপি নিশ্চিত করতে সাহায্য করে।' },
+  ctaButton1: { en: 'Donate for Health', bn: 'চিকিৎসায় অনুদান দিন' },
+  ctaButton2: { en: 'Volunteer as Medic', bn: 'চিকিৎসক হিসেবে যোগ দিন' }
+};

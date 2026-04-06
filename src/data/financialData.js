@@ -1,89 +1,51 @@
-export const financialGrants = [
-  {
-    id: 'mastul-grant',
-    title: {
-      en: 'Mastul Foundation Grant',
-      bn: 'মাস্তুল ফাউন্ডেশন থেকে আর্থিক অনুদান'
-    },
-    date: '11/09/23',
-    amount: '44,000 BDT',
-    beneficiaries: {
-      en: '11 Disabled Members (Male & Female)',
-      bn: '১১ জন পুরুষ ও নারী প্রতিবন্ধী সদস্য'
-    },
-    description: {
-      en: 'A cash financial grant of 44,000 BDT per person has been given to 11 male and female disabled members for small business.',
-      bn: 'এসপিইউএস-এর ১১ জন পুরুষ ও নারী প্রতিবন্ধী সদস্যকে ক্ষুদ্র ব্যবসায়ের জন্য প্রতি ব্যক্তি ৪৪,০০০ টাকা করে নগদ আর্থিক অনুদান প্রদান করা হয়েছে।'
-    }
-  },
-  {
-    id: 'individual-grants',
-    title: {
-      en: 'Individual Business Grants',
-      bn: 'ব্যক্তিগত ব্যবসায়িক অনুদান'
-    },
-    date: '14/10/23',
-    items: [
-      {
-        name: { en: 'Manik (SPUS Member)', bn: 'মানিক (এসপিইউএস সদস্য)' },
-        purpose: { en: 'Small Business', bn: 'ক্ষুদ্র ব্যবসায়' },
-        amount: '15,000 BDT',
-        icon: 'Store'
-      },
-      {
-        name: { en: 'Nazma Aktar', bn: 'নাজমা আক্তার' },
-        purpose: { en: 'Purchase of old rickshaw', bn: 'পুরাতন রিকশা ক্রয়' },
-        amount: '15,000 BDT',
-        icon: 'Bike'
-      }
+export const financialData = {
+  title: { en: 'Financial Assistance & Micro-Credit', bn: 'আর্থিক সহায়তা ও ক্ষুদ্রঋণ' },
+  subtitle: { en: 'Providing interest-free loans and emergency grants to ensure financial stability.', bn: 'সুদমুক্ত ঋণ ও জরুরি অনুদানের মাধ্যমে আর্থিক স্বচ্ছলতা নিশ্চিতকরণ।' },
+  overview: {
+    tag: { en: 'Financial Inclusion', bn: 'আর্থিক অন্তর্ভুক্তি' },
+    title: { en: 'Empowering Through Financial Support', bn: 'আর্থিক সহায়তায় স্বাবলম্বী' },
+    description: { en: 'We provide interest-free micro-loans to disabled entrepreneurs and emergency financial grants to families in crisis. Our goal is to break the cycle of poverty and provide a safety net for the most vulnerable members of our community.', bn: 'আমরা প্রতিবন্ধী উদ্যোক্তাদের সুদমুক্ত ক্ষুদ্রঋণ এবং সংকটাপন্ন পরিবারগুলোকে জরুরি আর্থিক অনুদান প্রদান করি।' },
+    target: { en: 'Disabled Entrepreneurs & Families', bn: 'প্রতিবন্ধী উদ্যোক্তা ও পরিবারসমূহ' },
+    stats: [
+      { label: { en: 'Total Disbursed', bn: 'মোট বিতরণ' }, value: '500k+', color: 'text-primary', fullWidth: true, icon: true },
+      { label: { en: 'Active Members', bn: 'সক্রিয় সদস্য' }, value: '150+' },
+      { label: { en: 'Success Rate', bn: 'সাফল্যের হার' }, value: '95%' }
     ]
-  }
-];
-
-export const smeLoans = [
-  {
-    date: '11/06/2022',
-    title: {
-      en: 'Phase 1: SME Loan Launch',
-      bn: '১ম পর্যায়: SME ঋণ কার্যক্রম শুরু'
-    },
-    desc: {
-      en: '10 disabled persons (7 women, 3 men) provided with SME loans for business. Repaid in monthly installments of 500 BDT until June 2023.',
-      bn: '১০ জন প্রতিবন্ধী ব্যক্তির (৭ জন নারী, ৩ জন পুরুষ) মধ্যে ব্যবসায়ের জন্য নগদ আর্থিক এসএমই ঋণ প্রদান করা হয় যা তারা মাসিক ৫০০ টাকা কিস্তিতে পরিশোধ করেন।'
-    },
-    stats: {
-      en: '10 Entrepreneurs',
-      bn: '১০ জন উদ্যোক্তা'
-    }
   },
-  {
-    date: '27/06/23',
-    title: {
-      en: 'Phase 2: Business Expansion',
-      bn: '২য় পর্যায়: ব্যবসায়িক সম্প্রসারণ'
+  grantsTitle: { en: 'Financial Grants', bn: 'আর্থিক অনুদান' },
+  grantsSubtitle: { en: 'One-time support for business and emergencies.', bn: 'ব্যবসা ও জরুরি প্রয়োজনে এককালীন সহায়তা।' },
+  grantsTag: { en: 'Cash Grants', bn: 'নগদ অনুদান' },
+  grantAmountLabel: { en: 'Grant Amount', bn: 'অনুদানের পরিমাণ' },
+  beneficiariesLabel: { en: 'Beneficiaries', bn: 'উপকারভোগী' },
+  grants: [
+    { 
+      title: { en: 'Mastul Foundation Grant', bn: 'মাস্তুল ফাউন্ডেশন অনুদান' }, 
+      date: '2023', 
+      amount: '44,000 BDT', 
+      beneficiaries: '11 Persons',
+      desc: { en: 'Special business grants for disabled entrepreneurs.', bn: 'প্রতিবন্ধী উদ্যোক্তাদের জন্য বিশেষ ব্যবসায়িক অনুদান।' }
     },
-    desc: {
-      en: 'SME loans ranging from 10,000 to 30,000 BDT disbursed among 3 women entrepreneurs after monitoring business situations.',
-      bn: '৩ জন প্রতিবন্ধী নারী উদ্যোক্তাদের মধ্যে প্রতিটি ১০,০০০ থেকে ৩০,০০০ টাকা পর্যন্ত এসএমই ঋণ বিতরণ করা হয়।'
-    },
-    stats: {
-      en: '3 Women Entrepreneurs',
-      bn: '৩ জন নারী উদ্যোক্তা'
+    { 
+      title: { en: 'Individual Business Support', bn: 'ব্যক্তিগত ব্যবসায়িক সহায়তা' }, 
+      date: '2023', 
+      items: [
+        { name: { en: 'Manik', bn: 'মানিক' }, purpose: { en: 'Small Store', bn: 'ছোট দোকান' }, amount: '15,000 BDT', icon: 'Store' },
+        { name: { en: 'Nazma', bn: 'নাজমা' }, purpose: { en: 'Rickshaw Purchase', bn: 'রিকশা ক্রয়' }, amount: '15,000 BDT', icon: 'Bike' }
+      ]
     }
-  },
-  {
-    date: '07/07/24',
-    title: {
-      en: 'Recent SME Disbursement',
-      bn: 'সাম্প্রতিক SME ঋণ বিতরণ'
-    },
-    desc: {
-      en: 'Continued support through SME loans and financial grants for small businesses.',
-      bn: 'ক্ষুদ্র ব্যবসায়ের জন্য SME ঋণ ও আর্থিক অনুদান প্রদান করা হয়।'
-    },
-    stats: {
-      en: 'Ongoing Support',
-      bn: 'চলমান সহায়তা'
-    }
-  }
-];
+  ],
+  loansTitle: { en: 'SME Loan Program', bn: 'এসএমই ঋণ কর্মসূচি' },
+  loansSubtitle: { en: 'Interest-free loans for sustainable livelihoods.', bn: 'স্বাবলম্বী হতে সুদমুক্ত ঋণ সহায়তা।' },
+  loans: [
+    { date: '2022', title: { en: 'Phase 1 Launch', bn: '১ম পর্যায় শুরু' }, desc: { en: 'Initial disbursement to 10 entrepreneurs.', bn: '১০ জন উদ্যোক্তার মাঝে প্রাথমিক ঋণ বিতরণ।' }, stats: '10 Persons' },
+    { date: '2023', title: { en: 'Phase 2 Expansion', bn: '২য় পর্যায় সম্প্রসারণ' }, desc: { en: 'Additional support for women entrepreneurs.', bn: 'নারী উদ্যোক্তাদের জন্য অতিরিক্ত সহায়তা।' }, stats: '3 Women' }
+  ],
+  galleryTitle: { en: 'Impact Gallery', bn: 'সাফল্যের গ্যালারি' },
+  galleryItems: [
+    { seed: 'finance-1', title: { en: 'New Business', bn: 'নতুন ব্যবসা' }, subtitle: { en: 'A member starting their small store.', bn: 'একজন সদস্য তার ছোট দোকান শুরু করছেন।' } },
+    { seed: 'finance-2', title: { en: 'Success Story', bn: 'সাফল্যের গল্প' }, subtitle: { en: 'Handicraft production in full swing.', bn: 'হস্তশিল্প উৎপাদন পুরোদমে চলছে।' } }
+  ],
+  ctaTitle: { en: 'Help Us Fund a Dream', bn: 'একটি স্বপ্ন পূরণে সহায়তা করুন' },
+  ctaDescription: { en: 'Your contribution can provide the seed money for a disabled person to start their own business and become self-reliant.', bn: 'আপনার অবদান একজন প্রতিবন্ধী ব্যক্তিকে নিজস্ব ব্যবসা শুরু করতে এবং স্বাবলম্বী হতে সাহায্য করতে পারে।' },
+  ctaButton: { en: 'Donate to Loan Fund', bn: 'ঋণ তহবিলে দান করুন' }
+};

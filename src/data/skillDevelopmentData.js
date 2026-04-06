@@ -1,56 +1,50 @@
-export const mainSkills = [
-  {
-    title: { en: 'Handicrafts & Jewelry', bn: 'হস্তশিল্প ও গয়না তৈরি' },
-    desc: { en: 'Making various showpieces and jewelry using beads.', bn: 'পুঁতি দিয়ে বিভিন্ন শোপিস ও গয়না তৈরি।' },
-    icon: 'Gem',
-    timeline: { en: 'Ongoing', bn: 'চলমান' }
+export const skillsData = {
+  title: { en: 'Skill Development Training', bn: 'দক্ষতা উন্নয়ন প্রশিক্ষণ' },
+  subtitle: { en: 'Empowering disabled women and youth through vocational skills and handicrafts.', bn: 'বৃত্তিমূলক প্রশিক্ষণ ও হস্তশিল্পের মাধ্যমে প্রতিবন্ধী নারী ও যুবকদের ক্ষমতায়ন।' },
+  intro: {
+    tag: { en: 'Vocational Training', bn: 'বৃত্তিমূলক প্রশিক্ষণ' },
+    title: { en: 'Handicrafts & Vocational Skills', bn: 'হস্তশিল্প ও কর্মমুখী শিক্ষা' },
+    description: { en: 'Our skill development program focuses on providing sustainable livelihoods for disabled women, adolescent girls, and their guardians. By teaching creative and practical skills, we help them achieve financial independence and social recognition.', bn: 'আমাদের এই কর্মসূচির লক্ষ্য হলো প্রতিবন্ধী নারী ও কিশোরীদের জন্য আয়ের পথ তৈরি করা, যাতে তারা স্বাবলম্বী হতে পারে।' },
+    targetGroupLabel: { en: 'Target Group:', bn: 'উদ্দিষ্ট গোষ্ঠী:' },
+    targetGroup: { en: 'Disabled Women, Girls & Guardians', bn: 'প্রতিবন্ধী নারী, কিশোরী ও অভিভাবকবৃন্দ' }
   },
-  {
-    title: { en: 'Painting & Art', bn: 'পেইন্টিং ও আর্ট' },
-    desc: { en: 'Block-hand painting and lipstick art training.', bn: 'ব্লক-হাতে পেইন্টিং ও লিপস্টিক আর্ট শেখানো।' },
-    icon: 'Palette',
-    timeline: { en: 'Ongoing', bn: 'চলমান' }
-  },
-  {
-    title: { en: 'Tailoring & Sewing', bn: 'দর্জিবিজ্ঞান ও সেলাই' },
-    desc: { en: 'Tailoring and Nakshi Kantha sewing training.', bn: 'দর্জিবিজ্ঞান ও নকশী কাঁথা সেলাই প্রশিক্ষণ।' },
-    icon: 'Scissors',
-    timeline: { en: 'Ongoing', bn: 'চলমান' }
-  }
-];
-
-export const trainingProjects = [
-  {
-    title: { en: 'Tailoring Training (Tan Foundation)', bn: 'সেলাই প্রশিক্ষণ (ট্যান ফাউন্ডেশন)' },
-    desc: { 
-      en: 'In collaboration with Tan Foundation, 10 ultra-poor and disabled girls received 6 months of training (Jan-June 2023) and a sewing machine was distributed.', 
-      bn: 'ট্যান ফাউন্ডেশনের সহযোগিতায় জানুয়ারি থেকে জুন ২০২৩ পর্যন্ত ১০ জন অতি দরিদ্র ও প্রতিবন্ধী মেয়েদের সেলাই প্রশিক্ষণের সাথে ১টি সেলাই মেশিন বিতরণ করা হয়েছে।' 
+  coursesTitle: { en: 'Training Courses', bn: 'প্রশিক্ষণ কোর্সসমূহ' },
+  courses: [
+    { title: { en: 'Handicrafts', bn: 'হস্তশিল্প' }, desc: { en: 'Training in making various handicraft items for local and global markets.', bn: 'বাজারের চাহিদা অনুযায়ী নান্দনিক হস্তশিল্প তৈরির প্রশিক্ষণ।' }, icon: 'Palette', timeline: { en: '6 Months', bn: '৬ মাস' } },
+    { title: { en: 'Tailoring', bn: 'সেলাই ও দর্জিবিজ্ঞান' }, desc: { en: 'Professional tailoring and dressmaking courses for women with disabilities.', bn: 'পেশাদার দর্জি হিসেবে নিজেকে গড়ে তুলতে আধুনিক পোশাক তৈরির প্রশিক্ষণ।' }, icon: 'Scissors', timeline: { en: '4 Months', bn: '৪ মাস' } },
+    { title: { en: 'Computer Literacy', bn: 'কম্পিউটার শিক্ষা' }, desc: { en: 'Basic computer skills and digital literacy for the modern workforce.', bn: 'আধুনিক বিশ্বের সাথে তাল মেলাতে কম্পিউটার ও ডিজিটাল সাক্ষরতা প্রদান।' }, icon: 'Monitor', timeline: { en: '3 Months', bn: '৩ মাস' } },
+  ],
+  projectsTitle: { en: 'Featured Projects', bn: 'উল্লেখযোগ্য প্রকল্পসমূহ' },
+  partnerLabel: { en: 'Partner Organization:', bn: 'অংশীদার সংস্থা:' },
+  projects: [
+    { 
+      title: { en: 'Vocational Training for Disabled Women', bn: 'প্রতিবন্ধী নারীদের কর্মমুখী প্রশিক্ষণ' }, 
+      desc: { en: 'A comprehensive project aimed at providing specialized vocational training to disabled women and adolescent girls.', bn: 'নারী ও কিশোরীদের স্বাবলম্বী করতে পরিচালিত একটি বিশেষ প্রশিক্ষণ প্রকল্প।' }, 
+      partner: { en: 'NGO Affairs Bureau', bn: 'এনজিও বিষয়ক ব্যুরো' }, 
+      duration: { en: '1 Year', bn: '১ বছর' }, 
+      participants: { en: '50 Persons', bn: '৫০ জন' }, 
+      icon: 'Award',
+      tags: { en: ['Vocational', 'Women Empowerment'], bn: ['বৃত্তিমূলক', 'নারী ক্ষমতায়ন'] }
     },
-    partner: { en: 'Tan Foundation', bn: 'ট্যান ফাউন্ডেশন' },
-    duration: { en: '6 Months (Jan - June 2023)', bn: '৬ মাস (জানুয়ারি - জুন ২০২৩)' },
-    participants: { en: '10 Girls', bn: '১০ জন মেয়ে' },
-    icon: 'Award'
-  },
-  {
-    title: { en: 'Handicrafts Training (Lions Club)', bn: 'হস্তশিল্প প্রশিক্ষণ (লায়ন্স ক্লাব)' },
-    desc: { 
-      en: 'Supported by Lions Club of Dhaka Khamarbari, 10 students and women were trained to make jewelry, pen holders, lamps, vases, and more (Nov-Dec 2022).', 
-      bn: 'লায়ন্স ক্লাব অফ ঢাকা খামারবাড়ির সহায়তায় ১০ জন প্রতিবন্ধী শিক্ষার্থী ও নারীদের গয়না, পেনহোল্ডার, ল্যাম্প, ফুলদানি ইত্যাদি তৈরির প্রশিক্ষণ প্রদান করা হয় (নভেম্বর-ডিসেম্বর ২০২২)।' 
-    },
-    partner: { en: 'Lions Club of Dhaka Khamarbari', bn: 'লায়ন্স ক্লাব অফ ঢাকা খামারবাড়ি' },
-    duration: { en: '2 Months (Nov - Dec 2022)', bn: '২ মাস (নভেম্বর - ডিসেম্বর ২০২২)' },
-    participants: { en: '10 Students/Women', bn: '১০ জন শিক্ষার্থী/নারী' },
-    icon: 'Award'
-  },
-  {
-    title: { en: 'Block & Hand Painting (WIDE)', bn: 'ব্লক ও হ্যান্ড পেইন্টিং (WIDE)' },
-    desc: { 
-      en: 'A 3-month training program started on 4/09/23 for 10 disabled girls and women members, supported by WIDE.', 
-      bn: 'WIDE-এর আর্থিক সহায়তায় ৪/০৯/২৩ থেকে ১০ জন মেয়ে ও নারী প্রতিবন্ধী সদস্যদের জন্য ৩ মাসব্যাপী ব্লক ও হ্যান্ড পেইন্টিং প্রশিক্ষণ শুরু হয়।' 
-    },
-    partner: { en: 'WIDE', bn: 'WIDE' },
-    duration: { en: '3 Months (Started 04/09/23)', bn: '৩ মাস (৪/০৯/২৩ থেকে শুরু)' },
-    participants: { en: '10 Members', bn: '১০ জন সদস্য' },
-    icon: 'Award'
-  }
-];
+    { 
+      title: { en: 'Handicraft Production Center', bn: 'হস্তশিল্প উৎপাদন কেন্দ্র' }, 
+      desc: { en: 'Establishing a center where trained individuals can produce and sell their handicrafts.', bn: 'প্রশিক্ষিত কারিগরদের তৈরি পণ্য বিক্রির জন্য একটি স্থায়ী উৎপাদন কেন্দ্র।' }, 
+      partner: { en: 'Local Government', bn: 'স্থানীয় সরকার' }, 
+      duration: { en: 'Ongoing', bn: 'চলমান' }, 
+      participants: { en: '30+ Artisans', bn: '৩০+ কারিগর' }, 
+      icon: 'Home',
+      tags: { en: ['Production', 'Livelihood'], bn: ['উৎপাদন', 'জীবিকা'] }
+    }
+  ],
+  galleryTitle: { en: 'Training Gallery', bn: 'প্রশিক্ষণ গ্যালারি' },
+  gallerySubtitle: { en: 'Glimpses of our members learning and creating.', bn: 'সদস্যদের কাজ শেখার ও সৃজনশীলতার কিছু মুহূর্ত।' },
+  galleryItems: [
+    { seed: 'training-1', label: { en: 'Handicraft Class', bn: 'হস্তশিল্প ক্লাস' } },
+    { seed: 'training-2', label: { en: 'Tailoring Training', bn: 'সেলাই প্রশিক্ষণ' } },
+    { seed: 'training-3', label: { en: 'Computer Lab', bn: 'কম্পিউটার ল্যাব' } },
+    { seed: 'training-4', label: { en: 'Art Session', bn: 'আর্ট সেশন' } },
+  ],
+  ctaTitle: { en: 'Support Our Artisans', bn: 'আমাদের কারিগরদের পাশে দাঁড়ান' },
+  ctaDescription: { en: 'You can support our skill development program by donating materials or purchasing handicrafts made by our members.', bn: 'উপকরণ দান করে অথবা আমাদের সদস্যদের তৈরি পণ্য কিনে আপনিও এই উদ্যোগের অংশ হতে পারেন।' },
+  ctaButton: { en: 'Contact for Orders', bn: 'অর্ডারের জন্য যোগাযোগ করুন' }
+};
