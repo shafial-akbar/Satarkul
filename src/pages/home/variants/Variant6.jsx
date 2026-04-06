@@ -21,13 +21,8 @@ import { useContent } from '../../../context/ContentContext';
 export default function Variant6() {
   const { t } = useTranslation();
   const { lang } = useLanguage();
-  const { setCurrentTheme, themes } = useTheme();
+  const { currentTheme } = useTheme();
   const { content } = useContent();
-
-  useEffect(() => {
-    const theme = themes.find(t => t.id === 'purple-dream');
-    if (theme) setCurrentTheme(theme);
-  }, [setCurrentTheme, themes]);
 
   return (
     <div className="bg-bg min-h-screen font-sans text-text-main selection:bg-primary selection:text-white">

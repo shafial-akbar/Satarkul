@@ -21,13 +21,8 @@ import { useContent } from '../../../context/ContentContext';
 export default function Variant5() {
   const { t } = useTranslation();
   const { lang } = useLanguage();
-  const { setCurrentTheme, themes } = useTheme();
+  const { currentTheme } = useTheme();
   const { content } = useContent();
-
-  useEffect(() => {
-    const theme = themes.find(t => t.id === 'deep-night');
-    if (theme) setCurrentTheme(theme);
-  }, [setCurrentTheme, themes]);
 
   return (
     <div className="bg-bg min-h-screen font-sans selection:bg-primary selection:text-white text-text-main overflow-hidden">

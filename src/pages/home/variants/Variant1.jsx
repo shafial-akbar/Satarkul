@@ -50,13 +50,8 @@ import 'swiper/css/effect-fade';
 export default function Variant1() {
   const { t } = useTranslation();
   const { lang } = useLanguage();
-  const { currentTheme, setCurrentTheme, themes } = useTheme();
+  const { currentTheme } = useTheme();
   const { content } = useContent();
-
-  React.useEffect(() => {
-    const theme = themes.find(t => t.id === 'light-of-hope');
-    if (theme && currentTheme.id !== 'light-of-hope') setCurrentTheme(theme);
-  }, [setCurrentTheme, themes, currentTheme.id]);
 
   const getLocalized = (obj) => {
     if (!obj) return '';
@@ -183,7 +178,7 @@ export default function Variant1() {
                       referrerPolicy="no-referrer"
                     />
                   </motion.div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
+                  <div className="absolute inset-0" style={{ background: 'var(--hero-overlay)' }} />
                   
                   <div className="absolute inset-0 flex items-center px-6 lg:px-24">
                     <div className="max-w-4xl space-y-6">
