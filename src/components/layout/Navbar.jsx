@@ -19,7 +19,7 @@ const NavItem = ({ to, label, children, active }) => {
     >
       <Link 
         to={to} 
-        className={`flex items-center gap-1 px-2.5 xl:px-3 py-2 rounded-full font-semibold whitespace-nowrap transition-all duration-300 ${
+        className={`flex items-center gap-1 px-1.5 lg:px-2 py-1.5 rounded-full text-xs lg:text-sm font-bold whitespace-nowrap transition-all duration-300 ${
           active ? 'bg-primary text-white' : 'text-text-main hover:bg-surface-alt hover:text-primary'
         }`}
       >
@@ -141,7 +141,7 @@ export default function Navbar() {
     <>
       {/* Top Bar */}
       <div className="hidden lg:block bg-primary text-white py-2 px-6">
-        <div className="max-w-7xl mx-auto flex justify-between items-center text-xs font-semibold tracking-wider">
+        <div className="max-w-[1400px] mx-auto flex justify-between items-center text-[10px] lg:text-xs font-semibold tracking-wider">
           <div className="flex items-center gap-6">
             <a href="tel:01743214468" className="flex items-center gap-1.5 hover:text-accent transition-colors whitespace-nowrap">
               <Phone size={14} /> 01743214468
@@ -168,13 +168,13 @@ export default function Navbar() {
             : 'bg-surface py-5'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          <Link to="/" className="hover:scale-105 transition-transform duration-300">
-            <SpusLogoFull size={isScrolled ? 32 : 40} />
+        <div className="max-w-[1400px] mx-auto px-4 lg:px-6 flex items-center justify-between">
+          <Link to="/" className="hover:scale-105 transition-transform duration-300 shrink-0">
+            <SpusLogoFull size={isScrolled ? 28 : 34} />
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden xl:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-0.5">
             {menuItems.map((item, idx) => (
               <NavItem 
                 key={idx} 
@@ -186,38 +186,38 @@ export default function Navbar() {
             ))}
           </div>
 
-          <div className="flex items-center gap-2 xl:gap-3">
+          <div className="flex items-center gap-1.5 lg:gap-2">
             {/* Search Button */}
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="flex items-center justify-center p-2.5 rounded-full bg-surface-alt text-primary hover:bg-primary hover:text-white transition-all duration-300 border border-border group"
+              className="flex items-center justify-center p-2 rounded-full bg-surface-alt text-primary hover:bg-primary hover:text-white transition-all duration-300 border border-border group"
               title={lang === 'en' ? 'Search' : 'খুঁজুন'}
             >
-              <Search size={18} className="group-hover:scale-110 transition-transform" />
+              <Search size={16} className="group-hover:scale-110 transition-transform" />
             </button>
 
             {/* Language Toggle */}
             <button 
               onClick={toggleLang}
-              className="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-full font-bold text-xs bg-surface-alt text-primary hover:bg-primary hover:text-white transition-all duration-300 border border-border whitespace-nowrap"
+              className="hidden sm:flex items-center gap-1 px-2.5 py-1.5 rounded-full font-bold text-[10px] lg:text-xs bg-surface-alt text-primary hover:bg-primary hover:text-white transition-all duration-300 border border-border whitespace-nowrap"
             >
-              <Languages size={16} />
+              <Languages size={14} />
               {lang === 'en' ? 'বাংলা' : 'English'}
             </button>
 
             {/* Donate CTA */}
             <Link 
               to="/support/donate"
-              className="hidden md:flex items-center gap-2 px-4 xl:px-6 py-2.5 bg-secondary text-white rounded-full font-bold text-xs xl:text-sm shadow-lg hover:bg-secondary/90 hover:scale-105 transition-all duration-300 group whitespace-nowrap"
+              className="hidden md:flex items-center gap-1.5 px-3 lg:px-4 py-2 bg-secondary text-white rounded-full font-bold text-[10px] lg:text-xs shadow-lg hover:bg-secondary/90 hover:scale-105 transition-all duration-300 group whitespace-nowrap"
             >
-              <Heart size={16} className="group-hover:fill-white transition-all" />
+              <Heart size={14} className="group-hover:fill-white transition-all" />
               {content?.common?.buttons?.donateNow?.[lang] || (lang === 'en' ? 'Donate Now' : 'এখনই দান করুন')}
             </Link>
 
             {/* Mobile Search Button */}
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="xl:hidden p-2 text-text-main hover:bg-surface-alt rounded-xl transition-colors"
+              className="lg:hidden p-2 text-text-main hover:bg-surface-alt rounded-xl transition-colors"
             >
               <Search size={24} />
             </button>
@@ -225,7 +225,7 @@ export default function Navbar() {
             {/* Mobile Menu Toggle */}
             <button 
               onClick={() => setIsMobileMenuOpen(true)}
-              className="xl:hidden p-2 text-text-main hover:bg-surface-alt rounded-xl transition-colors"
+              className="lg:hidden p-2 text-text-main hover:bg-surface-alt rounded-xl transition-colors"
             >
               <Menu size={28} />
             </button>

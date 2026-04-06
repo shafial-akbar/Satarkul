@@ -40,6 +40,7 @@ export default function FinancialSupportPage() {
     ...grant,
     title: grant.title?.[lang] || grant.title?.en || '',
     desc: grant.desc?.[lang] || grant.desc?.en || '',
+    date: grant.date?.[lang] || grant.date?.en || grant.date || '',
     beneficiaries: grant.beneficiaries?.[lang] || grant.beneficiaries?.en || '',
     items: (grant.items || []).map(item => ({
       ...item,
@@ -53,6 +54,7 @@ export default function FinancialSupportPage() {
     ...loan,
     title: loan.title?.[lang] || loan.title?.en || '',
     desc: loan.desc?.[lang] || loan.desc?.en || '',
+    date: loan.date?.[lang] || loan.date?.en || loan.date || '',
     stats: loan.stats?.[lang] || loan.stats?.en || ''
   }));
 

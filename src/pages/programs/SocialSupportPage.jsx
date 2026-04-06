@@ -40,7 +40,7 @@ export default function SocialSupportPage() {
     ...service,
     title: service.title?.[lang] || service.title?.en || '',
     desc: service.desc?.[lang] || service.desc?.en || '',
-    timeline: service.timeline?.[lang] || service.timeline?.en || '',
+    timeline: service.timeline?.[lang] || service.timeline?.en || service.timeline || '',
     icon: Icons[service.icon] || Icons.HelpCircle,
     features: (service.features || []).map(f => f[lang] || f.en || '')
   }));

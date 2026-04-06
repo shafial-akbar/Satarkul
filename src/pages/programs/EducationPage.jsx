@@ -54,7 +54,7 @@ export default function EducationPage() {
     ...program,
     title: program.title?.[lang] || program.title?.en || '',
     desc: program.desc?.[lang] || program.desc?.en || '',
-    timeline: program.timeline?.[lang] || program.timeline?.en || '',
+    timeline: program.timeline?.[lang] || program.timeline?.en || program.timeline || '',
     icon: Icons[program.icon] || Icons.HelpCircle
   }));
 

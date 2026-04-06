@@ -24,8 +24,8 @@ export const healthData = {
   eventsTitle: { en: 'Health Events & Campaigns', bn: 'স্বাস্থ্য বিষয়ক কর্মসূচি' },
   eventsSubtitle: { en: 'Specialized camps and awareness sessions conducted throughout the year.', bn: 'সারা বছর জুড়ে পরিচালিত বিশেষ চিকিৎসা ক্যাম্প এবং সচেতনতামূলক সেশন।' },
   events: [
-    { title: { en: 'Eye Care Camp', bn: 'চক্ষু চিকিৎসা ক্যাম্প' }, date: '2023', icon: 'Eye', beneficiaries: { en: '155 Persons', bn: '১৫৫ জন' } },
-    { title: { en: 'Health Awareness', bn: 'স্বাস্থ্য সচেতনতা' }, date: '2023', icon: 'HeartPulse', beneficiaries: { en: '200+ Families', bn: '২০০+ পরিবার' } },
+    { title: { en: 'Eye Care Camp', bn: 'চক্ষু চিকিৎসা ক্যাম্প' }, date: { en: '2023', bn: '২০২৩' }, icon: 'Eye', beneficiaries: { en: '155 Persons', bn: '১৫৫ জন' } },
+    { title: { en: 'Health Awareness', bn: 'স্বাস্থ্য সচেতনতা' }, date: { en: '2023', bn: '২০২৩' }, icon: 'HeartPulse', beneficiaries: { en: '200+ Families', bn: '২০০+ পরিবার' } },
   ],
   galleryTitle: { en: 'Health Services Gallery', bn: 'স্বাস্থ্যসেবা গ্যালারি' },
   galleryImages: [

@@ -40,7 +40,7 @@ export default function SkillDevelopmentPage() {
     ...course,
     title: course.title?.[lang] || course.title?.en || '',
     desc: course.desc?.[lang] || course.desc?.en || '',
-    timeline: course.timeline?.[lang] || course.timeline?.en || '',
+    timeline: course.timeline?.[lang] || course.timeline?.en || course.timeline || '',
     icon: Icons[course.icon] || Icons.HelpCircle
   }));
 
@@ -49,8 +49,8 @@ export default function SkillDevelopmentPage() {
     title: project.title?.[lang] || project.title?.en || '',
     desc: project.desc?.[lang] || project.desc?.en || '',
     partner: project.partner?.[lang] || project.partner?.en || '',
-    duration: project.duration?.[lang] || project.duration?.en || '',
-    participants: project.participants?.[lang] || project.participants?.en || '',
+    duration: project.duration?.[lang] || project.duration?.en || project.duration || '',
+    participants: project.participants?.[lang] || project.participants?.en || project.participants || '',
     icon: Icons[project.icon] || Icons.Award
   }));
 

@@ -20,14 +20,14 @@ export const financialData = {
   grants: [
     { 
       title: { en: 'Mastul Foundation Grant', bn: 'মাস্তুল ফাউন্ডেশন অনুদান' }, 
-      date: '2023', 
+      date: { en: '2023', bn: '২০২৩' }, 
       amount: '44,000 BDT', 
       beneficiaries: '11 Persons',
       desc: { en: 'Special business grants for disabled entrepreneurs.', bn: 'প্রতিবন্ধী উদ্যোক্তাদের জন্য বিশেষ ব্যবসায়িক অনুদান।' }
     },
     { 
       title: { en: 'Individual Business Support', bn: 'ব্যক্তিগত ব্যবসায়িক সহায়তা' }, 
-      date: '2023', 
+      date: { en: '2023', bn: '২০২৩' }, 
       items: [
         { name: { en: 'Manik', bn: 'মানিক' }, purpose: { en: 'Small Store', bn: 'ছোট দোকান' }, amount: '15,000 BDT', icon: 'Store' },
         { name: { en: 'Nazma', bn: 'নাজমা' }, purpose: { en: 'Rickshaw Purchase', bn: 'রিকশা ক্রয়' }, amount: '15,000 BDT', icon: 'Bike' }
@@ -37,8 +37,8 @@ export const financialData = {
   loansTitle: { en: 'SME Loan Program', bn: 'এসএমই ঋণ কর্মসূচি' },
   loansSubtitle: { en: 'Interest-free loans for sustainable livelihoods.', bn: 'স্বাবলম্বী হতে সুদমুক্ত ঋণ সহায়তা।' },
   loans: [
-    { date: '2022', title: { en: 'Phase 1 Launch', bn: '১ম পর্যায় শুরু' }, desc: { en: 'Initial disbursement to 10 entrepreneurs.', bn: '১০ জন উদ্যোক্তার মাঝে প্রাথমিক ঋণ বিতরণ।' }, stats: '10 Persons' },
-    { date: '2023', title: { en: 'Phase 2 Expansion', bn: '২য় পর্যায় সম্প্রসারণ' }, desc: { en: 'Additional support for women entrepreneurs.', bn: 'নারী উদ্যোক্তাদের জন্য অতিরিক্ত সহায়তা।' }, stats: '3 Women' }
+    { date: { en: '2022', bn: '২০২২' }, title: { en: 'Phase 1 Launch', bn: '১ম পর্যায় শুরু' }, desc: { en: 'Initial disbursement to 10 entrepreneurs.', bn: '১০ জন উদ্যোক্তার মাঝে প্রাথমিক ঋণ বিতরণ।' }, stats: '10 Persons' },
+    { date: { en: '2023', bn: '২০২৩' }, title: { en: 'Phase 2 Expansion', bn: '২য় পর্যায় সম্প্রসারণ' }, desc: { en: 'Additional support for women entrepreneurs.', bn: 'নারী উদ্যোক্তাদের জন্য অতিরিক্ত সহায়তা।' }, stats: '3 Women' }
   ],
   galleryTitle: { en: 'Impact Gallery', bn: 'সাফল্যের গ্যালারি' },
   galleryItems: [

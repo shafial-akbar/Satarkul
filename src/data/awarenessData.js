@@ -13,7 +13,7 @@ export const awarenessPrograms = {
     {
       id: 'menstrual-health',
       title: { en: 'Menstrual Health Awareness', bn: 'মাসিক স্বাস্থ্যবিধি সচেতনতা' },
-      date: '2024',
+      date: { en: '2024', bn: '২০২৪' },
       icon: 'Droplets',
       color: 'bg-rose-50 text-rose-600',
       description: { en: 'Orientation on menstrual care for adolescent girls and distribution of hygiene products.', bn: 'কিশোরীদের মাসিক কালীন পরিচর্যা বিষয়ক ওরিয়েন্টেশন এবং স্বাস্থ্যবিধি উপকরণ বিতরণ।' },
@@ -22,7 +22,7 @@ export const awarenessPrograms = {
     {
       id: 'mental-health',
       title: { en: 'Mental Health Awareness', bn: 'মানসিক স্বাস্থ্য সচেতনতা' },
-      date: '11/02/2024',
+      date: { en: '11/02/2024', bn: '১১/০২/২০২৪' },
       icon: 'Brain',
       color: 'bg-indigo-50 text-indigo-600',
       description: { en: 'Creating awareness among students and parents about mental health to reduce stigma.', bn: 'মানসিক স্বাস্থ্য বিষয়ে শিক্ষার্থী ও অভিভাবকদের সচেতন করা।' },
@@ -31,7 +31,7 @@ export const awarenessPrograms = {
     {
       id: 'climate-change',
       title: { en: 'Climate Change Awareness', bn: 'জলবায়ু পরিবর্তন সচেতনতা' },
-      date: '05/05/2024',
+      date: { en: '05/05/2024', bn: '০৫/০৫/২০২৪' },
       icon: 'ThermometerSun',
       color: 'bg-orange-50 text-orange-600',
       description: { en: 'Awareness on actions to take during excessive temperatures and heatwaves.', bn: 'অতিরিক্ত তাপমাত্রায় করণীয় বিষয়ক সচেতনতা মূলক ওরিয়েন্টেশন।' },
@@ -40,12 +40,12 @@ export const awarenessPrograms = {
     {
       id: 'dengue-prevention',
       title: { en: 'Dengue Prevention', bn: 'ডেঙ্গু প্রতিরোধ সচেতনতা' },
-      date: '20/08/2024',
+      date: { en: '20/08/2024', bn: '২০/০৮/২০২৪' },
       icon: 'Bug',
       color: 'bg-amber-50 text-amber-600',
       description: { en: 'Creating awareness about dengue mosquito prevention and community cleaning.', bn: 'ডেঙ্গু মশা নিধনে সচেতনতা সৃষ্টি এবং পরিষ্কার-পরিচ্ছন্নতা অভিযান।' },
       special: {
-        date: '12/10/2023',
+        date: { en: '12/10/2023', bn: '১২/১০/২০২৩' },
         title: { en: 'Mosquito Net Distribution', bn: 'মশারি বিতরণ কার্যক্রম' },
         desc: { en: 'Distributed mosquito nets among 58 children and elderly disabled students.', bn: '৫৮ জন শিশু ও বয়স্ক প্রতিবন্ধী শিক্ষার্থীদের মধ্যে মশারি বিতরণ করা হয়।' }
       },

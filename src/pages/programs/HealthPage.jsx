@@ -48,6 +48,7 @@ export default function HealthPage() {
   const events = (health?.events || []).map(event => ({
     ...event,
     title: event.title?.[lang] || event.title?.en || '',
+    date: event.date?.[lang] || event.date?.en || event.date || '',
     beneficiaries: event.beneficiaries?.[lang] || event.beneficiaries?.en || '',
     icon: Icons[event.icon] || Icons.HelpCircle
   }));
