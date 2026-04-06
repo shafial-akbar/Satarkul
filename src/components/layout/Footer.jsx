@@ -71,7 +71,7 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto px-6 py-20">
         {/* Row 1: Brand, About, Programs, Support Us */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] gap-12 lg:gap-8 mb-16">
           {/* Brand Column */}
           <div className="space-y-8 flex flex-col items-start">
             <SpusLogoFull size={48} className="items-start" />

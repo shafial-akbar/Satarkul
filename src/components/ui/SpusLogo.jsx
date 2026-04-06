@@ -49,9 +49,9 @@ export const SpusLogoFull = ({ className = "", size = 40, vertical = false }) =>
   return (
     <div className={`flex items-center gap-2 lg:gap-3 ${vertical ? 'flex-col text-center' : 'flex-row'} ${className}`}>
       <SpusLogo size={size} />
-      <div className={`flex flex-col ${vertical ? 'items-center' : 'items-start'}`}>
-        <span className="text-primary font-display font-bold leading-tight text-sm lg:text-base xl:text-lg whitespace-nowrap">সাতারকুল প্রতিবন্ধী উন্নয়ন সংস্থা</span>
-        <span className="text-secondary font-body font-semibold text-[9px] lg:text-[10px] xl:text-xs tracking-wider uppercase whitespace-nowrap">Satarkul Protibondhi Unnayan Songstha</span>
+      <div className={`flex flex-col ${vertical ? 'items-center' : 'items-start'} max-w-[250px] lg:max-w-[300px]`}>
+        <span className="text-primary font-display font-bold leading-tight text-sm lg:text-base xl:text-lg">সাতারকুল প্রতিবন্ধী উন্নয়ন সংস্থা</span>
+        <span className="text-secondary font-body font-semibold text-[9px] lg:text-[10px] xl:text-xs tracking-wider uppercase">Satarkul Protibondhi Unnayan Songstha</span>
       </div>
     </div>
   );
