@@ -27,9 +27,9 @@ export default function ThemeSwitcher() {
             initial={{ opacity: 0, x: -100, scale: 0.9 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             exit={{ opacity: 0, x: -100, scale: 0.9 }}
-            className="absolute bottom-20 left-0 w-80 bg-surface rounded-3xl shadow-2xl border border-border p-6 overflow-hidden"
+            className="absolute bottom-20 left-0 w-80 bg-surface rounded-3xl shadow-2xl border border-border p-6 overflow-hidden flex flex-col max-h-[calc(100vh-120px)]"
           >
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center justify-between mb-6 flex-shrink-0">
               <h3 className="text-xl font-display font-bold text-text-main">
                 {lang === 'en' ? 'Customize Experience' : 'পছন্দমতো সাজান'}
               </h3>
@@ -42,7 +42,7 @@ export default function ThemeSwitcher() {
               </button>
             </div>
 
-            <div className="space-y-4 max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
+            <div className="space-y-4 overflow-y-auto pr-2 custom-scrollbar flex-grow">
               {themes.map((theme) => (
                 <button
                   key={theme.id}
@@ -77,7 +77,7 @@ export default function ThemeSwitcher() {
               ))}
             </div>
 
-            <div className="mt-6 pt-6 border-t border-border">
+            <div className="mt-6 pt-6 border-t border-border flex-shrink-0">
               <p className="text-xs text-muted mb-2 uppercase tracking-widest font-bold">
                 {lang === 'en' ? 'Font Preview' : 'ফন্ট প্রিভিউ'}
               </p>
