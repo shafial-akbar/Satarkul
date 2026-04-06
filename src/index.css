@@ -40,6 +40,25 @@
     @apply bg-bg text-text-main font-body overflow-x-hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
+  
+  /* Adjust Bengali font size to balance with English */
+  html[lang="bn"] {
+    font-size: 92%;
+    line-height: 1.6;
+  }
+
+  html[lang="bn"] h1, 
+  html[lang="bn"] h2, 
+  html[lang="bn"] h3, 
+  html[lang="bn"] h4, 
+  html[lang="bn"] h5, 
+  html[lang="bn"] h6 {
+    font-family: "Hind Siliguri", sans-serif;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    font-weight: 600; /* Slightly lighter than default bold to balance visual weight */
+  }
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-display;
   }
