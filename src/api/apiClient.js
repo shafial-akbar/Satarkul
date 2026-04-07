@@ -11,6 +11,11 @@ import { assistiveData } from '../data/assistiveDevicesData';
 import { awarenessPrograms } from '../data/awarenessData';
 import { socialSupportServices } from '../data/socialSupportData';
 import { specialPrograms } from '../data/specialProgramsData';
+import { reliefActivitiesData } from '../data/reliefActivitiesData';
+import { culturalActivitiesData } from '../data/culturalActivitiesData';
+import { advocacyActivitiesData } from '../data/advocacyActivitiesData';
+import { committeeMeetingsData } from '../data/committeeMeetingsData';
+import { specialDaysActivitiesData } from '../data/specialDaysActivitiesData';
 
 const USE_MOCK = true;
 
@@ -49,6 +54,13 @@ export const getDevicesData = () => USE_MOCK ? mockCall(assistiveData) : apiClie
 export const getAwarenessData = () => USE_MOCK ? mockCall(awarenessPrograms) : apiClient.get('/programs/awareness').then(res => res.data);
 export const getSocialSupportData = () => USE_MOCK ? mockCall(socialSupportServices) : apiClient.get('/programs/social-support').then(res => res.data);
 export const getSpecialProgramsData = () => USE_MOCK ? mockCall(specialPrograms) : apiClient.get('/programs/special').then(res => res.data);
+
+// Detailed Activity Data
+export const getReliefData = () => USE_MOCK ? mockCall(reliefActivitiesData) : apiClient.get('/activities/relief').then(res => res.data);
+export const getCulturalData = () => USE_MOCK ? mockCall(culturalActivitiesData) : apiClient.get('/activities/cultural').then(res => res.data);
+export const getAdvocacyData = () => USE_MOCK ? mockCall(advocacyActivitiesData) : apiClient.get('/activities/advocacy').then(res => res.data);
+export const getMeetingsData = () => USE_MOCK ? mockCall(committeeMeetingsData) : apiClient.get('/activities/meetings').then(res => res.data);
+export const getSpecialDaysData = () => USE_MOCK ? mockCall(specialDaysActivitiesData) : apiClient.get('/activities/special-days').then(res => res.data);
 
 // Submissions
 export const submitContact = (data) => USE_MOCK ? mockCall({ success: true }) : apiClient.post('/contact', data).then(res => res.data);

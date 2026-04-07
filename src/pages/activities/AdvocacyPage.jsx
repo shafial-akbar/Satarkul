@@ -1,20 +1,45 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-import { useContent } from '../../context/ContentContext';
 import PageWrapper from '../../components/layout/PageWrapper';
 import { motion } from 'motion/react';
 import * as Icons from 'lucide-react';
+import { getAdvocacyData } from '../../api/apiClient';
 
 export default function AdvocacyPage() {
   const { lang } = useLanguage();
-  const { content } = useContent();
+  const [advocacy, setAdvocacy] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const advocacy = content?.activities?.advocacy;
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const data = await getAdvocacyData();
+        setAdvocacy(data);
+      } catch (error) {
+        console.error('Error fetching advocacy data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
 
   const getLocalized = (obj) => {
     if (!obj) return '';
     return obj[lang] || obj['en'] || '';
   };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-bg">
+        <Icons.Loader2 size={48} className="animate-spin text-primary mb-4" />
+        <p className="text-muted font-medium">
+          {lang === 'en' ? 'Loading advocacy activities...' : 'অ্যাডভোকেসি কার্যক্রম লোড হচ্ছে...'}
+        </p>
+      </div>
+    );
+  }
 
   const images = [
     'https://picsum.photos/seed/advocacy/1200/800',

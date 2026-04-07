@@ -1,20 +1,45 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-import { useContent } from '../../context/ContentContext';
 import PageWrapper from '../../components/layout/PageWrapper';
 import { motion } from 'motion/react';
 import * as Icons from 'lucide-react';
+import { getSpecialDaysData } from '../../api/apiClient';
 
 export default function SpecialDaysPage() {
   const { lang } = useLanguage();
-  const { content } = useContent();
+  const [specialDays, setSpecialDays] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const specialDays = content?.activities?.specialDays;
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const data = await getSpecialDaysData();
+        setSpecialDays(data);
+      } catch (error) {
+        console.error('Error fetching special days data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
 
   const getLocalized = (obj) => {
     if (!obj) return '';
     return obj[lang] || obj['en'] || '';
   };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-bg">
+        <Icons.Loader2 size={48} className="animate-spin text-primary mb-4" />
+        <p className="text-muted font-medium">
+          {lang === 'en' ? 'Loading special days...' : 'বিশেষ দিবস লোড হচ্ছে...'}
+        </p>
+      </div>
+    );
+  }
 
   return (
     <PageWrapper 
