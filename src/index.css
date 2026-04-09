@@ -41,9 +41,8 @@
     transition: background-color 0.3s ease, color 0.3s ease;
   }
   
-  /* Adjust Bengali font size to balance with English */
+  /* Adjust Bengali line height for better readability */
   html[lang="bn"] {
-    font-size: 92%;
     line-height: 1.6;
   }
 
