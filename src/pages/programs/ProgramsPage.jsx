@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-import { useContent } from '../../context/ContentContext';
 import PageWrapper from '../../components/layout/PageWrapper';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import * as Icons from 'lucide-react';
+import { getProgramsOverview } from '../../api/apiClient';
 
 const iconMap = {
   'education': Icons.GraduationCap,
@@ -30,10 +30,35 @@ const colorMap = {
 
 export default function ProgramsPage() {
   const { lang } = useLanguage();
-  const { content } = useContent();
+  const [programsData, setProgramsData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const programsData = content?.programs;
-  
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const data = await getProgramsOverview();
+        setProgramsData(data);
+      } catch (error) {
+        console.error('Error fetching programs overview:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-bg">
+        <Icons.Loader2 size={48} className="animate-spin text-primary mb-4" />
+        <p className="text-muted font-medium">
+          {lang === 'en' ? 'Loading programs...' : 'কার্যক্রম লোড হচ্ছে...'}
+        </p>
+      </div>
+    );
+  }
+
   const programs = (programsData?.list || []).map(program => ({
     ...program,
     to: `/programs/${program.id}`,

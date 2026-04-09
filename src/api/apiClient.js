@@ -16,6 +16,7 @@ import { culturalActivitiesData } from '../data/culturalActivitiesData';
 import { advocacyActivitiesData } from '../data/advocacyActivitiesData';
 import { committeeMeetingsData } from '../data/committeeMeetingsData';
 import { specialDaysActivitiesData } from '../data/specialDaysActivitiesData';
+import siteContent from '../data/siteContent';
 
 const USE_MOCK = true;
 
@@ -28,6 +29,7 @@ const mockCall = (data) => new Promise((resolve) => {
 });
 
 // Organization & General
+export const getActivitiesOverview = () => USE_MOCK ? mockCall(siteContent.activities) : apiClient.get('/activities/overview').then(res => res.data);
 export const getOrgStats = () => USE_MOCK ? mockCall(mockStats) : apiClient.get('/stats').then(res => res.data);
 export const getGoverningMembers = () => USE_MOCK ? mockCall(mockGoverningBody) : apiClient.get('/governing-body').then(res => res.data);
 export const getDonors = () => USE_MOCK ? mockCall(mockDonors) : apiClient.get('/donors').then(res => res.data);
@@ -43,6 +45,7 @@ export const getVideos = () => USE_MOCK ? mockCall(videosData) : apiClient.get('
 export const getDownloads = () => USE_MOCK ? mockCall(downloadsData) : apiClient.get('/downloads').then(res => res.data);
 
 // Programs
+export const getProgramsOverview = () => USE_MOCK ? mockCall(siteContent.programs) : apiClient.get('/programs/overview').then(res => res.data);
 export const getPrograms = () => USE_MOCK ? mockCall(mockPrograms) : apiClient.get('/programs').then(res => res.data);
 
 // Detailed Program Data

@@ -13,8 +13,11 @@ export const ContentProvider = ({ children }) => {
     const fetchContent = async () => {
       try {
         const response = await axios.get('/api/content');
-        if (response.data) {
+        // Validate that response.data is an object and contains expected keys
+        if (response.data && typeof response.data === 'object' && response.data.common) {
           setContent(response.data);
+        } else {
+          console.warn('Invalid content data received from API, using local fallback');
         }
         setLoading(false);
       } catch (err) {

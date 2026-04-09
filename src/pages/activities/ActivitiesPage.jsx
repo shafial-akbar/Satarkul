@@ -1,18 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-import { useContent } from '../../context/ContentContext';
 import PageWrapper from '../../components/layout/PageWrapper';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import * as Icons from 'lucide-react';
 import ReliefActivitiesStats from '../../components/infographics/ReliefActivitiesStats';
 import SpecialDaysTimeline from '../../components/infographics/SpecialDaysTimeline';
+import { getActivitiesOverview } from '../../api/apiClient';
 
 export default function ActivitiesPage() {
   const { lang } = useLanguage();
-  const { content } = useContent();
+  const [activities, setActivities] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const activities = content?.activities;
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const data = await getActivitiesOverview();
+        setActivities(data);
+      } catch (error) {
+        console.error('Error fetching activities overview:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-bg">
+        <Icons.Loader2 size={48} className="animate-spin text-primary mb-4" />
+        <p className="text-muted font-medium">
+          {lang === 'en' ? 'Loading activities...' : 'কর্মসূচি লোড হচ্ছে...'}
+        </p>
+      </div>
+    );
+  }
 
   const activityCategories = (activities?.categories || []).map(activity => ({
     ...activity,
