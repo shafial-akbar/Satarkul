@@ -190,7 +190,7 @@ export default function Navbar() {
             {/* Search Button */}
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="flex items-center justify-center p-2 rounded-full bg-surface-alt text-primary hover:bg-primary hover:text-white transition-all duration-300 border border-border group"
+              className="hidden lg:flex items-center justify-center p-2 rounded-full bg-surface-alt text-primary hover:bg-primary hover:text-white transition-all duration-300 border border-border group"
               title={lang === 'en' ? 'Search' : 'খুঁজুন'}
             >
               <Search size={16} className="group-hover:scale-110 transition-transform" />
