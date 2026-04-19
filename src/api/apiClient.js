@@ -22,6 +22,7 @@ import { needsAssessmentData } from '../data/needsAssessmentData';
 import { helplineData } from '../data/helplineData';
 import { studentsData } from '../data/studentsData';
 import { donationGuideData } from '../data/donationGuideData';
+import { scheduleData } from '../data/scheduleData';
 import siteContent from '../data/siteContent';
 
 const USE_MOCK = true;
@@ -78,9 +79,11 @@ export const getNeedsAssessment = () => USE_MOCK ? mockCall(needsAssessmentData)
 export const getHelplineData = () => USE_MOCK ? mockCall(helplineData) : apiClient.get('/helpline').then(res => res.data);
 export const getStudents = () => USE_MOCK ? mockCall(studentsData) : apiClient.get('/students').then(res => res.data);
 export const getDonationGuide = () => USE_MOCK ? mockCall(donationGuideData) : apiClient.get('/donation-guide').then(res => res.data);
+export const getSchedule = () => USE_MOCK ? mockCall(scheduleData) : apiClient.get('/schedule').then(res => res.data);
 
 // Submissions
 export const submitContact = (data) => USE_MOCK ? mockCall({ success: true }) : apiClient.post('/contact', data).then(res => res.data);
+export const submitBooking = (data) => USE_MOCK ? mockCall({ success: true, bookingId: 'new-' + Math.random().toString(36).substr(2, 9) }) : apiClient.post('/bookings', data).then(res => res.data);
 export const submitVolunteer = (data) => USE_MOCK ? mockCall({ success: true }) : apiClient.post('/volunteer', data).then(res => res.data);
 export const submitDonate = (data) => USE_MOCK ? mockCall({ success: true }) : apiClient.post('/donate', data).then(res => res.data);
 export const submitPartner = (data) => USE_MOCK ? mockCall({ success: true }) : apiClient.post('/partner', data).then(res => res.data);

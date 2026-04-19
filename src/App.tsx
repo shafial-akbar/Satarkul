@@ -46,6 +46,7 @@ import ContributionTrackingPage from './pages/support/ContributionTrackingPage';
 import HelplinePage from './pages/support/HelplinePage';
 import StudentProfilesPage from './pages/programs/StudentProfilesPage';
 import DonationGuidePage from './pages/support/DonationGuidePage';
+import BookingPage from './pages/support/BookingPage';
 import DonatePage from './pages/support/DonatePage';
 import DonorsPage from './pages/support/DonorsPage';
 import PartnerPage from './pages/support/PartnerPage';
@@ -114,6 +115,7 @@ function AppContent() {
             <Route path="/resources/downloads" element={<DownloadsPage />} />
             <Route path="/resources/capacity-building" element={<CapacityBuildingPage />} />
             <Route path="/support/donate" element={<DonatePage />} />
+            <Route path="/support/booking" element={<BookingPage />} />
             <Route path="/support/donation-guide" element={<DonationGuidePage />} />
             <Route path="/support/contribution-tracking" element={<ContributionTrackingPage />} />
             <Route path="/support/helpline" element={<HelplinePage />} />
