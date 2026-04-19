@@ -21,6 +21,7 @@ import { contributionData } from '../data/contributionData';
 import { needsAssessmentData } from '../data/needsAssessmentData';
 import { helplineData } from '../data/helplineData';
 import { studentsData } from '../data/studentsData';
+import { donationGuideData } from '../data/donationGuideData';
 import siteContent from '../data/siteContent';
 
 const USE_MOCK = true;
@@ -76,6 +77,7 @@ export const getContributions = () => USE_MOCK ? mockCall(contributionData) : ap
 export const getNeedsAssessment = () => USE_MOCK ? mockCall(needsAssessmentData) : apiClient.get('/needs-assessment').then(res => res.data);
 export const getHelplineData = () => USE_MOCK ? mockCall(helplineData) : apiClient.get('/helpline').then(res => res.data);
 export const getStudents = () => USE_MOCK ? mockCall(studentsData) : apiClient.get('/students').then(res => res.data);
+export const getDonationGuide = () => USE_MOCK ? mockCall(donationGuideData) : apiClient.get('/donation-guide').then(res => res.data);
 
 // Submissions
 export const submitContact = (data) => USE_MOCK ? mockCall({ success: true }) : apiClient.post('/contact', data).then(res => res.data);

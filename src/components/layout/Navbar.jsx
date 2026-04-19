@@ -132,6 +132,7 @@ export default function Navbar() {
       label: content?.nav?.supportUs?.[lang] || (lang === 'en' ? 'Support Us' : 'আমাদের সমর্থন করুন'),
       children: [
         { to: '/support/donate', label: content?.common?.buttons?.donateNow?.[lang] || (lang === 'en' ? 'Donate Now' : 'এখনই দান করুন') },
+        { to: '/support/donation-guide', label: lang === 'en' ? 'Donation Guide' : 'অনুদান সহায়িকা' },
         { to: '/support/contribution-tracking', label: lang === 'en' ? 'Contribution Tracking' : 'অনদান ট্র্যাকিং' },
         { to: '/support/helpline', label: lang === 'en' ? 'Medical Helpline' : 'হেল্পলাইন' },
         { to: '/support/volunteer', label: content?.common?.buttons?.volunteer?.[lang] || (lang === 'en' ? 'Volunteer' : 'স্বেচ্ছাসেবী') },
