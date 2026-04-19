@@ -19,7 +19,8 @@ export const newsData = [
       en: 'Events',
       bn: 'অনুষ্ঠান'
     },
-    author: 'SPUS Admin'
+    author: 'SPUS Admin',
+    fbLink: 'https://www.facebook.com/share/p/dummy-post-1/'
   },
   {
     id: 'winter-clothing-distribution-2022',
@@ -41,7 +42,8 @@ export const newsData = [
       en: 'Relief',
       bn: 'ত্রাণ'
     },
-    author: 'SPUS Admin'
+    author: 'SPUS Admin',
+    fbLink: 'https://www.facebook.com/share/p/dummy-post-2/'
   },
   {
     id: 'ramadan-relief-2023',
@@ -63,7 +65,8 @@ export const newsData = [
       en: 'Relief',
       bn: 'ত্রাণ'
     },
-    author: 'SPUS Admin'
+    author: 'SPUS Admin',
+    fbLink: 'https://www.facebook.com/share/p/dummy-post-3/'
   },
   {
     id: 'empowering-disabilities-blog-1',

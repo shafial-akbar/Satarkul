@@ -171,6 +171,19 @@ export default function CommitteeMeetingsPage() {
                         </div>
                       </div>
                     )}
+
+                    {meeting.minutes && (
+                      <div className="pt-8 border-t border-border">
+                        <div className="bg-primary/5 p-8 rounded-[2.5rem] border border-primary/10">
+                          <h4 className="flex items-center gap-2 text-primary font-bold uppercase tracking-widest text-sm mb-4">
+                            <Icons.FileText size={18} /> {lang === 'en' ? 'Meeting Minutes' : 'সভার কার্যবিবরণী'}
+                          </h4>
+                          <p className="text-text-main leading-relaxed italic font-medium">
+                            "{getLocalized(meeting.minutes)}"
+                          </p>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </motion.div>
               );

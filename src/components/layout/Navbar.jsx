@@ -83,6 +83,7 @@ export default function Navbar() {
         { to: '/about/work-area', label: content?.nav?.workArea?.[lang] || (lang === 'en' ? 'Work Area' : 'কর্ম এলাকা') },
         { to: '/about/legal-status', label: content?.nav?.legalStatus?.[lang] || (lang === 'en' ? 'Legal Status' : 'আইনি মর্যাদা') },
         { to: '/about/membership', label: content?.nav?.membership?.[lang] || (lang === 'en' ? 'Membership' : 'সদস্যপদ') },
+        { to: '/about/needs-assessment', label: lang === 'en' ? 'Need Assessment' : 'প্রয়োজনীয়তা মূল্যায়ন' },
       ]
     },
     { 
@@ -90,6 +91,7 @@ export default function Navbar() {
       label: content?.nav?.programs?.[lang] || (lang === 'en' ? 'Programs' : 'কার্যক্রম'),
       children: [
         { to: '/programs', label: content?.nav?.allPrograms?.[lang] || (lang === 'en' ? 'All Programs' : 'সব কার্যক্রম') },
+        { to: '/programs/student-profiles', label: lang === 'en' ? 'Student Profiles' : 'শিক্ষার্থী পরিচিতি' },
         { to: '/programs/education', label: content?.nav?.education?.[lang] || (lang === 'en' ? 'Education' : 'শিক্ষা') },
         { to: '/programs/health', label: content?.nav?.health?.[lang] || (lang === 'en' ? 'Health' : 'স্বাস্থ্য') },
         { to: '/programs/skill-development', label: content?.nav?.skills?.[lang] || (lang === 'en' ? 'Skills' : 'দক্ষতা') },
@@ -121,6 +123,7 @@ export default function Navbar() {
         { to: '/blog', label: content?.nav?.blog?.[lang] || (lang === 'en' ? 'Blog' : 'ব্লগ') },
         { to: '/gallery', label: content?.nav?.gallery?.[lang] || (lang === 'en' ? 'Gallery' : 'গ্যালারি') },
         { to: '/videos', label: content?.nav?.videos?.[lang] || (lang === 'en' ? 'Videos' : 'ভিডিও') },
+        { to: '/resources/capacity-building', label: lang === 'en' ? 'Capacity Building' : 'দক্ষতা বৃদ্ধি' },
         { to: '/resources/downloads', label: content?.nav?.downloads?.[lang] || (lang === 'en' ? 'Downloads' : 'ডাউনলোড') },
       ]
     },
@@ -129,6 +132,8 @@ export default function Navbar() {
       label: content?.nav?.supportUs?.[lang] || (lang === 'en' ? 'Support Us' : 'আমাদের সমর্থন করুন'),
       children: [
         { to: '/support/donate', label: content?.common?.buttons?.donateNow?.[lang] || (lang === 'en' ? 'Donate Now' : 'এখনই দান করুন') },
+        { to: '/support/contribution-tracking', label: lang === 'en' ? 'Contribution Tracking' : 'অনদান ট্র্যাকিং' },
+        { to: '/support/helpline', label: lang === 'en' ? 'Medical Helpline' : 'হেল্পলাইন' },
         { to: '/support/volunteer', label: content?.common?.buttons?.volunteer?.[lang] || (lang === 'en' ? 'Volunteer' : 'স্বেচ্ছাসেবী') },
         { to: '/support/partner', label: content?.common?.buttons?.partner?.[lang] || (lang === 'en' ? 'Partner' : 'অংশীদার') },
         { to: '/support/donors', label: content?.nav?.donors?.[lang] || (lang === 'en' ? 'Donors' : 'দাতা') },

@@ -40,6 +40,11 @@ import NewsDetailPage from './pages/news/NewsDetailPage';
 import GalleryPage from './pages/gallery/GalleryPage';
 import VideosPage from './pages/gallery/VideosPage';
 import DownloadsPage from './pages/resources/DownloadsPage';
+import CapacityBuildingPage from './pages/resources/CapacityBuildingPage';
+import NeedsAssessmentPage from './pages/about/NeedsAssessmentPage';
+import ContributionTrackingPage from './pages/support/ContributionTrackingPage';
+import HelplinePage from './pages/support/HelplinePage';
+import StudentProfilesPage from './pages/programs/StudentProfilesPage';
 import DonatePage from './pages/support/DonatePage';
 import DonorsPage from './pages/support/DonorsPage';
 import PartnerPage from './pages/support/PartnerPage';
@@ -82,7 +87,9 @@ function AppContent() {
             <Route path="/about/work-area" element={<WorkAreaPage />} />
             <Route path="/about/membership" element={<MembershipPage />} />
             <Route path="/about/governing-body" element={<GoverningBodyPage />} />
+            <Route path="/about/needs-assessment" element={<NeedsAssessmentPage />} />
             <Route path="/programs" element={<ProgramsPage />} />
+            <Route path="/programs/student-profiles" element={<StudentProfilesPage />} />
             <Route path="/programs/education" element={<EducationPage />} />
             <Route path="/programs/health" element={<HealthPage />} />
             <Route path="/programs/skill-development" element={<SkillDevelopmentPage />} />
@@ -104,7 +111,10 @@ function AppContent() {
             <Route path="/gallery" element={<GalleryPage />} />
             <Route path="/videos" element={<VideosPage />} />
             <Route path="/resources/downloads" element={<DownloadsPage />} />
+            <Route path="/resources/capacity-building" element={<CapacityBuildingPage />} />
             <Route path="/support/donate" element={<DonatePage />} />
+            <Route path="/support/contribution-tracking" element={<ContributionTrackingPage />} />
+            <Route path="/support/helpline" element={<HelplinePage />} />
             <Route path="/support/donors" element={<DonorsPage />} />
             <Route path="/support/partner" element={<PartnerPage />} />
             <Route path="/support/volunteer" element={<VolunteerPage />} />

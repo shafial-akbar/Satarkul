@@ -61,7 +61,7 @@ export default function CulturalActivitiesPage() {
         </section>
 
         {/* Cultural Items Grid */}
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <section className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {(cultural?.activities || []).map((activity, idx) => {
             const IconComponent = Icons[activity.icon] || Icons.Palette;
             return (
@@ -70,49 +70,39 @@ export default function CulturalActivitiesPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.1 }}
-                className="group bg-white rounded-[3rem] border border-border overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500"
+                className="group bg-white rounded-[3rem] border border-border overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 flex flex-col"
               >
-                <div className="p-10 space-y-8">
-                  <div className="flex items-start justify-between">
-                    <div className={`w-20 h-20 ${activity.color} rounded-[2rem] flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform duration-500`}>
-                      <IconComponent size={40} />
-                    </div>
-                    <div className="text-right">
-                      <p className="text-xs font-bold text-muted uppercase tracking-widest mb-1">{lang === 'en' ? 'Timeline' : 'সময়কাল'}</p>
-                      <p className="text-sm font-bold text-text-main">{getLocalized(activity.timeline)}</p>
+                <div className="aspect-[16/9] overflow-hidden relative">
+                  <img 
+                    src={activity.image || "https://picsum.photos/seed/cultural-event/800/600"} 
+                    alt={getLocalized(activity.title)} 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute top-6 left-6 flex gap-2">
+                    <div className={`w-12 h-12 ${activity.color} text-white rounded-xl flex items-center justify-center shadow-lg`}>
+                      <IconComponent size={24} />
                     </div>
                   </div>
+                </div>
 
+                <div className="p-10 flex-grow flex flex-col justify-between space-y-6">
                   <div className="space-y-4">
-                    <h3 className="text-2xl font-display font-bold text-text-main group-hover:text-primary transition-colors leading-tight">
+                    <div className="flex items-center gap-2 text-xs font-bold text-primary uppercase tracking-[0.2em]">
+                      <Icons.Calendar size={14} /> {getLocalized(activity.timeline)}
+                    </div>
+                    <h3 className="text-3xl font-display font-bold text-text-main group-hover:text-primary transition-colors leading-tight">
                       {getLocalized(activity.title)}
                     </h3>
-                    <p className="text-muted leading-relaxed">
+                    <p className="text-muted text-lg leading-relaxed">
                       {getLocalized(activity.description)}
                     </p>
                   </div>
 
-                  {activity.stats && (
-                    <div className="grid grid-cols-2 gap-4 pt-4">
-                      {activity.stats.location && (
-                        <div className="p-4 bg-surface-alt rounded-2xl border border-border col-span-2">
-                          <p className="text-sm font-bold text-text-main leading-tight">{activity.stats.location}</p>
-                          <p className="text-xs font-bold text-muted uppercase tracking-widest">{lang === 'en' ? 'Location' : 'স্থান'}</p>
-                        </div>
-                      )}
-                      {activity.stats.partner && (
-                        <div className="p-4 bg-surface-alt rounded-2xl border border-border">
-                          <p className="text-sm font-bold text-text-main leading-tight">{activity.stats.partner}</p>
-                          <p className="text-xs font-bold text-muted uppercase tracking-widest">{lang === 'en' ? 'Partner' : 'অংশীদার'}</p>
-                        </div>
-                      )}
-                    </div>
-                  )}
-
                   {activity.features && (
                     <div className="flex flex-wrap gap-2 pt-4">
                       {activity.features.map((feature, fIdx) => (
-                        <span key={fIdx} className="px-4 py-2 bg-surface-alt text-text-main text-xs font-bold rounded-full border border-border">
+                        <span key={fIdx} className="px-5 py-2.5 bg-surface-alt text-text-main text-xs font-bold rounded-full border border-border group-hover:bg-primary/5 group-hover:border-primary/20 transition-all">
                           {getLocalized(feature)}
                         </span>
                       ))}

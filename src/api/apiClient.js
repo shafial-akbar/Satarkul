@@ -16,6 +16,11 @@ import { culturalActivitiesData } from '../data/culturalActivitiesData';
 import { advocacyActivitiesData } from '../data/advocacyActivitiesData';
 import { committeeMeetingsData } from '../data/committeeMeetingsData';
 import { specialDaysActivitiesData } from '../data/specialDaysActivitiesData';
+import { trainingData } from '../data/trainingData';
+import { contributionData } from '../data/contributionData';
+import { needsAssessmentData } from '../data/needsAssessmentData';
+import { helplineData } from '../data/helplineData';
+import { studentsData } from '../data/studentsData';
 import siteContent from '../data/siteContent';
 
 const USE_MOCK = true;
@@ -64,6 +69,13 @@ export const getCulturalData = () => USE_MOCK ? mockCall(culturalActivitiesData)
 export const getAdvocacyData = () => USE_MOCK ? mockCall(advocacyActivitiesData) : apiClient.get('/activities/advocacy').then(res => res.data);
 export const getMeetingsData = () => USE_MOCK ? mockCall(committeeMeetingsData) : apiClient.get('/activities/meetings').then(res => res.data);
 export const getSpecialDaysData = () => USE_MOCK ? mockCall(specialDaysActivitiesData) : apiClient.get('/activities/special-days').then(res => res.data);
+
+// New Pages Data
+export const getTrainingData = () => USE_MOCK ? mockCall(trainingData) : apiClient.get('/training').then(res => res.data);
+export const getContributions = () => USE_MOCK ? mockCall(contributionData) : apiClient.get('/contributions').then(res => res.data);
+export const getNeedsAssessment = () => USE_MOCK ? mockCall(needsAssessmentData) : apiClient.get('/needs-assessment').then(res => res.data);
+export const getHelplineData = () => USE_MOCK ? mockCall(helplineData) : apiClient.get('/helpline').then(res => res.data);
+export const getStudents = () => USE_MOCK ? mockCall(studentsData) : apiClient.get('/students').then(res => res.data);
 
 // Submissions
 export const submitContact = (data) => USE_MOCK ? mockCall({ success: true }) : apiClient.post('/contact', data).then(res => res.data);

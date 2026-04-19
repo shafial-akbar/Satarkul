@@ -214,6 +214,11 @@ export default function NewsPage() {
 
 function NewsCard({ item, lang, viewMode, getLocalized }) {
   const isList = viewMode === 'list';
+  const FacebookIcon = () => (
+    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978 1.602 0 2.453.109 2.852.166v2.827h-1.446c-1.258 0-1.636.851-1.636 2.103v1.64h3.33l-.473 3.667h-2.857v7.98H9.101z" />
+    </svg>
+  );
 
   return (
     <motion.div
@@ -231,6 +236,17 @@ function NewsCard({ item, lang, viewMode, getLocalized }) {
         <div className="absolute top-6 left-6 px-4 py-2 bg-white/90 backdrop-blur-md rounded-full text-primary text-xs font-bold uppercase tracking-widest shadow-lg">
           {getLocalized(item.category)}
         </div>
+        {item.fbLink && (
+          <a 
+            href={item.fbLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute top-6 right-6 w-10 h-10 bg-[#1877F2] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all z-10"
+            title="View on Facebook"
+          >
+            <FacebookIcon />
+          </a>
+        )}
       </div>
 
       {/* Content */}

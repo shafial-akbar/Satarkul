@@ -26,6 +26,10 @@ export const committeeMeetingsData = {
           { label: { en: 'Physical Disability', bn: 'শারীরিক প্রতিবন্ধিতা' }, value: 16 },
           { label: { en: 'Visual Disability', bn: 'দৃষ্টি প্রতিবন্ধিতা' }, value: 12 }
         ]
+      },
+      minutes: {
+        en: "Minutes: Approval of committee reports, funds collection strategy for Ramadan relief, and Dengue awareness plan.",
+        bn: "কার্যবিবরণী: কমিটির রিপোর্ট অনুমোদন, রমজান ট্রাণের তহবিল সংগ্রহ কৌশল এবং ডেঙ্গু সচেতনতা পরিকল্পনা।"
       }
     },
     {
@@ -45,6 +49,10 @@ export const committeeMeetingsData = {
           { label: { en: 'Visual Disability', bn: 'দৃষ্টি প্রতিবন্ধিতা' }, value: 8 },
           { label: { en: 'Multiple Disability', bn: 'বহুমাত্রিক প্রতিবন্ধিতা' }, value: 1 }
         ]
+      },
+      minutes: {
+        en: "Minutes: Sector-wise audit for 2022 approved. 2023 work plan and budget presented. New EC committee elected by consensus.",
+        bn: "কার্যবিবরণী: ২০২২ সালের বিভাগীয় নিরীক্ষা অনুমোদিত। ২০২৩ সালের কর্মপরিকল্পনা ও বাজেট উপস্থাপিত। সর্বসম্মতিক্রমে নতুন ইসি কমিটি নির্বাচিত।"
       }
     },
     {
