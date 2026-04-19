@@ -2,7 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import PageWrapper from '../../components/layout/PageWrapper';
 import { motion, AnimatePresence } from 'motion/react';
-import * as Icons from 'lucide-react';
+import { 
+  ChevronLeft, 
+  ChevronRight, 
+  Info, 
+  X, 
+  CalendarCheck, 
+  CheckCircle,
+  Clock,
+  User,
+  Phone as PhoneIcon,
+  MessageSquare
+} from 'lucide-react';
 import { getSchedule, submitBooking } from '../../api/apiClient';
 import { 
   format, 
@@ -52,7 +63,7 @@ export default function BookingPage() {
     setIsBookingModalOpen(true);
   };
 
-  if (isLoading) {
+  if (isLoading || !schedule) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-bg">
         <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
@@ -80,13 +91,13 @@ export default function BookingPage() {
                   onClick={prevMonth}
                   className="p-3 bg-white border border-border rounded-xl text-text-main hover:bg-primary hover:text-white transition-all shadow-sm"
                 >
-                  <Icons.ChevronLeft size={20} />
+                  <ChevronLeft size={20} />
                 </button>
                 <button 
                   onClick={nextMonth}
                   className="p-3 bg-white border border-border rounded-xl text-text-main hover:bg-primary hover:text-white transition-all shadow-sm"
                 >
-                  <Icons.ChevronRight size={20} />
+                  <ChevronRight size={20} />
                 </button>
               </div>
             </div>
@@ -104,6 +115,7 @@ export default function BookingPage() {
                   selectedDate={selectedDate} 
                   onDateClick={onDateClick} 
                   bookings={schedule.existingBookings}
+                  lang={lang}
                 />
               </div>
             </div>
@@ -148,7 +160,7 @@ export default function BookingPage() {
           </div>
 
           <div className="bg-primary p-8 rounded-[2.5rem] text-white space-y-4 shadow-xl">
-            <Icons.Info size={32} className="opacity-50" />
+            <Info size={32} className="opacity-50" />
             <h4 className="text-lg font-bold">{lang === 'en' ? 'Special Request?' : 'বিশেষ অনুরোধ?'}</h4>
             <p className="text-sm text-white/80 leading-relaxed">
               {lang === 'en' 
@@ -183,7 +195,7 @@ export default function BookingPage() {
                 onClick={() => setIsBookingModalOpen(false)}
                 className="absolute top-6 right-6 z-10 p-2 text-muted hover:text-red-500 transition-all"
               >
-                <Icons.X size={24} />
+                <X size={24} />
               </button>
 
               <BookingForm 
@@ -206,7 +218,7 @@ export default function BookingPage() {
   );
 }
 
-function CalendarDays({ currentMonth, selectedDate, onDateClick, bookings }) {
+function CalendarDays({ currentMonth, selectedDate, onDateClick, bookings, lang }) {
   const monthStart = startOfMonth(currentMonth);
   const monthEnd = endOfMonth(monthStart);
   const startDate = startOfWeek(monthStart);
@@ -305,13 +317,13 @@ function BookingForm({ date, schedule, lang, onSuccess }) {
     <div className="space-y-8">
       <div className="flex items-center gap-4 border-b border-border pb-6">
         <div className="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center shrink-0">
-          <Icons.CalendarCheck size={24} />
+          <CalendarCheck size={24} />
         </div>
         <div>
           <h3 className="text-xl font-bold text-text-main">
             {lang === 'en' ? 'Confirm Booking' : 'বুকিং নিশ্চিত করুন'}
           </h3>
-          <p className="text-sm font-bold text-primary">{format(date, 'MMMM d, yyyy')}</p>
+          <p className="text-sm font-bold text-primary">{date ? format(date, 'MMMM d, yyyy') : ''}</p>
         </div>
       </div>
 
@@ -394,7 +406,7 @@ function BookingForm({ date, schedule, lang, onSuccess }) {
           type="submit"
           className="w-full py-4 bg-primary text-white rounded-2xl font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all flex items-center justify-center gap-2"
         >
-          <Icons.CheckCircle size={20} />
+          <CheckCircle size={20} />
           {lang === 'en' ? 'Request Appointment' : 'সাক্ষাতের অনুরোধ পাঠান'}
         </button>
       </form>
