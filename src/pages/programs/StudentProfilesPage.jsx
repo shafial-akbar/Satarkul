@@ -34,50 +34,52 @@ export default function StudentProfilesPage() {
   }
 
   return (
-    <PageWrapper 
-      title={lang === 'en' ? 'Student Profiles' : 'শিক্ষার্থী পরিচিতি'} 
-      subtitle={lang === 'en' ? 'Meet the wonderful children of Satarkul Diversity Disabled School.' : 'সাতারকুল বৈচিত্র্য প্রতিবন্ধী বিদ্যালয়ের চমৎকার শিশুদের সাথে পরিচিত হন।'}
-    >
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {students.map((student, idx) => (
-            <motion.div
-              key={student.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.05 }}
-              onClick={() => setSelectedStudent(student)}
-              className="group bg-white rounded-[2rem] border border-border p-4 hover:border-primary hover:shadow-2xl transition-all cursor-pointer"
-            >
-              <div className="aspect-square rounded-2xl overflow-hidden mb-6 relative">
-                <img 
-                  src={student.image} 
-                  alt={student.name[lang]} 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                  <span className="text-white font-bold text-sm flex items-center gap-2">
-                    {lang === 'en' ? 'View Details' : 'বিস্তারিত দেখুন'}
-                    <Icons.ArrowRight size={16} />
-                  </span>
+    <>
+      <PageWrapper 
+        title={lang === 'en' ? 'Student Profiles' : 'শিক্ষার্থী পরিচিতি'} 
+        subtitle={lang === 'en' ? 'Meet the wonderful children of Satarkul Diversity Disabled School.' : 'সাতারকুল বৈচিত্র্য প্রতিবন্ধী বিদ্যালয়ের চমৎকার শিশুদের সাথে পরিচিত হন।'}
+      >
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {students.map((student, idx) => (
+              <motion.div
+                key={student.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.05 }}
+                onClick={() => setSelectedStudent(student)}
+                className="group bg-white rounded-[2rem] border border-border p-4 hover:border-primary hover:shadow-2xl transition-all cursor-pointer"
+              >
+                <div className="aspect-square rounded-2xl overflow-hidden mb-6 relative">
+                  <img 
+                    src={student.image} 
+                    alt={student.name[lang]} 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                    <span className="text-white font-bold text-sm flex items-center gap-2">
+                      {lang === 'en' ? 'View Details' : 'বিস্তারিত দেখুন'}
+                      <Icons.ArrowRight size={16} />
+                    </span>
+                  </div>
                 </div>
-              </div>
-              <div className="px-2 pb-2">
-                <h3 className="text-xl font-bold text-text-main group-hover:text-primary transition-colors">{student.name[lang]}</h3>
-                <div className="flex items-center gap-2 text-muted text-sm font-semibold mt-1">
-                  <span>{student.disabilityType[lang]}</span>
-                  <span className="w-1 h-1 bg-muted/40 rounded-full" />
-                  <span>{lang === 'en' ? 'Age' : 'বয়স'}: {student.age}</span>
+                <div className="px-2 pb-2">
+                  <h3 className="text-xl font-bold text-text-main group-hover:text-primary transition-colors">{student.name[lang]}</h3>
+                  <div className="flex items-center gap-2 text-muted text-sm font-semibold mt-1">
+                    <span>{student.disabilityType[lang]}</span>
+                    <span className="w-1 h-1 bg-muted/40 rounded-full" />
+                    <span>{lang === 'en' ? 'Age' : 'বয়স'}: {student.age}</span>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </div>
+      </PageWrapper>
 
-      {/* Student Details Modal */}
+      {/* Student Details Modal - Outside PageWrapper for better z-index stacking */}
       <AnimatePresence>
         {selectedStudent && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
@@ -158,6 +160,6 @@ export default function StudentProfilesPage() {
           </div>
         )}
       </AnimatePresence>
-    </PageWrapper>
+    </>
   );
 }

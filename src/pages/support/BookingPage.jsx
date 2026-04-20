@@ -72,109 +72,111 @@ export default function BookingPage() {
   }
 
   return (
-    <PageWrapper 
-      title={lang === 'en' ? 'Program Booking' : 'প্রোগ্রাম বুকিং'} 
-      subtitle={lang === 'en' ? 'Schedule therapy sessions, training, or school visits online.' : 'অনলাইনে থেরাপি সেশন, ট্রেনিং বা স্কুল ভিজিট বুক করুন।'}
-    >
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
-        
-        {/* Calendar Column */}
-        <div className="lg:col-span-2 space-y-8">
-          <div className="bg-white rounded-[2.5rem] border border-border shadow-soft overflow-hidden">
-            {/* Header */}
-            <div className="p-8 border-b border-border flex items-center justify-between bg-surface-alt/50">
-              <h2 className="text-2xl font-display font-bold text-text-main capitalize">
-                {format(currentMonth, 'MMMM yyyy')}
-              </h2>
-              <div className="flex gap-2">
-                <button 
-                  onClick={prevMonth}
-                  className="p-3 bg-white border border-border rounded-xl text-text-main hover:bg-primary hover:text-white transition-all shadow-sm"
-                >
-                  <ChevronLeft size={20} />
-                </button>
-                <button 
-                  onClick={nextMonth}
-                  className="p-3 bg-white border border-border rounded-xl text-text-main hover:bg-primary hover:text-white transition-all shadow-sm"
-                >
-                  <ChevronRight size={20} />
-                </button>
+    <>
+      <PageWrapper 
+        title={lang === 'en' ? 'Program Booking' : 'প্রোগ্রাম বুকিং'} 
+        subtitle={lang === 'en' ? 'Schedule therapy sessions, training, or school visits online.' : 'অনলাইনে থেরাপি সেশন, ট্রেনিং বা স্কুল ভিজিট বুক করুন।'}
+      >
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
+          
+          {/* Calendar Column */}
+          <div className="lg:col-span-2 space-y-8">
+            <div className="bg-white rounded-[2.5rem] border border-border shadow-soft overflow-hidden">
+              {/* Header */}
+              <div className="p-8 border-b border-border flex items-center justify-between bg-surface-alt/50">
+                <h2 className="text-2xl font-display font-bold text-text-main capitalize">
+                  {format(currentMonth, 'MMMM yyyy')}
+                </h2>
+                <div className="flex gap-2">
+                  <button 
+                    onClick={prevMonth}
+                    className="p-3 bg-white border border-border rounded-xl text-text-main hover:bg-primary hover:text-white transition-all shadow-sm"
+                  >
+                    <ChevronLeft size={20} />
+                  </button>
+                  <button 
+                    onClick={nextMonth}
+                    className="p-3 bg-white border border-border rounded-xl text-text-main hover:bg-primary hover:text-white transition-all shadow-sm"
+                  >
+                    <ChevronRight size={20} />
+                  </button>
+                </div>
+              </div>
+
+              {/* Calendar Grid */}
+              <div className="p-4 sm:p-8">
+                <div className="grid grid-cols-7 gap-2">
+                  {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
+                    <div key={day} className="text-center text-[10px] sm:text-xs font-black uppercase text-muted tracking-widest py-4">
+                      {lang === 'en' ? day : (day === 'Sun' ? 'রবি' : day === 'Mon' ? 'সোম' : day === 'Tue' ? 'মঙ্গল' : day === 'Wed' ? 'বুধ' : day === 'Thu' ? 'বৃহ' : day === 'Fri' ? 'শুক্র' : 'শনি')}
+                    </div>
+                  ))}
+                  <CalendarDays 
+                    currentMonth={currentMonth} 
+                    selectedDate={selectedDate} 
+                    onDateClick={onDateClick} 
+                    bookings={schedule.existingBookings}
+                    lang={lang}
+                  />
+                </div>
               </div>
             </div>
 
-            {/* Calendar Grid */}
-            <div className="p-4 sm:p-8">
-              <div className="grid grid-cols-7 gap-2">
-                {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
-                  <div key={day} className="text-center text-[10px] sm:text-xs font-black uppercase text-muted tracking-widest py-4">
-                    {lang === 'en' ? day : (day === 'Sun' ? 'রবি' : day === 'Mon' ? 'সোম' : day === 'Tue' ? 'মঙ্গল' : day === 'Wed' ? 'বুধ' : day === 'Thu' ? 'বৃহ' : day === 'Fri' ? 'শুক্র' : 'শনি')}
-                  </div>
-                ))}
-                <CalendarDays 
-                  currentMonth={currentMonth} 
-                  selectedDate={selectedDate} 
-                  onDateClick={onDateClick} 
-                  bookings={schedule.existingBookings}
-                  lang={lang}
-                />
+            {/* Legend */}
+            <div className="flex flex-wrap gap-6 px-8 py-4 bg-surface-alt/30 rounded-3xl border border-border/50">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-primary" />
+                <span className="text-xs font-bold text-muted">{lang === 'en' ? 'Current Day' : 'আজকের দিন'}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-primary/20" />
+                <span className="text-xs font-bold text-muted">{lang === 'en' ? 'Available' : 'ফাঁকা রয়েছে'}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-border" />
+                <span className="text-xs font-bold text-muted">{lang === 'en' ? 'Past / Unavailable' : 'বন্ধ / পুরনো'}</span>
               </div>
             </div>
           </div>
 
-          {/* Legend */}
-          <div className="flex flex-wrap gap-6 px-8 py-4 bg-surface-alt/30 rounded-3xl border border-border/50">
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-primary" />
-              <span className="text-xs font-bold text-muted">{lang === 'en' ? 'Current Day' : 'আজকের দিন'}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-primary/20" />
-              <span className="text-xs font-bold text-muted">{lang === 'en' ? 'Available' : 'ফাঁকা রয়েছে'}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-border" />
-              <span className="text-xs font-bold text-muted">{lang === 'en' ? 'Past / Unavailable' : 'বন্ধ / পুরনো'}</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Sidebar Column */}
-        <div className="space-y-8">
-          <div className="bg-white p-8 rounded-[2.5rem] border border-border shadow-soft space-y-6">
-            <h3 className="text-xl font-bold text-text-main border-b border-border pb-4">
-              {lang === 'en' ? 'Our Programs' : 'আমাদের প্রোগ্রামসমূহ'}
-            </h3>
-            <div className="space-y-4">
-              {schedule.programs.map((prog) => (
-                <div key={prog.id} className="group p-4 bg-surface-alt rounded-2xl border border-border hover:border-primary transition-all">
-                  <div className="flex items-center gap-4">
-                    <div className={`w-3 h-10 ${prog.color} rounded-full`} />
-                    <div>
-                      <h4 className="font-bold text-text-main group-hover:text-primary transition-colors">{prog.name[lang]}</h4>
-                      <p className="text-xs text-muted font-bold tracking-tight">{prog.duration} session</p>
+          {/* Sidebar Column */}
+          <div className="space-y-8">
+            <div className="bg-white p-8 rounded-[2.5rem] border border-border shadow-soft space-y-6">
+              <h3 className="text-xl font-bold text-text-main border-b border-border pb-4">
+                {lang === 'en' ? 'Our Programs' : 'আমাদের প্রোগ্রামসমূহ'}
+              </h3>
+              <div className="space-y-4">
+                {schedule.programs.map((prog) => (
+                  <div key={prog.id} className="group p-4 bg-surface-alt rounded-2xl border border-border hover:border-primary transition-all">
+                    <div className="flex items-center gap-4">
+                      <div className={`w-3 h-10 ${prog.color} rounded-full`} />
+                      <div>
+                        <h4 className="font-bold text-text-main group-hover:text-primary transition-colors">{prog.name[lang]}</h4>
+                        <p className="text-xs text-muted font-bold tracking-tight">{prog.duration} session</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-primary p-8 rounded-[2.5rem] text-white space-y-4 shadow-xl">
+              <Info size={32} className="opacity-50" />
+              <h4 className="text-lg font-bold">{lang === 'en' ? 'Special Request?' : 'বিশেষ অনুরোধ?'}</h4>
+              <p className="text-sm text-white/80 leading-relaxed">
+                {lang === 'en' 
+                  ? 'If you need a slot outside of the regular schedule, please call our coordination desk directly.' 
+                  : 'যদি আপনি নিয়মিত তফশিলের বাইরে সময় প্রয়োজন মনে করেন, তবে সরাসরি আমাদের কর্ডিনেশন ডেস্কে কল করুন।'}
+              </p>
+              <button className="w-full py-3 bg-white/20 hover:bg-white/30 rounded-xl font-bold transition-all text-sm">
+                01743214468
+              </button>
             </div>
           </div>
-
-          <div className="bg-primary p-8 rounded-[2.5rem] text-white space-y-4 shadow-xl">
-            <Info size={32} className="opacity-50" />
-            <h4 className="text-lg font-bold">{lang === 'en' ? 'Special Request?' : 'বিশেষ অনুরোধ?'}</h4>
-            <p className="text-sm text-white/80 leading-relaxed">
-              {lang === 'en' 
-                ? 'If you need a slot outside of the regular schedule, please call our coordination desk directly.' 
-                : 'যদি আপনি নিয়মিত তফশিলের বাইরে সময় প্রয়োজন মনে করেন, তবে সরাসরি আমাদের কর্ডিনেশন ডেস্কে কল করুন।'}
-            </p>
-            <button className="w-full py-3 bg-white/20 hover:bg-white/30 rounded-xl font-bold transition-all text-sm">
-              01743214468
-            </button>
-          </div>
         </div>
-      </div>
+      </PageWrapper>
 
-      {/* Booking Modal */}
+      {/* Booking Modal - Outside PageWrapper for better z-index stacking */}
       <AnimatePresence>
         {isBookingModalOpen && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
@@ -214,7 +216,7 @@ export default function BookingPage() {
           </div>
         )}
       </AnimatePresence>
-    </PageWrapper>
+    </>
   );
 }
 
