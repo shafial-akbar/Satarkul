@@ -10,9 +10,9 @@ export const skillsData = {
   },
   coursesTitle: { en: 'Training Courses', bn: 'প্রশিক্ষণ কোর্সসমূহ' },
   courses: [
-    { title: { en: 'Handicrafts', bn: 'হস্তশিল্প' }, desc: { en: 'Training in making various handicraft items for local and global markets.', bn: 'বাজারের চাহিদা অনুযায়ী নান্দনিক হস্তশিল্প তৈরির প্রশিক্ষণ।' }, icon: 'Palette', timeline: { en: '6 Months', bn: '৬ মাস' } },
-    { title: { en: 'Tailoring', bn: 'সেলাই ও দর্জিবিজ্ঞান' }, desc: { en: 'Professional tailoring and dressmaking courses for women with disabilities.', bn: 'পেশাদার দর্জি হিসেবে নিজেকে গড়ে তুলতে আধুনিক পোশাক তৈরির প্রশিক্ষণ।' }, icon: 'Scissors', timeline: { en: '4 Months', bn: '৪ মাস' } },
-    { title: { en: 'Computer Literacy', bn: 'কম্পিউটার শিক্ষা' }, desc: { en: 'Basic computer skills and digital literacy for the modern workforce.', bn: 'আধুনিক বিশ্বের সাথে তাল মেলাতে কম্পিউটার ও ডিজিটাল সাক্ষরতা প্রদান।' }, icon: 'Monitor', timeline: { en: '3 Months', bn: '৩ মাস' } },
+    { title: { en: 'Handicrafts & Beadwork', bn: 'হস্তশিল্প ও পুতির কাজ' }, desc: { en: 'Training in making showpieces and jewelry using beads, Lippan Art, and Hand Painting.', bn: 'পুতি দিয়ে বিভিন্ন শোপিস ও গয়না তৈরি, লিপ্পান আর্ট এবং হ্যান্ড পেইন্টিং প্রশিক্ষণ।' }, icon: 'Palette', timeline: { en: '6 Months', bn: '৬ মাস' } },
+    { title: { en: 'Tailoring & Nakshi Kantha', bn: 'সেলাই ও নকশী কাঁথা' }, desc: { en: 'Professional tailoring and traditional Nakshi Kantha embroidery for empowerment.', bn: 'পেশাদার দর্জি বিজ্ঞান এবং ঐতিহ্যবাহী নকশী কাঁথা সেলাই প্রশিক্ষণ।' }, icon: 'Scissors', timeline: { en: '4 Months', bn: '৪ মাস' } },
+    { title: { en: 'Block & Batik Painting', bn: 'ব্লক ও বাটিক পেইন্টিং' }, desc: { en: 'Creative training in fabric design using block printing and hand-painting techniques.', bn: 'ব্লক-হ্যান্ড পেইন্টিং ও বাটিকের মাধ্যমে কাপড় ডিজাইনের সৃজনশীল প্রশিক্ষণ।' }, icon: 'Monitor', timeline: { en: '3 Months', bn: '৩ মাস' } },
   ],
   projectsTitle: { en: 'Featured Projects', bn: 'উল্লেখযোগ্য প্রকল্পসমূহ' },
   partnerLabel: { en: 'Partner Organization:', bn: 'অংশীদার সংস্থা:' },

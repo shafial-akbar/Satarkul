@@ -52,6 +52,15 @@ export const awarenessPrograms = {
       image: 'https://picsum.photos/seed/dengue/800/600'
     },
     {
+      id: 'common-illness',
+      title: { en: 'Common Illness Awareness', bn: 'সাধারণ রোগ বিষয়ক সচেতনতা' },
+      date: { en: 'Regular', bn: 'নিয়মিত' },
+      icon: 'Stethoscope',
+      color: 'bg-green-50 text-green-600',
+      description: { en: 'Awareness sessions on common illnesses such as fever, cold, cough, dysentery, and diarrhea.', bn: 'জ্বর, ঠান্ডা, সর্দি-কাশি, আমাশা, ডায়রিয়া ইত্যাদি রোগ বিষয়ক সচেতনতা মূলক ওরিয়েন্টেশন।' },
+      image: 'https://picsum.photos/seed/health-aware/800/600'
+    },
+    {
       id: 'disability-rights',
       title: { en: 'Disability Rights Awareness', bn: 'প্রতিবন্ধী অধিকার সচেতনতা' },
       date: { en: 'Ongoing', bn: 'চলমান' },

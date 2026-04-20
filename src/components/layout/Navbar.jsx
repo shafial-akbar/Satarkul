@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, ChevronDown, Heart, Languages, Search, Phone, Mail, Facebook } from 'lucide-react';
+import { Menu, X, ChevronDown, Heart, Languages, Search, Phone, Mail, Facebook, Calendar } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../context/LanguageContext';
 import { useContent } from '../../context/ContentContext';
@@ -92,11 +92,12 @@ export default function Navbar() {
       children: [
         { to: '/programs', label: content?.nav?.allPrograms?.[lang] || (lang === 'en' ? 'All Programs' : 'সব কার্যক্রম') },
         { to: '/programs/student-profiles', label: lang === 'en' ? 'Student Profiles' : 'শিক্ষার্থী পরিচিতি' },
+        { to: '/resources/capacity-building', label: lang === 'en' ? 'Capacity Building' : 'দক্ষতা বৃদ্ধি' },
+        { to: '/programs/assistive-devices', label: content?.nav?.devices?.[lang] || (lang === 'en' ? 'Devices' : 'উপকরণ') },
         { to: '/programs/education', label: content?.nav?.education?.[lang] || (lang === 'en' ? 'Education' : 'শিক্ষা') },
         { to: '/programs/health', label: content?.nav?.health?.[lang] || (lang === 'en' ? 'Health' : 'স্বাস্থ্য') },
         { to: '/programs/skill-development', label: content?.nav?.skills?.[lang] || (lang === 'en' ? 'Skills' : 'দক্ষতা') },
         { to: '/programs/financial-support', label: content?.nav?.finance?.[lang] || (lang === 'en' ? 'Finance' : 'অর্থ') },
-        { to: '/programs/assistive-devices', label: content?.nav?.devices?.[lang] || (lang === 'en' ? 'Devices' : 'উপকরণ') },
         { to: '/programs/awareness', label: content?.nav?.awareness?.[lang] || (lang === 'en' ? 'Awareness' : 'সচেতনতা') },
         { to: '/programs/social-support', label: content?.nav?.socialSupport?.[lang] || (lang === 'en' ? 'Social Support' : 'সামাজিক সহায়তা') },
         { to: '/programs/special-programs', label: content?.nav?.specialPrograms?.[lang] || (lang === 'en' ? 'Special Programs' : 'বিশেষ কার্যক্রম') },
@@ -111,8 +112,9 @@ export default function Navbar() {
         { to: '/activities/cultural', label: content?.nav?.cultural?.[lang] || (lang === 'en' ? 'Cultural' : 'সাংস্কৃতিক') },
         { to: '/activities/special-days', label: content?.nav?.specialDays?.[lang] || (lang === 'en' ? 'Special Days' : 'বিশেষ দিন') },
         { to: '/activities/advocacy', label: content?.nav?.advocacy?.[lang] || (lang === 'en' ? 'Advocacy' : 'অ্যাডভোকেসি') },
-        { to: '/activities/committee-meetings', label: content?.nav?.meetings?.[lang] || (lang === 'en' ? 'Meetings' : 'সভা') },
         { to: '/activities/special-programs', label: content?.nav?.specialPrograms?.[lang] || (lang === 'en' ? 'Special Programs' : 'বিশেষ কার্যক্রম') },
+        { to: '/activities/committee-meetings', label: content?.nav?.meetings?.[lang] || (lang === 'en' ? 'Meetings' : 'সভা') }
+
       ]
     },
     { 
@@ -123,7 +125,6 @@ export default function Navbar() {
         { to: '/blog', label: content?.nav?.blog?.[lang] || (lang === 'en' ? 'Blog' : 'ব্লগ') },
         { to: '/gallery', label: content?.nav?.gallery?.[lang] || (lang === 'en' ? 'Gallery' : 'গ্যালারি') },
         { to: '/videos', label: content?.nav?.videos?.[lang] || (lang === 'en' ? 'Videos' : 'ভিডিও') },
-        { to: '/resources/capacity-building', label: lang === 'en' ? 'Capacity Building' : 'দক্ষতা বৃদ্ধি' },
         { to: '/resources/downloads', label: content?.nav?.downloads?.[lang] || (lang === 'en' ? 'Downloads' : 'ডাউনলোড') },
       ]
     },
@@ -131,14 +132,15 @@ export default function Navbar() {
       to: '/support', 
       label: content?.nav?.supportUs?.[lang] || (lang === 'en' ? 'Support Us' : 'আমাদের সমর্থন করুন'),
       children: [
-        { to: '/support/donate', label: content?.common?.buttons?.donateNow?.[lang] || (lang === 'en' ? 'Donate Now' : 'এখনই দান করুন') },
-        { to: '/support/booking', label: lang === 'en' ? 'Program Booking' : 'প্রোগ্রাম বুকিং' },
+        { to: '/support/donors', label: content?.nav?.donors?.[lang] || (lang === 'en' ? 'Donors' : 'দাতা') },
         { to: '/support/donation-guide', label: lang === 'en' ? 'Donation Guide' : 'অনুদান সহায়িকা' },
         { to: '/support/contribution-tracking', label: lang === 'en' ? 'Contribution Tracking' : 'অনদান ট্র্যাকিং' },
         { to: '/support/helpline', label: lang === 'en' ? 'Medical Helpline' : 'হেল্পলাইন' },
         { to: '/support/volunteer', label: content?.common?.buttons?.volunteer?.[lang] || (lang === 'en' ? 'Volunteer' : 'স্বেচ্ছাসেবী') },
         { to: '/support/partner', label: content?.common?.buttons?.partner?.[lang] || (lang === 'en' ? 'Partner' : 'অংশীদার') },
-        { to: '/support/donors', label: content?.nav?.donors?.[lang] || (lang === 'en' ? 'Donors' : 'দাতা') },
+        { to: '/support/donate', label: content?.common?.buttons?.donateNow?.[lang] || (lang === 'en' ? 'Donate Now' : 'এখনই দান করুন') },
+        { to: '/support/booking', label: lang === 'en' ? 'Book Now' : 'প্রোগ্রাম বুকিং করুন' }
+
       ]
     },
     { to: '/contact', label: content?.nav?.contact?.[lang] || (lang === 'en' ? 'Contact' : 'যোগাযোগ') },
@@ -211,6 +213,15 @@ export default function Navbar() {
               <Languages size={14} />
               {lang === 'en' ? 'বাংলা' : 'English'}
             </button>
+
+            {/* Program Booking CTA */}
+            <Link 
+              to="/support/booking"
+              className="hidden sm:flex items-center gap-1.5 px-3 lg:px-4 py-2 bg-primary text-white rounded-full font-bold text-[10px] lg:text-xs shadow-lg hover:bg-primary/90 hover:scale-105 transition-all duration-300 group whitespace-nowrap"
+            >
+              <Calendar size={14} />
+              {lang === 'en' ? 'Program Booking' : 'প্রোগ্রাম বুকিং'}
+            </Link>
 
             {/* Donate CTA */}
             <Link 
@@ -304,16 +315,7 @@ export default function Navbar() {
               </div>
 
               <div className="p-6 border-t border-border space-y-4">
-                <button 
-                  onClick={() => {
-                    setIsMobileMenuOpen(false);
-                    setIsSearchOpen(true);
-                  }}
-                  className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold bg-surface-alt text-primary border border-border"
-                >
-                  <Search size={20} />
-                  {lang === 'en' ? 'Search Site' : 'সাইট অনুসন্ধান'}
-                </button>
+                {/* Removed redundant Search button to fix "2 ta search button" issue on mobile */}
                 <button 
                   onClick={toggleLang}
                   className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold bg-surface-alt text-primary border border-border"
@@ -321,6 +323,14 @@ export default function Navbar() {
                   <Languages size={20} />
                   {lang === 'en' ? 'বাংলা সংস্করণ' : 'English Version'}
                 </button>
+                <Link
+                  to="/support/booking"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold bg-primary text-white shadow-lg"
+                >
+                  <Calendar size={20} />
+                  {lang === 'en' ? 'Program Booking' : 'প্রোগ্রাম বুকিং'}
+                </Link>
                 <Link
                   to="/support/donate"
                   onClick={() => setIsMobileMenuOpen(false)}

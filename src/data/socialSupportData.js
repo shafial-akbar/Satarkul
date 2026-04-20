@@ -27,6 +27,19 @@ export const socialSupportServices = {
       ]
     },
     { 
+      id: 'documentation-support',
+      title: { en: 'Documentation Support', bn: 'কাগজপত্র ও দাপ্তরিক সহায়তা' }, 
+      desc: { en: 'Identifying and assisting in obtaining Disability Cards, Allowances, NIDs, Birth Registration, and Stipends.', bn: 'প্রতিবন্ধী পরিচয় পত্র, ভাতা, জন্ম নিবন্ধন, ভোটার আইডি কার্ড ও শিক্ষা উপবৃত্তি প্রাপ্তিতে সহযোগিতা।' }, 
+      icon: 'FileCheck',
+      color: 'bg-emerald-50 text-emerald-600',
+      timeline: { en: 'Continuous', bn: 'নিরবিচ্ছিন্ন' },
+      features: [
+        { en: 'Disability ID Cards', bn: 'প্রতিবন্ধী পরিচয় পত্র' },
+        { en: 'Govt. Allowances', bn: 'সরকারি ভাতা প্রাপ্তি' },
+        { en: 'NID & Birth Reg.', bn: 'এনআইডি ও জন্ম নিবন্ধন' }
+      ]
+    },
+    { 
       id: 'social-counseling',
       title: { en: 'Social Counseling', bn: 'সামাজিক কাউন্সিলিং' }, 
       desc: { en: 'Psychosocial support for individuals and families to cope with social barriers.', bn: 'মানসিক ও সামাজিক প্রতিকূলতা মোকাবিলায় ব্যক্তি ও পরিবারের জন্য বিশেষ কাউন্সিলিং।' }, 

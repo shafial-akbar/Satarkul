@@ -191,7 +191,7 @@ export default function BookingPage() {
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              className="relative bg-white rounded-[3rem] p-8 max-w-xl w-full shadow-2xl overflow-hidden"
+              className="relative bg-white rounded-[3rem] p-6 sm:p-10 max-w-xl w-full shadow-2xl overflow-y-auto max-h-[90vh] scrollbar-hide"
             >
               <button 
                 onClick={() => setIsBookingModalOpen(false)}
@@ -316,8 +316,8 @@ function BookingForm({ date, schedule, lang, onSuccess }) {
   }
 
   return (
-    <div className="space-y-8">
-      <div className="flex items-center gap-4 border-b border-border pb-6">
+    <div className="space-y-6">
+      <div className="flex items-center gap-4 border-b border-border pb-4">
         <div className="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center shrink-0">
           <CalendarCheck size={24} />
         </div>
@@ -329,8 +329,8 @@ function BookingForm({ date, schedule, lang, onSuccess }) {
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-2">
             <label className="text-[10px] font-black uppercase text-muted tracking-tight">{lang === 'en' ? 'Select Program' : 'প্রোগ্রাম নির্ধারণ করুন'}</label>
             <select 
@@ -371,7 +371,7 @@ function BookingForm({ date, schedule, lang, onSuccess }) {
         </div>
 
         <div className="space-y-4 pt-4 border-t border-border">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
               <label className="text-[10px] font-black uppercase text-muted tracking-tight">{lang === 'en' ? 'Full Name' : 'পূর্ণ নাম'}</label>
               <input 

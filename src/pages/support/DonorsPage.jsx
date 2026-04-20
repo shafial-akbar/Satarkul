@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../context/LanguageContext';
 import { useContent } from '../../context/ContentContext';
@@ -6,11 +6,17 @@ import PageWrapper from '../../components/layout/PageWrapper';
 import { motion } from 'motion/react';
 import * as Icons from 'lucide-react';
 import { donorsData } from '../../data/donorsData';
+import { getDonorContributions } from '../../api/apiClient';
 
 export default function DonorsPage() {
   const { t } = useTranslation();
   const { lang } = useLanguage();
   const { content } = useContent();
+  const [contributions, setContributions] = useState(null);
+
+  useEffect(() => {
+    getDonorContributions().then(setContributions);
+  }, []);
 
   const donors = content?.support?.donors;
 
@@ -93,7 +99,7 @@ export default function DonorsPage() {
               >
                 <div className="p-10 space-y-8 flex-grow">
                   <div className="flex items-center justify-between">
-                    <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center p-2 group-hover:scale-110 transition-transform duration-500 border border-border overflow-hidden">
+                    <div className="w-20 h-25 bg-white rounded-2xl flex items-center justify-center p-2 group-hover:scale-110 transition-transform duration-500 border border-border overflow-hidden">
                       <img 
                         src={donor.logo} 
                         alt={donor.name} 
@@ -126,6 +132,68 @@ export default function DonorsPage() {
             ))}
           </div>
         </section>
+
+        {/* Donor Contributions - New Section */}
+        {contributions && (
+          <section className="space-y-16">
+            <div className="text-center max-w-3xl mx-auto space-y-4">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/5 text-primary rounded-full font-bold text-sm uppercase tracking-widest border border-primary/10">
+                <Icons.Award size={18} /> {lang === 'en' ? 'Impact Breakdown' : 'প্রভাবের বিস্তারিত'}
+              </div>
+              <h2 className="text-4xl lg:text-5xl font-display font-bold text-text-main leading-tight">
+                {contributions.title?.[lang] || contributions.title?.en}
+              </h2>
+              <p className="text-muted text-lg">
+                {contributions.subtitle?.[lang] || contributions.subtitle?.en}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {contributions.categories.map((category, catIdx) => {
+                const Icon = Icons[category.icon] || Icons.Circle;
+                return (
+                  <motion.div
+                    key={category.id}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: catIdx * 0.1 }}
+                    className="bg-white rounded-[2.5rem] border border-border p-8 shadow-sm hover:shadow-xl transition-all duration-300 group"
+                  >
+                    <div className="flex items-center gap-4 mb-8">
+                      <div className="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                        <Icon size={28} />
+                      </div>
+                      <h3 className="text-2xl font-display font-bold text-text-main">
+                        {category.title?.[lang] || category.title?.en}
+                      </h3>
+                    </div>
+
+                    <div className="space-y-6">
+                      {category.items.map((item, itemIdx) => (
+                        <div key={itemIdx} className="space-y-3">
+                          <p className="text-sm font-bold text-primary flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                            {item.label?.[lang] || item.label?.en}
+                          </p>
+                          <div className="flex flex-wrap gap-2">
+                            {item.contributors.map((contributor, conIdx) => (
+                              <span 
+                                key={conIdx} 
+                                className="px-3 py-1 bg-surface-alt text-muted text-[11px] font-medium rounded-lg border border-border hover:border-primary/30 hover:text-primary transition-colors cursor-default"
+                              >
+                                {contributor}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </section>
+        )}
 
         {/* Call to Action */}
         <section className="bg-primary p-12 lg:p-20 rounded-[4rem] text-white overflow-hidden relative">

@@ -23,6 +23,7 @@ import { helplineData } from '../data/helplineData';
 import { studentsData } from '../data/studentsData';
 import { donationGuideData } from '../data/donationGuideData';
 import { scheduleData } from '../data/scheduleData';
+import { donorContributionsData } from '../data/donorContributionsData';
 import siteContent from '../data/siteContent';
 
 const USE_MOCK = true;
@@ -40,6 +41,7 @@ export const getActivitiesOverview = () => USE_MOCK ? mockCall(siteContent.activ
 export const getOrgStats = () => USE_MOCK ? mockCall(mockStats) : apiClient.get('/stats').then(res => res.data);
 export const getGoverningMembers = () => USE_MOCK ? mockCall(mockGoverningBody) : apiClient.get('/governing-body').then(res => res.data);
 export const getDonors = () => USE_MOCK ? mockCall(mockDonors) : apiClient.get('/donors').then(res => res.data);
+export const getDonorContributions = () => USE_MOCK ? mockCall(donorContributionsData) : apiClient.get('/donors/contributions').then(res => res.data);
 export const getActivities = () => USE_MOCK ? mockCall(mockActivities) : apiClient.get('/activities').then(res => res.data);
 
 // News & Blog

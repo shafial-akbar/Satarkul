@@ -10,6 +10,7 @@ export const healthData = {
   beneficiariesLabel: { en: 'Beneficiaries:', bn: 'উপকারভোগী:' },
   services: [
     { title: { en: 'Medical Checkups', bn: 'স্বাস্থ্য পরীক্ষা' }, desc: { en: 'Regular health screenings and general medical checkups for disabled individuals.', bn: 'প্রতিবন্ধী ব্যক্তিদের নিয়মিত সাধারণ স্বাস্থ্য পরীক্ষার ব্যবস্থা।' }, icon: 'Stethoscope', color: 'bg-primary/10 text-primary', timeline: { en: 'Monthly', bn: 'মাসিক' } },
+    { title: { en: 'Medical Grants', bn: 'চিকিৎসা অনুদান' }, desc: { en: 'Providing medical assistance and cash grants for the treatment of persons with disabilities.', bn: 'প্রতিবন্ধী ব্যক্তিদের চিকিৎসা সহযোগিতা ও চিকিৎসার জন্য নগদ আর্থিক অনুদান প্রদান।' }, icon: 'Banknote', color: 'bg-emerald-100 text-emerald-600', timeline: { en: 'As Needed', bn: 'প্রয়োজন অনুযায়ী' } },
     { title: { en: 'Physiotherapy', bn: 'ফিজিওথেরাপি' }, desc: { en: 'Specialized physical therapy sessions to improve mobility and strength.', bn: 'শারীরিক সক্ষমতা ও চলাফেরার উন্নতিতে বিশেষ থেরাপি সেশন।' }, icon: 'Activity', color: 'bg-secondary/10 text-secondary', timeline: { en: 'Weekly', bn: 'সাপ্তাহিক' } },
     { title: { en: 'Medicine Distribution', bn: 'ওষুধ বিতরণ' }, desc: { en: 'Providing essential medicines to ultra-poor disabled patients.', bn: 'দরিদ্র ও অসহায় রোগীদের জন্য বিনামূল্যে প্রয়োজনীয় ওষুধ সরবরাহ।' }, icon: 'Pill', color: 'bg-accent/10 text-accent', timeline: { en: 'As Needed', bn: 'প্রয়োজন অনুযায়ী' } },
   ],

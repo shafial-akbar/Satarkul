@@ -13,28 +13,28 @@ export const trainingData = {
   },
   trainingTypes: [
     {
-      id: 'vocational',
-      title: { en: 'Vocational Skills', bn: 'বৃত্তিমূলক দক্ষতা' },
-      desc: { en: 'Training in tailoring, handicrafts, and block-batik for economic independence.', bn: 'আর্থিক স্বাধীনতার জন্য দর্জি বিজ্ঞান, হস্তশিল্প এবং ব্লক-বাটিক প্রশিক্ষণ।' },
-      icon: 'Wrench'
+      id: 'vocational-beads',
+      title: { en: 'Beadwork & Jewelry', bn: 'পুঁথির কাজ ও গয়না তৈরি' },
+      desc: { en: 'Making various showpieces and jewelry using beads.', bn: 'পুঁথি দিয়ে বিভিন্ন শোপিচ ও গয়না তৈরি করার প্রশিক্ষণ।' },
+      icon: 'Gem'
+    },
+    {
+      id: 'handicrafts-art',
+      title: { en: 'Art & Design', bn: 'ব্লক- হ্যান্ড পেইন্টিং ও লিপ্পান আর্ট' },
+      desc: { en: 'Training in Block Printing, Hand Painting, and Lippan Art Design.', bn: 'ব্লক- হ্যান্ড পেইন্টিং ও লিপ্পান আর্ট শেখানোর বিশেষ প্রশিক্ষণ।' },
+      icon: 'Palette'
+    },
+    {
+      id: 'tailoring-embroidery',
+      title: { en: 'Tailoring & Embroidery', bn: 'দর্জি বিজ্ঞান ও নকশী কাঁথা' },
+      desc: { en: 'Training in tailoring and Nakshi Kantha embroidery for self-reliance.', bn: 'দর্জি বিজ্ঞান ও নকশী কাঁথা সেলাই প্রশিক্ষণের মাধ্যমে সাবলম্বী করা।' },
+      icon: 'Scissors'
     },
     {
       id: 'rehabilitation',
-      title: { en: 'Rehabilitation Techniques', bn: 'পুনর্বাসন কৌশল' },
-      desc: { en: 'Home-based therapy and mobility training for daily living activities.', bn: 'দৈনন্দিন জীবনযাত্রার জন্য ঘরোয়া থেরাপি এবং চলাফেরা প্রশিক্ষণ।' },
+      title: { en: 'ADL & Rehabilitation', bn: 'এডিএল ও পুনর্বাসন' },
+      desc: { en: 'Activities of Daily Living training including brushing, nail trimming, and personal hygiene.', bn: 'দৈনন্দিন পরিচর্যা (ব্রাশ করা, নখ কাটা, নখ কাটা, ড্রেস পড়া ও গোসল) শেখানো।' },
       icon: 'Accessibility'
-    },
-    {
-      id: 'advocacy-training',
-      title: { en: 'Rights & Advocacy', bn: 'অধিকার এবং অ্যাডভোকেসি' },
-      desc: { en: 'Empowering members to speak up for their rights and access social services.', bn: 'সদস্যদের তাদের অধিকার আদায়ে সোচ্চার হতে এবং সামাজিক সেবা গ্রহণে উৎসাহিত করা।' },
-      icon: 'Megaphone'
-    },
-    {
-      id: 'teacher-training',
-      title: { en: 'Special Educator Training', bn: 'বিশেষ শিক্ষক প্রশিক্ষণ' },
-      desc: { en: 'Enhancing the skills of our teachers in inclusive education methodologies.', bn: 'অন্তর্ভুক্তিমূলক শিক্ষা পদ্ধতিতে আমাদের শিক্ষকদের দক্ষতা বৃদ্ধি।' },
-      icon: 'GraduationCap'
     }
   ],
   resources: [

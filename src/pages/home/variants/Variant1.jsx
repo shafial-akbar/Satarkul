@@ -84,10 +84,10 @@ export default function Variant1() {
   ];
 
   const stats = [
-    { label: content?.home?.stats?.members, value: 690, icon: Users, color: 'text-primary' },
+    { label: content?.home?.stats?.members, value: 705, icon: Users, color: 'text-primary' },
     { label: content?.home?.stats?.winterClothes, value: 200, icon: Heart, color: 'text-secondary' },
-    { label: content?.home?.stats?.students, value: 100, icon: GraduationCap, color: 'text-accent' },
-    { label: content?.home?.stats?.relief, value: 845, icon: CheckCircle2, color: 'text-primary' },
+    { label: content?.home?.stats?.students, value: 120, icon: GraduationCap, color: 'text-accent' },
+    { label: content?.home?.stats?.relief, value: 1000, icon: CheckCircle2, color: 'text-primary' },
     { label: content?.home?.stats?.years, value: 13, icon: Calendar, color: 'text-secondary' },
   ];
 
@@ -608,7 +608,7 @@ export default function Variant1() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <p className="text-muted font-bold uppercase tracking-[0.3em] text-xs">
-              {content?.home?.partners?.tag?.[lang] || (lang === 'en' ? 'Our Trusted Partners' : 'আমাদের বিশ্বস্ত অংশীদার')}
+              {content?.home?.donors?.tag?.[lang] || (lang === 'en' ? 'Our Respected Donars' : 'আমাদের সম্মানিত দাতাগণ')}
             </p>
           </div>
           <Swiper
@@ -635,7 +635,7 @@ export default function Variant1() {
                   <img 
                     src={donor.logo} 
                     alt={donor.name} 
-                    className="max-h-12 w-auto object-contain" 
+                    className="max-h-20 w-auto object-contain" 
                     referrerPolicy="no-referrer"
                   />
                 </div>

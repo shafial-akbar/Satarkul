@@ -70,6 +70,18 @@ export const committeeMeetingsData = {
       timeline: { en: 'Date: 26', bn: 'তারিখ: ২৬' },
       title: { en: "Women's Council OPID Meeting", bn: 'নারী পরিষদে অপিডির মিটিং' },
       description: { en: 'OPID meeting held at Women\'s Council to discuss specific issues and initiatives related to women with disabilities.', bn: 'প্রতিবন্ধী নারীদের বিশেষ সমস্যা ও উন্নয়ন নিয়ে আলোচনার জন্য এই বৈঠকটি অনুষ্ঠিত হয়।' }
+    },
+    {
+      id: 'parent-meetings',
+      icon: 'MessageSquare',
+      color: 'bg-teal-50 text-teal-600',
+      timeline: { en: 'Quarterly', bn: 'প্রতি ৩ মাস অন্তর' },
+      title: { en: 'Parent-Member Coordination Meeting', bn: 'মা ও অভিভাবক সমন্বয় সভা' },
+      description: { en: 'Regular interaction with the mothers and guardians of our students to review educational progress, health status, and home-care needs of children with disabilities. These meetings foster a strong bond between the school and families.', bn: 'শিক্ষার্থীদের অভিভাবক ও মায়েদের সাথে নিয়মিত সমন্বয় ও সচেতনতামূলক সভা। এর মাধ্যমে শিক্ষার্থীদের পড়াশোনা ও স্বাস্থ্য পরিস্থিতির সার্বিক তদারকি নিশ্চিত করা হয়।' },
+      stats: {
+        en: '4 Meetings annually per group',
+        bn: 'বাৎসরিক ৪টি নিয়মিত সভা'
+      }
     }
   ],
   cta: {

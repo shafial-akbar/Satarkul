@@ -95,6 +95,11 @@ const siteContent = {
           tag: { en: "Education Program", bn: "শিক্ষা কার্যক্রম" }
         },
         {
+          title: { en: "Capacity Building Training", bn: "দক্ষতা বৃদ্ধি প্রশিক্ষণ" },
+          subtitle: { en: "Empowering children with special needs and their guardians through specialized training.", bn: "বিশেষ শিশু ও অভিভাবকদের ক্ষমতায়নে আমাদের বিশেষায়িত প্রশিক্ষণ কার্যক্রম।" },
+          tag: { en: "Capacity Building", bn: "প্রশিক্ষণ কার্যক্রম" }
+        },
+        {
           title: { en: "Better Health, Brighter Future", bn: "সুস্বাস্থ্যেই সমৃদ্ধ ভবিষ্যৎ" },
           subtitle: { en: "Providing essential healthcare and assistive devices to our community.", bn: "অসহায় মানুষের জন্য প্রয়োজনীয় চিকিৎসা সেবা ও সহায়ক উপকরণ নিশ্চিত করছি।" },
           tag: { en: "Health Services", bn: "স্বাস্থ্যসেবা" }
@@ -953,64 +958,164 @@ const siteContent = {
       },
       categories: [
         {
-          id: 'relief',
-          title: { en: 'Relief Activities', bn: 'ত্রাণ ও মানবিক সহায়তা' },
-          description: { en: 'Providing essential support including winter clothing, Ramadan food relief, and annual gifts to students and families.', bn: 'অসহায় পরিবারগুলোর মাঝে শীতবস্ত্র, রমজানে খাদ্য সহায়তা এবং বাৎসরিক উপহার সামগ্রী বিতরণ।' },
-          icon: 'HeartHandshake',
+          id: 'education',
+          title: { en: 'Education Program', bn: 'শিক্ষা কার্যক্রম' },
+          description: { en: 'Inclusive schooling, educational materials distribution, and creative arts for children with disabilities.', bn: 'সাতারকুল বৈচিত্র্য প্রতিবন্ধী বিদ্যালয়ের মাধ্যমে বিশেষ শিশুদের মানসম্মত শিক্ষা ও উপকরণ নিশ্চিতকরণ।' },
+          icon: 'GraduationCap',
           color: 'bg-blue-600',
           lightColor: 'bg-blue-50',
-          to: '/activities/relief',
-          stats: { en: '1,000+ Served', bn: '১০০০+ সেবাপ্রাপ্ত' }
+          to: '/programs/education',
+          stats: { en: '120 Students', bn: '১২০ জন শিক্ষার্থী' }
         },
         {
-          id: 'cultural',
-          title: { en: 'Cultural Activities', bn: 'সাংস্কৃতিক কার্যক্রম' },
-          description: { en: 'Fostering creativity and confidence through annual cultural programs and dance performances by our talented students.', bn: 'আমাদের শিক্ষার্থীদের সৃজনশীলতা ও আত্মবিশ্বাস বাড়াতে বাৎসরিক সাংস্কৃতিক অনুষ্ঠান ও নৃত্য পরিবেশনা।' },
-          icon: 'Music',
+          id: 'adult-education',
+          title: { en: 'Adult Education', bn: 'বয়স্ক শিক্ষা কার্যক্রম' },
+          description: { en: 'Literacy and signature training for parents and ultra-poor disabled adults to foster self-awareness.', bn: 'অভিভাবক ও অতি দরিদ্র প্রতিবন্ধী ব্যক্তিদের অক্ষরজ্ঞান ও স্বাক্ষর প্রদান কর্মসূচী।' },
+          icon: 'BookOpen',
+          color: 'bg-indigo-600',
+          lightColor: 'bg-indigo-50',
+          to: '/programs/education',
+          stats: { en: '25 Annual Seats', bn: 'বাৎসরিক ২৫ জন' }
+        },
+        {
+          id: 'vocational',
+          title: { en: 'Vocational Training', bn: 'বৃত্তিমূলক প্রশিক্ষণ' },
+          description: { en: 'Handicrafts, beadwork, tailoring, and block-batik training for economic empowerment.', bn: 'হস্তশিল্প, সেলাই ও বিভিন্ন কারিগরি শিক্ষার মাধ্যমে দক্ষ মানবসম্পদ গড়ে তোলা।' },
+          icon: 'Wrench',
           color: 'bg-rose-600',
           lightColor: 'bg-rose-50',
-          to: '/activities/cultural',
-          stats: { en: 'Annual Events', bn: 'বাৎসরিক আয়োজন' }
+          to: '/programs/skills',
+          stats: { en: '50+ Trainees', bn: '৫০+ প্রশিক্ষণার্থী' }
+        },
+        {
+          id: 'adl-training',
+          title: { en: 'ADL Training', bn: 'ADL ট্রেনিং' },
+          description: { en: 'Training children in fundamental life skills like personal hygiene, brushing, and dressing.', bn: 'শিক্ষার্থীদের দৈনন্দিন পরিচর্যা ও জীবনমুখী আচরণ (ব্রাশ করা, নখ কাটা ইত্যাদি) শিক্ষা।' },
+          icon: 'UserCheck',
+          color: 'bg-emerald-600',
+          lightColor: 'bg-emerald-50',
+          to: '/training',
+          stats: { en: 'Daily Sessions', bn: 'দৈনিক কার্যক্রম' }
+        },
+        {
+          id: 'business-grants',
+          title: { en: 'Business Grants', bn: 'ব্যবসায়িক অনুদান' },
+          description: { en: 'One-time grants for setting up small shops and grocery businesses for disabled families.', bn: 'দরিদ্র প্রতিবন্ধী পরিবারকে দোকান স্থাপন ও ব্যবসা শুরুর জন্য এককালীন নগদ সহায়তা।' },
+          icon: 'Gift',
+          color: 'bg-amber-600',
+          lightColor: 'bg-amber-50',
+          to: '/programs/financial',
+          stats: { en: '10+ Shops Funded', bn: '১০+ দোকান স্থাপন' }
+        },
+        {
+          id: 'sme-loans',
+          title: { en: 'Micro-SME Loans', bn: 'ক্ষুদ্র ও SME ঋণ' },
+          description: { en: 'Revolving micro-loans for the expansion and sustainability of established small businesses.', bn: 'উদ্যোক্তাদের ব্যবসা সম্প্রসারণে সহজ শর্তে আবর্তনশীল ক্ষুদ্রঋণ সহায়তা।' },
+          icon: 'TrendingUp',
+          color: 'bg-slate-700',
+          lightColor: 'bg-slate-50',
+          to: '/programs/financial',
+          stats: { en: '35 Active Loans', bn: '৩৫ জন সফল ঋণী' }
+        },
+        {
+          id: 'health-services',
+          title: { en: 'Health Services', bn: 'স্বাস্থ্যসেবা কার্যক্রম' },
+          description: { en: 'Medical checkups, eye camps, medicine distribution, and specialized physiotherapy.', bn: 'নিমিত স্বাস্থ্য পরীক্ষা, চক্ষু ক্যাম্প ও বিনামূল্যে প্রয়োজনীয় ঔষধ ও থেরাপি সেবা।' },
+          icon: 'Stethoscope',
+          color: 'bg-blue-500',
+          lightColor: 'bg-blue-50',
+          to: '/programs/health',
+          stats: { en: '500+ Served', bn: '৫০০+ সেবাপ্রাপ্ত' }
+        },
+        {
+          id: 'assistive-devices',
+          title: { en: 'Assistive Devices', bn: 'সহায়ক উপকরণ' },
+          description: { en: 'Providing wheelchairs, white canes, hearing aids, and crutches to restore mobility.', bn: 'চলাচলের সুবিধার্থে হুইলচেয়ার, সাদা ছড়ি ও অন্যান্য সহায়ক সরঞ্জাম বিতরণ।' },
+          icon: 'Accessibility',
+          color: 'bg-purple-600',
+          lightColor: 'bg-purple-50',
+          to: '/programs/devices',
+          stats: { en: 'Ongoing Support', bn: 'নিরন্তর বিতরণ' }
+        },
+        {
+          id: 'awareness',
+          title: { en: 'Awareness Programs', bn: 'সচেতনতা কার্যক্রম' },
+          description: { en: 'Campaigns on health, climate change, menstrual health, and disability rights.', bn: 'স্বাস্থ্য, পরিবেশ ও প্রতিবন্ধী অধিকার বিষয়ে বিভিন্ন সামাজিক সচেতনতামূলক কর্মসূচী।' },
+          icon: 'Megaphone',
+          color: 'bg-orange-600',
+          lightColor: 'bg-orange-50',
+          to: '/programs/awareness',
+          stats: { en: '15+ Topics', bn: '১৫+ বিষয়ের সভা' }
+        },
+        {
+          id: 'relief',
+          title: { en: 'Relief Activities', bn: 'ত্রাণ ও মানবিক সহায়তা' },
+          description: { en: 'Winter clothing, Ramadan food relief, and sewing machine distribution for empowerment.', bn: 'শীতবস্ত্র, ঈদ সামগ্রী ও স্বাবলম্বী করতে সেলাই মেশিন বিতরণ কার্যক্রম।' },
+          icon: 'HeartHandshake',
+          color: 'bg-red-600',
+          lightColor: 'bg-red-50',
+          to: '/activities/relief',
+          stats: { en: '845+ Beneficiaries', bn: '৮৪৫+ উপকারভোগী' }
         },
         {
           id: 'special-days',
-          title: { en: 'Special Day Observances', bn: 'বিশেষ দিবস উদযাপন' },
-          description: { en: 'Commemorating significant national and international days to raise awareness and celebrate our heritage.', bn: 'সচেতনতা বাড়াতে এবং জাতীয় ঐতিহ্যকে তুলে ধরতে বিভিন্ন জাতীয় ও আন্তর্জাতিক দিবস উদযাপন।' },
+          title: { en: 'Special Day Observance', bn: 'বিশেষ দিবস উদযাপন' },
+          description: { en: 'Celebrating national and international days to raise awareness and foster community spirit.', bn: 'গুরুত্বপূর্ণ জাতীয় ও আন্তর্জাতিক দিবসগুলো সচেতনতা বৃদ্ধিতে ও উৎসবে উদযাপন।' },
           icon: 'Calendar',
-          color: 'bg-emerald-600',
+          color: 'bg-emerald-500',
           lightColor: 'bg-emerald-50',
           to: '/activities/special-days',
           stats: { en: '10+ Days/Year', bn: 'বছরে ১০+ দিবস' }
         },
         {
+          id: 'cultural',
+          title: { en: 'Cultural Activities', bn: 'সাংস্কৃতিক কার্যক্রম' },
+          description: { en: 'Fostering confidence through music, drama, and dance performances by our students.', bn: 'সৃজনশীলতা বিকাশে বাৎসরিক সাংস্কৃতিক অনুষ্ঠান ও আনন্দঘন আয়োজন।' },
+          icon: 'Music',
+          color: 'bg-rose-500',
+          lightColor: 'bg-rose-50',
+          to: '/activities/cultural',
+          stats: { en: 'Annual Events', bn: 'বাৎসরিক উৎসব' }
+        },
+        {
           id: 'advocacy',
-          title: { en: 'Advocacy Activities', bn: 'অ্যাডভোকেসি ও আন্দোলন' },
-          description: { en: 'Demanding rights and dignity for persons with disabilities through human chains, press conferences, and memorandums.', bn: 'মানববন্ধন, সংবাদ সম্মেলন ও স্মারকলিপি প্রদানের মাধ্যমে প্রতিবন্ধী মানুষের অধিকার প্রতিষ্ঠা।' },
-          icon: 'Megaphone',
-          color: 'bg-amber-600',
+          title: { en: 'Advocacy & Rights', bn: 'অ্যাডভোকেসি ও অধিকার' },
+          description: { en: 'Demanding rights and dignity through human chains, press conferences, and memorandums.', bn: 'দাবি আদায়ে মানববন্ধন ও সংবাদ সম্মেলনের মাধ্যমে অধিকার সুরক্ষা আন্দোলন।' },
+          icon: 'ShieldCheck',
+          color: 'bg-amber-500',
           lightColor: 'bg-amber-50',
           to: '/activities/advocacy',
           stats: { en: '11-Point Demands', bn: '১১-দফা দাবি' }
         },
         {
-          id: 'special-programs',
-          title: { en: 'Special Programs', bn: 'বিশেষ কর্মসূচি' },
-          description: { en: 'Targeted initiatives like Speech and Occupational Training, Home Teacher programs, and Therapy centers.', bn: 'স্পিচ ও অকুপেশনাল ট্রেনিং এবং থেরাপি সেন্টারের মতো বিশেষায়িত সেবা কর্মসূচি।' },
-          icon: 'Star',
-          color: 'bg-indigo-600',
-          lightColor: 'bg-indigo-50',
-          to: '/activities/special-programs',
-          stats: { en: 'Ongoing Care', bn: 'চলমান সেবা' }
-        },
-        {
-          id: 'meetings',
+          id: 'committee-meetings',
           title: { en: 'Committee Meetings', bn: 'কমিটির সভা' },
-          description: { en: 'Ensuring democratic governance and transparency through regular executive and general meetings.', bn: 'সংগঠনের স্বচ্ছতা ও সুশাসন নিশ্চিত করতে নিয়মিত কার্যনির্বাহী ও সাধারণ সভা আয়োজন।' },
+          description: { en: 'Ensuring democratic governance through regular executive and annual general meetings.', bn: 'সাংগঠনিক সুশাসন নিশ্চিত করতে নিয়মিত কার্যনির্বাহী ও বার্ষিক সাধারণ সভা।' },
           icon: 'Users',
-          color: 'bg-slate-700',
+          color: 'bg-slate-800',
           lightColor: 'bg-slate-50',
           to: '/activities/committee-meetings',
-          stats: { en: 'Monthly/Annual', bn: 'মাসিক/বার্ষিক' }
+          stats: { en: 'Periodic', bn: 'নিয়মিত সভা' }
+        },
+        {
+          id: 'parent-meetings',
+          title: { en: 'Parent-Member Meetings', bn: 'মা ও অভিভাবক সভা' },
+          description: { en: 'Quarterly meetings with parents and members to discuss progress and welfare initiatives.', bn: 'প্রতি তিন মাস অন্তর অভিভাবকদের সাথে সমন্বয় ও সচেতনতামূলক সভা।' },
+          icon: 'MessageSquare',
+          color: 'bg-teal-600',
+          lightColor: 'bg-teal-50',
+          to: '/activities/committee-meetings',
+          stats: { en: '4 Meetings/Year', bn: 'বছরে ৪টি সভা' }
+        },
+        {
+          id: 'lunch-care',
+          title: { en: 'Lunch & Care', bn: 'দুপুরের খাবার কার্যক্রম' },
+          description: { en: 'Providing daily nutritious meals and specialized care to ensure healthy student development.', bn: 'শিক্ষার্থীদের জন্য প্রতিদিনের সুষম খাবার ও নিবিড় পরিচর্যা কার্যক্রম।' },
+          icon: 'Utensils',
+          color: 'bg-pink-600',
+          lightColor: 'bg-pink-50',
+          to: '/programs/education',
+          stats: { en: 'Daily Nutrition', bn: 'দৈনিক পুষ্টি' }
         }
       ],
       relief: {

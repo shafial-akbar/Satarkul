@@ -34,5 +34,29 @@ export const studentsData = [
       en: 'Fatima is very social and enjoys dancing and group activities at school.',
       bn: 'ফাতিমা খুব হাসিখুশি এবং স্কুলে নাচ ও দলীয় কার্যক্রমে অংশ নিতে পছন্দ করে।'
     }
+  },
+  {
+    id: 'student-004',
+    name: { en: 'Tanvir Hossain', bn: 'তানভীর হোসেন' },
+    age: 11,
+    disabilityType: { en: 'Speech & Hearing', bn: 'বাক ও শ্রবণ প্রতিবন্ধী' },
+    class: { en: 'Class 3', bn: 'তৃতীয় শ্রেণী' },
+    image: 'https://picsum.photos/seed/student-4/400/400',
+    info: {
+      en: 'Tanvir is learning sign language and has a keen interest in mathematics.',
+      bn: 'তানভীর ইশারা ভাষা শিখছে এবং গণিতের প্রতি তার প্রখর আগ্রহ রয়েছে।'
+    }
+  },
+  {
+    id: 'student-005',
+    name: { en: 'Sumaiya Akter', bn: 'সুমাইয়া আক্তার' },
+    age: 9,
+    disabilityType: { en: 'Intellectual Disability', bn: 'বুদ্ধি প্রতিবন্ধী' },
+    class: { en: 'Special Class', bn: 'বিশেষ শ্রেণী' },
+    image: 'https://picsum.photos/seed/student-5/400/400',
+    info: {
+      en: 'Sumaiya enjoys building blocks and is showing improvement in social interaction.',
+      bn: 'সুমাইয়া ব্লক তৈরি করতে পছন্দ করে এবং সামাজিক মেলামেশায় উন্নতি করছে।'
+    }
   }
 ];
