@@ -27,7 +27,11 @@ import {
   ArrowUpRight,
   ExternalLink,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  CalendarDays,
+  PhoneCall,
+  Compass,
+  LineChart
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -347,6 +351,88 @@ export default function Variant1() {
         <div className="absolute top-0 right-0 w-full h-full opacity-5 pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] border-[60px] border-white rounded-full" />
         </div>
+      </section>
+
+      {/* Presentation Highlight: Digital Services & Transparency */}
+      <section className="py-24 lg:py-32 bg-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
+            <span className="text-primary font-bold tracking-[0.2em] uppercase text-sm">
+              {lang === 'en' ? 'New Digital Features' : 'নতুন ডিজিটাল বৈশিষ্ট্য'}
+            </span>
+            <h2 className="text-4xl lg:text-5xl font-display font-bold text-text-main leading-tight">
+              {lang === 'en' ? 'Empowering Through Technology & Transparency' : 'প্রযুক্তি এবং স্বচ্ছতার মাধ্যমে ক্ষমতায়ন'}
+            </h2>
+            <p className="text-muted text-lg">
+              {lang === 'en' 
+                ? 'We have introduced new digital tools to make our services more accessible and our operations more transparent.' 
+                : 'আমাদের পরিষেবাগুলোকে আরও সহজলভ্য এবং আমাদের কার্যক্রমকে আরও স্বচ্ছ করতে আমরা নতুন ডিজিটাল টুল চালু করেছি।'}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                title: { en: 'Program Booking', bn: 'প্রোগ্রাম বুকিং' },
+                desc: { en: 'Book therapy and training slots online via interactive calendar.', bn: 'ইন্টারেক্টিভ ক্যালেন্ডারের মাধ্যমে অনলাইনে থেরাপি এবং ট্রেনিং স্লট বুক করুন।' },
+                icon: CalendarDays,
+                link: '/support/booking',
+                color: 'bg-blue-500',
+              },
+              {
+                title: { en: 'Medical Helpline', bn: 'মেডিকেল হেল্পলাইন' },
+                desc: { en: 'Instant access to emergency medical contact information.', bn: 'জরুরী মেডিকেল কন্টাক্ট ইনফরমেশন দ্রুত খুঁজে পান।' },
+                icon: PhoneCall,
+                link: '/support/helpline',
+                color: 'bg-emerald-500',
+              },
+              {
+                title: { en: 'Donation Guide', bn: 'অনুদান সহায়িকা' },
+                desc: { en: 'Strategic priority list to help donors contribute effectively.', bn: 'দাতাদের কার্যকরভাবে অবদান রাখতে সহায়তার জন্য চাহিদার তালিকা।' },
+                icon: Compass,
+                link: '/support/donation-guide',
+                color: 'bg-amber-500',
+              },
+              {
+                title: { en: 'Contribution Tracking', bn: 'অনুদান ট্র্যাকিং' },
+                desc: { en: 'Transparent tracking of all small and large contributions.', bn: 'সব ছোট এবং বড় অনুদানের স্বচ্ছ ট্র্যাকিং ব্যবস্থা।' },
+                icon: LineChart,
+                link: '/support/contribution-tracking',
+                color: 'bg-rose-500',
+              }
+            ].map((feature, fIdx) => (
+              <motion.div
+                key={fIdx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: fIdx * 0.1 }}
+                className="group relative"
+              >
+                <Link to={feature.link} className="block space-y-6 p-10 rounded-[2.5rem] bg-surface-alt border border-border hover:border-primary hover:shadow-2xl transition-all duration-500 h-full">
+                  <div className={`w-16 h-16 ${feature.color} text-white rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500`}>
+                    <feature.icon size={30} />
+                  </div>
+                  <div className="space-y-4">
+                    <h3 className="text-2xl font-display font-bold text-text-main group-hover:text-primary transition-colors">
+                      {getLocalized(feature.title)}
+                    </h3>
+                    <p className="text-muted leading-relaxed text-sm">
+                      {getLocalized(feature.desc)}
+                    </p>
+                  </div>
+                  <div className="pt-4 flex items-center gap-2 text-primary font-bold text-sm">
+                    {lang === 'en' ? 'Open Module' : 'মডিউলটি খুলুন'} <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Decorative elements */}
+        <div className="absolute top-1/2 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-x-1/2" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl translate-x-1/3 translate-y-1/3" />
       </section>
 
       {/* Programs Section */}
