@@ -71,6 +71,20 @@ const siteContent = {
     hero: {
       slides: [
         {
+          title: { 
+            en: "Share the pain. Share the hope. Share the future. Disability is not a barrier.", 
+            bn: "বেদনা ভাগ করি, আশা জাগাই, গড়ব সুন্দর ভবিষ্যৎ। প্রতিবন্ধিতা কোনো বাধা নয়।" 
+          },
+          subtitle: { 
+            en: "Empowering lives and ensuring rights for every person with disabilities.", 
+            bn: "প্রতিবন্ধী ব্যক্তিদের ক্ষমতায়ন এবং মৌলিক অধিকার নিশ্চিতে আমাদের অঙ্গীকার।" 
+          },
+          tag: { 
+            en: "Welcome to SPUS", 
+            bn: "SPUS-এ আপনাকে স্বাগতম" 
+          }
+        },
+        {
           title: { en: "Empowering Lives, Ensuring Rights.", bn: "সক্ষম জীবন, সুরক্ষিত অধিকার" },
           subtitle: { en: "Dedicated to the welfare and rights of persons with disabilities.", bn: "প্রতিবন্ধী ব্যক্তিদের সার্বিক কল্যাণ ও নাগরিক অধিকার নিশ্চিতে আমাদের নিরলস পথচলা।" },
           tag: { en: "Welcome to SPUS", bn: "SPUS-এ আপনাকে স্বাগত" }
